@@ -1,4 +1,406 @@
 <!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Guia de Projetos | Manual do Projetista</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                            800: '#0c4a6e',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for sidebar & content */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.4);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(156, 163, 175, 0.7);
+        }
+    </style>
+</head>
+<body class="h-full bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 flex flex-col antialiased transition-colors duration-200">
+
+    <!-- Top Header -->
+    <header class="h-16 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 px-4 lg:px-6 flex items-center justify-between sticky top-0 z-30 shadow-sm">
+        <div class="flex items-center gap-3">
+            <button id="mobile-menu-toggle" class="lg:hidden text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white p-2 rounded-lg">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+            <div class="flex items-center gap-2">
+                <div class="bg-brand-600 text-white p-2 rounded-lg font-bold flex items-center justify-center w-9 h-9">
+                    <i class="fa-solid fa-compass-drafting text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-slate-900 dark:text-white text-base sm:text-lg leading-tight">Portal de Guia de Projetos</h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">Manual Técnico e Diretrizes de Arquitetura & Engenharia</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <!-- Breadcrumb (desktop) -->
+            <div class="hidden md:flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mr-4">
+                <span>Guias</span>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <span id="breadcrumb-category" class="font-medium text-slate-700 dark:text-slate-300">Normas & Padronização</span>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <span id="breadcrumb-title" class="font-semibold text-brand-600 dark:text-brand-400">Padronização e Checklist</span>
+            </div>
+
+            <!-- Print / Export Action -->
+            <button onclick="window.print()" class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-sm flex items-center gap-2 transition" title="Imprimir ou Salvar PDF">
+                <i class="fa-solid fa-print"></i>
+                <span class="hidden sm:inline text-xs font-medium">Imprimir</span>
+            </button>
+
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition" title="Alternar tema">
+                <i id="theme-toggle-dark-icon" class="fa-solid fa-moon hidden"></i>
+                <i id="theme-toggle-light-icon" class="fa-solid fa-sun"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="flex flex-1 overflow-hidden relative">
+        
+        <!-- Sidebar Backdrop for Mobile -->
+        <div id="sidebar-backdrop" class="fixed inset-0 bg-slate-900/50 z-20 hidden lg:hidden backdrop-blur-sm"></div>
+
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-72 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 flex flex-col fixed lg:static inset-y-0 left-0 z-20 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+            
+            <!-- Quick Search Bar -->
+            <div class="p-4 border-b border-slate-200 dark:border-slate-700">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input type="text" id="search-input" placeholder="Buscar guia ou tópico..." class="w-full pl-9 pr-3 py-2 bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 text-sm rounded-lg border border-transparent focus:border-brand-500 focus:bg-white dark:focus:bg-slate-900 outline-none transition">
+                </div>
+            </div>
+
+            <!-- Categories Navigation -->
+            <nav class="flex-1 overflow-y-auto p-4 space-y-4" id="nav-categories">
+                
+                <!-- Categoria 1 -->
+                <div class="nav-group">
+                    <button class="category-toggle w-full flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 hover:text-slate-800 dark:hover:text-slate-200">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-layer-group text-brand-500"></i> Normas & Padronização</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] transform transition-transform duration-200"></i>
+                    </button>
+                    <ul class="space-y-1 pl-2 border-l-2 border-slate-100 dark:border-slate-700">
+                        <li>
+                            <a href="#guia-padronizacao" data-guide="guia-padronizacao" class="guide-link active flex items-center justify-between px-3 py-2 text-sm rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 font-medium transition">
+                                <span>Padronização e Checklist</span>
+                                <span class="text-[10px] bg-brand-100 dark:bg-brand-900/60 text-brand-700 dark:text-brand-300 px-1.5 py-0.5 rounded">Geral</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#guia-folhas-pranchas" data-guide="guia-folhas-pranchas" class="guide-link flex items-center justify-between px-3 py-2 text-sm rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+                                <span>Formatos de Pranchas (NBR 10068)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Categoria 2 -->
+                <div class="nav-group">
+                    <button class="category-toggle w-full flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 hover:text-slate-800 dark:hover:text-slate-200">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-cube text-brand-500"></i> Diretrizes BIM</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] transform transition-transform duration-200"></i>
+                    </button>
+                    <ul class="space-y-1 pl-2 border-l-2 border-slate-100 dark:border-slate-700">
+                        <li>
+                            <a href="#guia-bim-fases" data-guide="guia-bim-fases" class="guide-link flex items-center justify-between px-3 py-2 text-sm rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+                                <span>Níveis de Detalhe (LOD)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#guia-bim-nomenclaturas" data-guide="guia-bim-nomenclaturas" class="guide-link flex items-center justify-between px-3 py-2 text-sm rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+                                <span>Nomenclatura de Arquivos BIM</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Categoria 3 -->
+                <div class="nav-group">
+                    <button class="category-toggle w-full flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 hover:text-slate-800 dark:hover:text-slate-200">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-hospital text-brand-500"></i> Projetos de Saúde</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] transform transition-transform duration-200"></i>
+                    </button>
+                    <ul class="space-y-1 pl-2 border-l-2 border-slate-100 dark:border-slate-700">
+                        <li>
+                            <a href="#guia-rdc50" data-guide="guia-rdc50" class="guide-link flex items-center justify-between px-3 py-2 text-sm rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+                                <span>Diretrizes RDC-50 ANVISA</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Categoria 4 -->
+                <div class="nav-group">
+                    <button class="category-toggle w-full flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 hover:text-slate-800 dark:hover:text-slate-200">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-building-circle-check text-brand-500"></i> Legalização & Prefeitura</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] transform transition-transform duration-200"></i>
+                    </button>
+                    <ul class="space-y-1 pl-2 border-l-2 border-slate-100 dark:border-slate-700">
+                        <li>
+                            <a href="#guia-aprovacao-prefeitura" data-guide="guia-aprovacao-prefeitura" class="guide-link flex items-center justify-between px-3 py-2 text-sm rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+                                <span>Diretrizes de projetos</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </nav>
+
+            <!-- Sidebar Footer -->
+            <div class="p-4 border-t border-slate-200 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400 flex justify-between items-center">
+                <span>Versão do Guias v2.4</span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-300">Atualizado</span>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-10" id="main-content">
+            <div class="max-w-5xl mx-auto flex gap-8">
+                
+                <!-- Guide Content Window -->
+                <div class="flex-1 min-w-0">
+
+                    <!-- ================================================================================== -->
+                    <!-- GUIA 1: Padronização e Checklist (Guia Exemplo Inicial) -->
+                    <!-- ================================================================================== -->
+                    <article id="guia-padronizacao" class="guide-content space-y-6">
+                        
+                        <!-- Header do Guia -->
+                        <div class="border-b border-slate-200 dark:border-slate-700 pb-5">
+                            <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2">
+                                <i class="fa-solid fa-folder-open"></i> Normas & Padronização
+                            </div>
+                            <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Guia de Padronização e Checklist de Projetos</h1>
+                            <p class="text-base text-slate-600 dark:text-slate-300 mt-2">Diretrizes gerais para estruturação de pranchas, espessuras de pena, convenções gráficas e validação de entrega.</p>
+                            
+                            <div class="flex items-center gap-4 mt-4 text-xs text-slate-500 dark:text-slate-400">
+                                <span><i class="fa-regular fa-clock mr-1"></i> Leitura: 8 min</span>
+                                <span><i class="fa-regular fa-calendar-check mr-1"></i> Revisão: Set/2026</span>
+                                <span><i class="fa-regular fa-user mr-1"></i> Coordenação Técnica</span>
+                            </div>
+                        </div>
+
+                        <!-- inicio: Espaço reservado para inserção de novos conteúdos -->
+                        <!-- <!-- INSERIR AQUI O CONTEÚDO DO GUIA EM HTML --> -->
+
+                        <!-- Seção 1: Destaques & Callouts pre-estilizados -->
+                        <section>
+                            <h2 id="introducao" class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3 scroll-mt-20">1. Introdução e Objetivo</h2>
+                            <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
+                                Este manual tem como objetivo padronizar os entregáveis gráficos de arquitetura e engenharia do escritório, garantindo consistência visual, facilidade de leitura na obra e conformidade com as normas técnicas da ABNT.
+                            </p>
+
+                            <!-- Exemplo de Caixa de Dica / Atenção / Norma -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                                <div class="p-4 rounded-xl border-l-4 border-amber-500 bg-amber-50 dark:bg-amber-950/40 text-amber-900 dark:text-amber-200">
+                                    <div class="flex items-center gap-2 font-bold mb-1">
+                                        <i class="fa-solid fa-triangle-exclamation text-amber-600 dark:text-amber-400"></i> Atenção Técnica
+                                    </div>
+                                    <p class="text-sm">Sempre verifique a cota geral antes de enviar o arquivo para plotagem. Cotas divergentes causam retrabalho na fase executiva.</p>
+                                </div>
+
+                                <div class="p-4 rounded-xl border-l-4 border-sky-500 bg-sky-50 dark:bg-sky-950/40 text-sky-900 dark:text-sky-200">
+                                    <div class="flex items-center gap-2 font-bold mb-1">
+                                        <i class="fa-solid fa-lightbulb text-sky-600 dark:text-sky-400"></i> Dica de Produtividade
+                                    </div>
+                                    <p class="text-sm">Utilize os templates pré-configurados no Revit (.rte) contidos na pasta de rede do servidor para garantir as espessuras corretas.</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Seção 2: Tabela de Padrões de Penas / Linhas -->
+                        <section>
+                            <h2 id="tabela-linhas" class="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-3 scroll-mt-20">2. Hierarquia Visual de Linhas e Penas</h2>
+                            <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
+                                Respeitar a espessura de linhas é fundamental para garantir a legibilidade do desenho impresso ou em telas digitais.
+                            </p>
+
+                            <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700">
+                                <table class="w-full text-sm text-left text-slate-600 dark:text-slate-300">
+                                    <thead class="text-xs uppercase bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-b border-slate-200 dark:border-slate-700">
+                                        <tr>
+                                            <th class="py-3 px-4">Espessura (mm)</th>
+                                            <th class="py-3 px-4">Cor Padrão (CAD)</th>
+                                            <th class="py-3 px-4">Aplicação em Desenho</th>
+                                            <th class="py-3 px-4">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                            <td class="py-3 px-4 font-semibold">0.50 mm - Extra Larga</td>
+                                            <td class="py-3 px-4"><span class="inline-block w-3 h-3 bg-magenta-500 rounded-full mr-1 bg-pink-600"></span> Magenta</td>
+                                            <td class="py-3 px-4">Cortes de elementos estruturais (Concreto/Aço)</td>
+                                            <td class="py-3 px-4"><span class="px-2 py-0.5 text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300 rounded">Obrigatório</span></td>
+                                        </tr>
+                                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                            <td class="py-3 px-4 font-semibold">0.30 mm - Larga</td>
+                                            <td class="py-3 px-4"><span class="inline-block w-3 h-3 bg-cyan-400 rounded-full mr-1 bg-cyan-400"></span> Ciano / Cyan</td>
+                                            <td class="py-3 px-4">Alvenaria cortada, contornos visíveis em destaque</td>
+                                            <td class="py-3 px-4"><span class="px-2 py-0.5 text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300 rounded">Obrigatório</span></td>
+                                        </tr>
+                                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                            <td class="py-3 px-4 font-semibold">0.15 mm - Média</td>
+                                            <td class="py-3 px-4"><span class="inline-block w-3 h-3 bg-red-500 rounded-full mr-1"></span> Vermelho / Red</td>
+                                            <td class="py-3 px-4">Mobiliário, esquadrias, linhas de projeção</td>
+                                            <td class="py-3 px-4"><span class="px-2 py-0.5 text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300 rounded">Obrigatório</span></td>
+                                        </tr>
+                                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                            <td class="py-3 px-4 font-semibold">0.09 mm - Fina</td>
+                                            <td class="py-3 px-4"><span class="inline-block w-3 h-3 bg-gray-400 rounded-full mr-1"></span> Cinza / Gray</td>
+                                            <td class="py-3 px-4">Hachuras, cotas, linhas de eixo e chamadas</td>
+                                            <td class="py-3 px-4"><span class="px-2 py-0.5 text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300 rounded">Obrigatório</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <!-- Seção 3: Checklist Interativo -->
+                        <section>
+                            <h2 id="checklist-entrega" class="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-3 scroll-mt-20">3. Checklist Antes do Envio (Validação Final)</h2>
+                            <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
+                                Marque os itens abaixo para checar a qualidade do arquivo antes da emissão formal do pacote:
+                            </p>
+
+                            <div class="bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-200 dark:border-slate-700 space-y-3">
+                                <label class="flex items-center gap-3 cursor-pointer p-2 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition">
+                                    <input type="checkbox" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500">
+                                    <span class="text-sm font-medium text-slate-800 dark:text-slate-200">Selos e carimbos totalmente preenchidos (Nomes, datas, revisões e responsável técnico).</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer p-2 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition">
+                                    <input type="checkbox" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500">
+                                    <span class="text-sm font-medium text-slate-800 dark:text-slate-200">Indicação correta do Norte Verdadeiro / Magnético em todas as plantas de situação e implantação.</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer p-2 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition">
+                                    <input type="checkbox" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500">
+                                    <span class="text-sm font-medium text-slate-800 dark:text-slate-200">Cotas gerais e parciais cruzadas e auditadas para evitar erros de soma.</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer p-2 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition">
+                                    <input type="checkbox" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500">
+                                    <span class="text-sm font-medium text-slate-800 dark:text-slate-200">Exportação do arquivo gerada em PDF/X-1a ou vetor com fontes incorporadas.</span>
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Seção 4: Exemplo de Código / Bloco de Notas NBR -->
+                        <section>
+                            <h2 id="normas-referencia" class="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-3 scroll-mt-20">4. Normas ABNT Correlatas</h2>
+                            
+                            <div class="p-4 bg-slate-900 text-slate-100 rounded-xl font-mono text-xs overflow-x-auto space-y-2 border border-slate-800">
+                                <div class="text-emerald-400">// Lista de Normas Obrigatórias no Acervo do Projetista</div>
+                                <div><span class="text-sky-400">NBR 6492:</span> Representação de projetos de arquitetura</div>
+                                <div><span class="text-sky-400">NBR 10068:</span> Folha de desenho - Layout e dimensões</div>
+                                <div><span class="text-sky-400">NBR 9050:</span> Acessibilidade a edificações, mobiliário, espaços e equipamentos urbanos</div>
+                                <div><span class="text-sky-400">NBR 15575:</span> Edificações habitacionais - Desempenho</div>
+                            </div>
+                        </section>
+
+                        <!-- fim: Espaço reservado para inserção de novos conteúdos -->
+
+                    </article>
+
+
+                    <!-- ================================================================================== -->
+                    <!-- GUIA 2: Formatos de Pranchas (NBR 10068) (Modelo) -->
+                    <!-- ================================================================================== -->
+                    <article id="guia-folhas-pranchas" class="guide-content space-y-6 hidden">
+                        <div class="border-b border-slate-200 dark:border-slate-700 pb-5">
+                            <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2">
+                                <i class="fa-solid fa-folder-open"></i> Normas & Padronização
+                            </div>
+                            <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Formatos de Pranchas (NBR 10068)</h1>
+                            <p class="text-base text-slate-600 dark:text-slate-300 mt-2">Especificações técnicas para dimensionamento, margens e dobras de folhas série A.</p>
+                        </div>
+
+                        <!-- <!-- INSERIR AQUI O CONTEÚDO DO GUIA EM HTML --> -->
+                        <div class="p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 space-y-4">
+                            <h2 class="text-lg font-bold text-slate-900 dark:text-white">Dimensões Padrão de Folhas Cortadas (Série A)</h2>
+                            <ul class="list-disc pl-5 space-y-2 text-slate-700 dark:text-slate-300 text-sm">
+                                <li><strong>A0:</strong> 841 mm x 1189 mm (Margem Esquerda: 25mm | Outras Margens: 10mm)</li>
+                                <li><strong>A1:</strong> 594 mm x 841 mm (Margem Esquerda: 25mm | Outras Margens: 10mm)</li>
+                                <li><strong>A2:</strong> 420 mm x 594 mm (Margem Esquerda: 25mm | Outras Margens: 7mm)</li>
+                                <li><strong>A3:</strong> 297 mm x 420 mm (Margem Esquerda: 25mm | Outras Margens: 7mm)</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- ================================================================================== -->
+                    <!-- GUIA 3: Níveis de Detalhe BIM (LOD) (Modelo) -->
+                    <!-- ================================================================================== -->
+                    <article id="guia-bim-fases" class="guide-content space-y-6 hidden">
+                        <div class="border-b border-slate-200 dark:border-slate-700 pb-5">
+                            <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2">
+                                <i class="fa-solid fa-folder-open"></i> Diretrizes BIM
+                            </div>
+                            <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Níveis de Detalhe e Desenvolvimento (LOD)</h1>
+                            <p class="text-base text-slate-600 dark:text-slate-300 mt-2">Definição dos requisitos de modelagem BIM do LOD 100 ao LOD 400.</p>
+                        </div>
+
+                        <!-- <!-- INSERIR AQUI O CONTEÚDO DO GUIA EM HTML --> -->
+                        <div class="p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 space-y-4">
+                            <p class="text-slate-700 dark:text-slate-300 text-sm">Insira aqui o detalhamento dos níveis de informação do modelo geométrico e não-geométrico do escritório.</p>
+                        </div>
+                    </article>
+
+                    <!-- Outros guias vazios para inclusão posterior -->
+                    <article id="guia-bim-nomenclaturas" class="guide-content space-y-6 hidden">
+                        <h1 class="text-2xl font-bold">Nomenclatura de Arquivos BIM</h1>
+                        <p class="text-slate-500 text-sm">Cole o HTML deste guia no arquivo index.html.</p>
+                    </article>
+
+                    <article id="guia-rdc50" class="guide-content space-y-6 hidden">
+                        <h1 class="text-2xl font-bold">Diretrizes RDC-50 ANVISA</h1>
+                        <p class="text-slate-500 text-sm">Cole o HTML deste guia no arquivo index.html.</p>
+                    </article>
+
+                    <article id="guia-aprovacao-prefeitura" class="guide-content space-y-6 hidden">
+                        <h1 class="text-2xl font-bold">Diretrizes de Projeto</h1>
+                        <p class="text-slate-500 text-sm"><!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -529,5 +931,207 @@
 
     </div>
 
+</body>
+</html></p>
+                    </article>
+
+                </div>
+
+                <!-- Table of Contents (Right Sticky Panel) -->
+                <aside class="w-56 hidden xl:block shrink-0">
+                    <div class="sticky top-24 p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-400 mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-list-ul"></i> Neste Guia
+                        </h3>
+                        <nav id="table-of-contents" class="text-xs space-y-2">
+                            <!-- Populated dynamically via Javascript -->
+                        </nav>
+                    </div>
+                </aside>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts & Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- 1. Theme Toggle (Dark / Light) ---
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const darkIcon = document.getElementById('theme-toggle-dark-icon');
+            const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                lightIcon.classList.toggle('hidden');
+                darkIcon.classList.toggle('hidden');
+
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            });
+
+            // --- 2. Mobile Menu Toggle ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('sidebar-backdrop');
+
+            function toggleMobileSidebar() {
+                sidebar.classList.toggle('-translate-x-full');
+                backdrop.classList.toggle('hidden');
+            }
+
+            mobileMenuBtn.addEventListener('click', toggleMobileSidebar);
+            backdrop.addEventListener('click', toggleMobileSidebar);
+
+            // --- 3. Collapsible Categories ---
+            const categoryToggles = document.querySelectorAll('.category-toggle');
+            categoryToggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const icon = toggle.querySelector('.fa-chevron-down');
+                    const list = toggle.nextElementSibling;
+                    
+                    if (list.style.display === 'none') {
+                        list.style.display = 'block';
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        list.style.display = 'none';
+                        icon.style.transform = 'rotate(-90deg)';
+                    }
+                });
+            });
+
+            // --- 4. Dynamic Content / Tab Switching ---
+            const guideLinks = document.querySelectorAll('.guide-link');
+            const guideArticles = document.querySelectorAll('.guide-content');
+            const breadcrumbTitle = document.getElementById('breadcrumb-title');
+            const breadcrumbCategory = document.getElementById('breadcrumb-category');
+
+            function switchGuide(targetGuideId) {
+                let activeGuide = null;
+
+                // Hide all articles
+                guideArticles.forEach(article => {
+                    if (article.id === targetGuideId) {
+                        article.classList.remove('hidden');
+                        activeGuide = article;
+                    } else {
+                        article.classList.add('hidden');
+                    }
+                });
+
+                // Update link active styles
+                guideLinks.forEach(link => {
+                    const linkTarget = link.getAttribute('data-guide');
+                    if (linkTarget === targetGuideId) {
+                        link.classList.add('active', 'bg-brand-50', 'dark:bg-slate-700', 'text-brand-600', 'dark:text-brand-400', 'font-semibold');
+                        link.classList.remove('text-slate-600', 'dark:text-slate-400');
+                        
+                        // Update breadcrumb
+                        const titleText = link.querySelector('span').textContent;
+                        const categoryGroup = link.closest('.nav-group').querySelector('.category-toggle span').textContent.trim();
+                        
+                        breadcrumbTitle.textContent = titleText;
+                        breadcrumbCategory.textContent = categoryGroup;
+                    } else {
+                        link.classList.remove('active', 'bg-brand-50', 'dark:bg-slate-700', 'text-brand-600', 'dark:text-brand-400', 'font-semibold');
+                        link.classList.add('text-slate-600', 'dark:text-slate-400');
+                    }
+                });
+
+                // Regenerate Table of Contents for active guide
+                generateTableOfContents(activeGuide);
+
+                // Scroll main area to top
+                document.getElementById('main-content').scrollTop = 0;
+
+                // Close mobile sidebar if open
+                if (!sidebar.classList.contains('-translate-x-full') && window.innerWidth < 1024) {
+                    toggleMobileSidebar();
+                }
+            }
+
+            guideLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const guideId = link.getAttribute('data-guide');
+                    switchGuide(guideId);
+                });
+            });
+
+            // --- 5. Dynamic Table of Contents Generator ---
+            function generateTableOfContents(activeArticle) {
+                const tocContainer = document.getElementById('table-of-contents');
+                tocContainer.innerHTML = '';
+
+                if (!activeArticle) return;
+
+                const headings = activeArticle.querySelectorAll('h2[id]');
+
+                if (headings.length === 0) {
+                    tocContainer.innerHTML = '<span class="text-slate-400 italic">Sem seções mapeadas</span>';
+                    return;
+                }
+
+                headings.forEach(heading => {
+                    const link = document.createElement('a');
+                    link.href = `#${heading.id}`;
+                    link.textContent = heading.textContent;
+                    link.className = 'block text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition truncate';
+                    
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        heading.scrollIntoView({ behavior: 'smooth' });
+                    });
+
+                    tocContainer.appendChild(link);
+                });
+            }
+
+            // --- 6. Real-time Search Filter ---
+            const searchInput = document.getElementById('search-input');
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+
+                guideLinks.forEach(link => {
+                    const text = link.textContent.toLowerCase();
+                    const parentLi = link.parentElement;
+
+                    if (text.includes(query)) {
+                        parentLi.style.display = 'block';
+                    } else {
+                        parentLi.style.display = 'none';
+                    }
+                });
+
+                // Ensure category blocks stay visible if they have matching items
+                document.querySelectorAll('.nav-group').forEach(group => {
+                    const visibleItems = group.querySelectorAll('li[style="display: block;"]').length;
+                    if (query !== '' && visibleItems === 0) {
+                        group.style.display = 'none';
+                    } else {
+                        group.style.display = 'block';
+                    }
+                });
+            });
+
+            // Initialize first guide TOC
+            generateTableOfContents(document.getElementById('guia-padronizacao'));
+        });
+    </script>
 </body>
 </html>
