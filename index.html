@@ -239,16 +239,16 @@
                     </ul>
                 </div>
 
-                <!-- Categoria 4: Projetos de Saúde -->
+                <!-- Categoria 3: Acessibilidade -->
                 <div class="nav-group">
                     <button class="category-toggle w-full flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 hover:text-slate-800 dark:hover:text-slate-200">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-hospital text-brand-500"></i> Projetos de Saúde</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-hospital text-brand-500"></i> Acessibilidade </span>
                         <i class="fa-solid fa-chevron-down text-[10px] transform transition-transform duration-200"></i>
                     </button>
                     <ul class="space-y-1 pl-2 border-l-2 border-slate-100 dark:border-slate-700">
                         <li>
                             <a href="#guia-rdc50" data-guide="guia-rdc50" class="guide-link flex items-center justify-between px-3 py-2 text-sm rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
-                                <span>Diretrizes RDC-50 ANVISA</span>
+                                <span>RAMPAS NBR 9050</span>
                             </a>
                         </li>
                     </ul>
@@ -258,7 +258,7 @@
 
             <!-- Sidebar Footer -->
             <div class="p-4 border-t border-slate-200 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400 flex justify-between items-center">
-                <span>Versão do Guias v2.4</span>
+                <span>Versão do Guias v2.5</span>
                 <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-300">Atualizado</span>
             </div>
         </aside>
@@ -528,57 +528,928 @@
                     <!-- ================================================================================== -->
                     <!-- GUIA 2: Formatos de Pranchas (NBR 10068) -->
                     <!-- ================================================================================== -->
-                    <article id="guia-folhas-pranchas" class="guide-content space-y-6 hidden">
-                        <div class="border-b border-slate-200 dark:border-slate-700 pb-5">
-                            <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2">
-                                <i class="fa-solid fa-folder-open"></i> Normas & Padronização
-                            </div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Formatos de Pranchas (NBR 10068)</h1>
-                            <p class="text-base text-slate-600 dark:text-slate-300 mt-2">Especificações técnicas para dimensionamento, margens e dobras de folhas série A.</p>
-                        </div>
+                    <!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Infográfico - Dimensionamento de Pranchas de Papel (A0 a A6)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        blueprint: {
+                            bg: '#0a192f',
+                            grid: '#1e3a8a',
+                            line: '#38bdf8',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
 
-                        <section>
-                            <h2 id="dimensoes-serie-a" class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3 scroll-mt-20">1. Dimensões Padrão de Folhas Cortadas (Série A)</h2>
-                            <div class="p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 space-y-4 shadow-sm">
-                                <ul class="list-disc pl-5 space-y-3 text-slate-700 dark:text-slate-300 text-sm">
-                                    <li><strong>A0:</strong> 841 mm x 1189 mm (Margem Esquerda: 25mm | Outras Margens: 10mm)</li>
-                                    <li><strong>A1:</strong> 594 mm x 841 mm (Margem Esquerda: 25mm | Outras Margens: 10mm)</li>
-                                    <li><strong>A2:</strong> 420 mm x 594 mm (Margem Esquerda: 25mm | Outras Margens: 7mm)</li>
-                                    <li><strong>A3:</strong> 297 mm x 420 mm (Margem Esquerda: 25mm | Outras Margens: 7mm)</li>
-                                    <li><strong>A4:</strong> 210 mm x 297 mm (Margem Esquerda: 25mm | Outras Margens: 7mm)</li>
-                                </ul>
-                            </div>
-                        </section>
+    <style>
+        .blueprint-bg {
+            background-color: #0d1b2a;
+            background-image: 
+                linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+                linear-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+        }
 
-                        <section>
-                            <h2 id="dobramento-pranchas" class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3 scroll-mt-20">2. Diretrizes de Dobramento</h2>
-                            <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
-                                Todas as pranchas maiores que A4 devem ser dobradas até atingir as dimensões do formato A4 (210mm x 297mm), garantindo que o selo/carimbo fique visível no canto inferior direito da prancha dobrada.
-                            </p>
-                        </section>
-                    </article>
+        .paper-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
 
-                    <!-- ================================================================================== -->
-                    <!-- GUIA 5: Diretrizes RDC-50 ANVISA -->
-                    <!-- ================================================================================== -->
-                    <article id="guia-rdc50" class="guide-content space-y-6 hidden">
-                        <div class="border-b border-slate-200 dark:border-slate-700 pb-5">
-                            <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2">
-                                <i class="fa-solid fa-folder-open"></i> Projetos de Saúde
-                            </div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Diretrizes RDC-50 ANVISA</h1>
-                            <p class="text-base text-slate-600 dark:text-slate-300 mt-2">Critérios físicos de estabelecimentos assistenciais de saúde (EAS).</p>
-                        </div>
+        /* Paper Sheet Proportions Visualizer Box Hovering */
+        .sheet-box {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .sheet-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px -5px rgba(2, 132, 199, 0.3);
+        }
 
-                        <section>
-                            <h2 id="dimensionamento-fluxos" class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3 scroll-mt-20">1. EM DESENVOLVIMENTO</h2>
-                            <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
-                                EM DESENVLVIMENTO
-                            </p>
-                        </section>
-                    </article>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300">
 
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-brand-600 text-white p-2.5 rounded-xl shadow-md">
+                    <i class="fa-solid fa-ruler-combined text-xl"></i>
                 </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight text-slate-900 dark:text-white">PRANCHAS ISO 216</h1>
+                    <p class="text-xs text-brand-600 dark:text-brand-500 font-medium">Guia Visual de Projetos (ABNT/ISO)</p>
+                </div>
+            </div>
+
+            <!-- Quick Navigation Menu -->
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+                                <a href="#tabela-dimensoes" class="hover:text-brand-600 transition-colors">Margens e Dimensões</a>
+                <a href="#anatomia" class="hover:text-brand-600 transition-colors">Anatomia da Prancha</a>
+
+
+            <div class="flex items-center space-x-3">
+                <button id="themeToggle" onclick="toggleTheme()" class="p-2.5 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 rounded-lg bg-slate-100 dark:bg-slate-800 transition-colors">
+                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="blueprint-bg text-white py-14 px-4 sm:px-6 lg:px-8 border-b border-slate-800 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-4">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-500/20 text-brand-500 border border-brand-500/30">
+                        <i class="fa-solid fa-microchip"></i> Arquitetura & Engenharia Técnica
+                    </span>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                        Guia Completo de <span class="text-sky-400">Dimensionamento</span> de Pranchas
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl font-light leading-relaxed">
+                        Padrões normatizados ISO 216 e NBR 10068. Dimensões exatas, margens de arquivamento, área útil de desenho e posicionamento do selo técnico.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3 text-xs font-mono text-slate-300">
+                        <span class="bg-slate-800/80 px-3 py-1.5 rounded-md border border-slate-700"><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i>Proporção 1:1,414</span>
+                        <span class="bg-slate-800/80 px-3 py-1.5 rounded-md border border-slate-700"><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i>Selo Padrão 175mm</span>
+                        <span class="bg-slate-800/80 px-3 py-1.5 rounded-md border border-slate-700"><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i>Norma NBR 10068</span>
+                    </div>
+                </div>
+
+                <!-- Interactive Visual Sheet Scale Preview -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="bg-slate-900/90 border border-slate-700 p-6 rounded-2xl shadow-2xl w-full max-w-md backdrop-blur">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-sky-400 flex items-center gap-2">
+                                <i class="fa-solid fa-layer-group"></i> Comparativo Dinâmico
+                            </span>
+                            <span id="formatBadge" class="bg-brand-600 text-white text-xs font-bold px-2.5 py-0.5 rounded">Formato A0</span>
+                        </div>
+                        
+                        <!-- Interactive CSS Canvas Diagram -->
+                        <div class="relative w-full aspect-[1.414/1] bg-slate-800 rounded-lg p-2 border border-slate-700 overflow-hidden flex flex-col justify-between" id="visualizerCanvas">
+                            <div id="visualSheetContainer" class="w-full h-full relative border-2 border-dashed border-sky-400/60 transition-all duration-300 flex items-center justify-center bg-sky-500/10 rounded">
+                                <div class="text-center p-2">
+                                    <div id="visualName" class="text-2xl font-black text-sky-300">A0</div>
+                                    <div id="visualDims" class="text-xs font-mono text-slate-300 mt-1">841 x 1189 mm</div>
+                                    <div id="visualArea" class="text-[10px] text-sky-400/80 mt-0.5">Área: 1,000 m²</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Selector Buttons -->
+                        <div class="grid grid-cols-7 gap-1 mt-4">
+                            <button onclick="selectVisualSheet('A0')" class="sheet-btn active bg-brand-600 text-white py-1.5 text-xs font-bold rounded hover:bg-brand-500 transition-colors">A0</button>
+                            <button onclick="selectVisualSheet('A1')" class="sheet-btn bg-slate-800 text-slate-300 py-1.5 text-xs font-bold rounded hover:bg-brand-600 hover:text-white transition-colors">A1</button>
+                            <button onclick="selectVisualSheet('A2')" class="sheet-btn bg-slate-800 text-slate-300 py-1.5 text-xs font-bold rounded hover:bg-brand-600 hover:text-white transition-colors">A2</button>
+                            <button onclick="selectVisualSheet('A3')" class="sheet-btn bg-slate-800 text-slate-300 py-1.5 text-xs font-bold rounded hover:bg-brand-600 hover:text-white transition-colors">A3</button>
+                            <button onclick="selectVisualSheet('A4')" class="sheet-btn bg-slate-800 text-slate-300 py-1.5 text-xs font-bold rounded hover:bg-brand-600 hover:text-white transition-colors">A4</button>
+                            <button onclick="selectVisualSheet('A5')" class="sheet-btn bg-slate-800 text-slate-300 py-1.5 text-xs font-bold rounded hover:bg-brand-600 hover:text-white transition-colors">A5</button>
+                            <button onclick="selectVisualSheet('A6')" class="sheet-btn bg-slate-800 text-slate-300 py-1.5 text-xs font-bold rounded hover:bg-brand-600 hover:text-white transition-colors">A6</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+
+        <!-- SECTION 2: TABELA DE DIMENSÕES E MARGENS -->
+        <section id="tabela-dimensoes" class="space-y-6">
+            <div class="border-l-4 border-brand-600 pl-4">
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">1. Especificações Técnicas e Margens (NBR 10068)</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Valores padronizados para margem de encadernação/arquivamento e espessuras de borda.</p>
+            </div>
+
+            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-100 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 uppercase text-xs font-semibold tracking-wider border-b border-slate-200 dark:border-slate-700">
+                            <tr>
+                                <th class="py-4 px-6">Formato</th>
+                                <th class="py-4 px-6">Dimensões Recortadas (mm)</th>
+                                <th class="py-4 px-6">Área Útil (m²)</th>
+                                <th class="py-4 px-6">Margem Esq. (mm)</th>
+                                <th class="py-4 px-6">Demais Margens (mm)</th>
+                                <th class="py-4 px-6">Espessura Borda (mm)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 dark:divide-slate-700 font-mono text-xs">
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                                <td class="py-3.5 px-6 font-bold text-brand-600 dark:text-brand-400 font-sans text-sm"><span class="px-2 py-0.5 rounded bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300">A0</span></td>
+                                <td class="py-3.5 px-6 font-semibold">841 × 1189</td>
+                                <td class="py-3.5 px-6">1,000</td>
+                                <td class="py-3.5 px-6 text-amber-600 dark:text-amber-400 font-bold">25 mm</td>
+                                <td class="py-3.5 px-6">10 mm</td>
+                                <td class="py-3.5 px-6">1,0 mm</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                                <td class="py-3.5 px-6 font-bold text-brand-600 dark:text-brand-400 font-sans text-sm"><span class="px-2 py-0.5 rounded bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300">A1</span></td>
+                                <td class="py-3.5 px-6 font-semibold">594 × 841</td>
+                                <td class="py-3.5 px-6">0,500</td>
+                                <td class="py-3.5 px-6 text-amber-600 dark:text-amber-400 font-bold">25 mm</td>
+                                <td class="py-3.5 px-6">10 mm</td>
+                                <td class="py-3.5 px-6">1,0 mm</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                                <td class="py-3.5 px-6 font-bold text-brand-600 dark:text-brand-400 font-sans text-sm"><span class="px-2 py-0.5 rounded bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300">A2</span></td>
+                                <td class="py-3.5 px-6 font-semibold">420 × 594</td>
+                                <td class="py-3.5 px-6">0,250</td>
+                                <td class="py-3.5 px-6 text-amber-600 dark:text-amber-400 font-bold">25 mm</td>
+                                <td class="py-3.5 px-6">10 mm</td>
+                                <td class="py-3.5 px-6">0,7 mm</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                                <td class="py-3.5 px-6 font-bold text-brand-600 dark:text-brand-400 font-sans text-sm"><span class="px-2 py-0.5 rounded bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300">A3</span></td>
+                                <td class="py-3.5 px-6 font-semibold">297 × 420</td>
+                                <td class="py-3.5 px-6">0,125</td>
+                                <td class="py-3.5 px-6 text-amber-600 dark:text-amber-400 font-bold">25 mm</td>
+                                <td class="py-3.5 px-6">10 mm</td>
+                                <td class="py-3.5 px-6">0,7 mm</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                                <td class="py-3.5 px-6 font-bold text-brand-600 dark:text-brand-400 font-sans text-sm"><span class="px-2 py-0.5 rounded bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300">A4</span></td>
+                                <td class="py-3.5 px-6 font-semibold">210 × 297</td>
+                                <td class="py-3.5 px-6">0,062</td>
+                                <td class="py-3.5 px-6 text-amber-600 dark:text-amber-400 font-bold">25 mm</td>
+                                <td class="py-3.5 px-6">7 mm</td>
+                                <td class="py-3.5 px-6">0,5 mm</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                                <td class="py-3.5 px-6 font-bold text-slate-500 font-sans text-sm">A5</td>
+                                <td class="py-3.5 px-6">148 × 210</td>
+                                <td class="py-3.5 px-6">0,031</td>
+                                <td class="py-3.5 px-6 font-bold">15 mm</td>
+                                <td class="py-3.5 px-6">5 mm</td>
+                                <td class="py-3.5 px-6">0,5 mm</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                                <td class="py-3.5 px-6 font-bold text-slate-500 font-sans text-sm">A6</td>
+                                <td class="py-3.5 px-6">105 × 148</td>
+                                <td class="py-3.5 px-6">0,015</td>
+                                <td class="py-3.5 px-6 font-bold">10 mm</td>
+                                <td class="py-3.5 px-6">5 mm</td>
+                                <td class="py-3.5 px-6">0,5 mm</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="p-4 bg-amber-50 dark:bg-amber-950/30 border-t border-amber-200 dark:border-amber-900/50 text-xs text-amber-800 dark:text-amber-300 flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-base text-amber-600 dark:text-amber-400 mt-0.5"></i>
+                    <div>
+                        <strong>Por que a margem esquerda de 25 mm é maior?</strong>
+                        <p class="mt-0.5 opacity-90">A margem esquerda ampliada em 25 mm (A0 a A4) garante espaço suficiente para furar, grampear e arquivar as pranchas em pastas sem cobrir as linhas do desenho ou elementos técnicos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: ANATOMIA DE UMA PRANCHA DE PROJETO -->
+        <section id="anatomia" class="space-y-6">
+            <div class="border-l-4 border-brand-600 pl-4">
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">2. Anatomia Estrutural da Prancha (Layout Técnico)</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Distribuição dos componentes essenciais do papel de projeto.</p>
+            </div>
+
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                <!-- Interactive Anatomy Layout Visualizer -->
+                <div class="relative w-full max-w-4xl mx-auto bg-slate-900 p-4 sm:p-8 rounded-xl border-2 border-slate-700 font-mono text-xs text-slate-200">
+                    <!-- Outer Margin Label -->
+                    <div class="absolute top-2 left-1/2 -translate-x-1/2 text-[10px] text-sky-400 font-bold uppercase tracking-widest">
+                        Margem Superior (10mm)
+                    </div>
+                    
+                    <!-- Paper Border -->
+                    <div class="w-full border-2 border-sky-400 rounded p-4 relative bg-slate-800/80 min-h-[320px] flex flex-col justify-between">
+                        <!-- Left Margin Overlay -->
+                        <div class="absolute left-0 top-0 bottom-0 w-8 sm:w-12 bg-amber-500/20 border-r-2 border-dashed border-amber-400/80 flex items-center justify-center">
+                            <span class="rotate-[-90deg] text-[10px] font-bold text-amber-300 whitespace-nowrap">MARGEM ESQUERDA (25mm)</span>
+                        </div>
+
+                        <!-- Top Main Graphic Area -->
+                        <div class="ml-8 sm:ml-12 p-4 border border-dashed border-slate-600 rounded bg-slate-900/50 flex-1 flex items-center justify-center text-center">
+                            <div>
+                                <i class="fa-solid fa-drafting-compass text-3xl text-sky-400 mb-2"></i>
+                                <div class="font-bold text-slate-200 text-sm">ÁREA ÚTIL DE DESENHO</div>
+                                <div class="text-slate-400 text-[11px] font-sans mt-1">Plantas Baixas, Cortes, Fachadas, Detalhamentos e Imagens 3D</div>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Right Section with Legend & Title block -->
+                        <div class="ml-8 sm:ml-12 mt-4 flex flex-col sm:flex-row justify-end items-end gap-3">
+                            <div class="w-full sm:w-56 p-3 bg-slate-900 border border-sky-500/50 rounded text-[11px]">
+                                <div class="font-bold text-sky-300 border-b border-slate-700 pb-1 mb-1">NOTAS / LEGENDA</div>
+                                <div class="text-slate-400 space-y-0.5 text-[10px]">
+                                    <div>• Especificações técnicas</div>
+                                    <div>• Quadro de esquadrias</div>
+                                </div>
+                            </div>
+
+                            <!-- Title Block (Carimbo) -->
+                            <div class="w-full sm:w-64 p-3 bg-brand-900/80 border-2 border-brand-400 rounded text-[11px] shadow-lg">
+                                <div class="flex justify-between items-center font-bold text-brand-300 border-b border-brand-500/50 pb-1 mb-1">
+                                    <span>SELO / CARIMBO</span>
+                                    <span class="text-[9px] bg-brand-500 text-white px-1.5 py-0.2 rounded">175 mm</span>
+                                </div>
+                                <div class="text-slate-300 text-[10px] space-y-0.5 font-sans">
+                                    <div class="font-bold text-white">Nome do Empreendimento</div>
+                                    <div>Conteúdo: Planta Baixa 1:50</div>
+                                    <div class="text-brand-300">Canto Inferior Direito (Obrigatório)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p class="font-medium text-slate-300">Guia de Dimensionamento de Pranchas de Papel ISO 216 / ABNT NBR 10068</p>
+            <p class="text-slate-500">Desenvolvido para arquitetos, engenheiros e desenhistas técnicos.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Logic Script -->
+    <script>
+        // Data structure for paper formats
+        const paperData = {
+            'A0': { dims: '841 x 1189 mm', area: '1,000 m²', color: 'bg-sky-500/10', border: 'border-sky-400' },
+            'A1': { dims: '594 x 841 mm', area: '0,500 m²', color: 'bg-blue-500/10', border: 'border-blue-400' },
+            'A2': { dims: '420 x 594 mm', area: '0,250 m²', color: 'bg-indigo-500/10', border: 'border-indigo-400' },
+            'A3': { dims: '297 x 420 mm', area: '0,125 m²', color: 'bg-purple-500/10', border: 'border-purple-400' },
+            'A4': { dims: '210 x 297 mm', area: '0,062 m²', color: 'bg-emerald-500/10', border: 'border-emerald-400' },
+            'A5': { dims: '148 x 210 mm', area: '0,031 m²', color: 'bg-amber-500/10', border: 'border-amber-400' },
+            'A6': { dims: '105 x 148 mm', area: '0,015 m²', color: 'bg-rose-500/10', border: 'border-rose-400' }
+        };
+
+        function selectVisualSheet(code) {
+            const data = paperData[code];
+            if (!data) return;
+
+            // Update Badge and Text Elements
+            document.getElementById('formatBadge').innerText = 'Formato ' + code;
+            document.getElementById('visualName').innerText = code;
+            document.getElementById('visualDims').innerText = data.dims;
+            document.getElementById('visualArea').innerText = 'Área: ' + data.area;
+
+            // Update Active Buttons
+            document.querySelectorAll('.sheet-btn').forEach(btn => {
+                if (btn.innerText === code) {
+                    btn.classList.add('bg-brand-600', 'text-white');
+                    btn.classList.remove('bg-slate-800', 'text-slate-300');
+                } else {
+                    btn.classList.remove('bg-brand-600', 'text-white');
+                    btn.classList.add('bg-slate-800', 'text-slate-300');
+                }
+            });
+        }
+
+        // Dark/Light Theme Switcher
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.className = 'fa-solid fa-moon';
+            } else {
+                html.classList.add('dark');
+                icon.className = 'fa-solid fa-sun';
+            }
+        }
+
+        // Initialize default theme to dark
+        document.documentElement.classList.add('dark');
+        document.getElementById('themeIcon').className = 'fa-solid fa-sun';
+    </script>
+</body>
+</html>
+                    <!-- ================================================================================== -->
+                    <!-- GUIA 3: Acessibilidade -->
+                    <!-- ================================================================================== -->
+           <!DOCTYPE html>
+<html lang="pt-BR" class="h-full bg-slate-900">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABNT NBR 9050:2020 - Guia Técnico de Rampas</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                            800: '#0c4a6e',
+                            900: '#0a3651',
+                            950: '#082f49',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos personalizados para gradientes e linhas técnicas */
+        .grid-pattern {
+            background-image: radial-gradient(rgba(56, 189, 248, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .tech-border {
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-full flex flex-col grid-pattern antialiased selection:bg-sky-500 selection:text-white">
+
+    <!-- Header Principal -->
+    <header class="border-b border-sky-800/50 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-sky-600 text-white p-2.5 rounded-xl shadow-lg shadow-sky-600/30">
+                    <i class="fa-solid font-bold fa-wheelchair-move text-2xl"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-semibold tracking-wider text-sky-400 uppercase">Norma Brasileira Corrigida 2021</span>
+                    <h1 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight">ABNT NBR 9050:2020</h1>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2 text-xs font-medium text-sky-300 bg-sky-950/60 border border-sky-800/80 px-3 py-1.5 rounded-full">
+                <i class="fa-solid fa-book-bookmark text-sky-400"></i>
+                <span>Seção 6.6 - Rampas</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- Banner Introdutório / Resumo Normativo -->
+        <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-900/50 via-slate-900 to-slate-950 border border-sky-700/30 p-6 sm:p-10 shadow-2xl">
+            <div class="absolute -right-10 -bottom-10 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="max-w-3xl space-y-4 relative z-10">
+                
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white leading-tight">
+                    PARÂMETROS DE ACESSIBILIDADE EM RAMPAS
+                </h2>
+                <blockquote class="p-4 bg-slate-900/80 rounded-xl border-l-4 border-sky-500 text-slate-300 text-sm leading-relaxed italic">
+                    "3.1.30 DEFINIÇÃO OFICIAL PARA RAMPA: inclinação da superfície do piso, longitudinal ao sentido de caminhamento, com declividade igual ou superior a 5%."
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- FERRAMENTAS INTERATIVAS (CÁLCULOS) -->
+        <section class="space-y-6">
+            <div class="border-l-4 border-sky-400 pl-4">
+                <h2 class="text-2xl font-bold text-white tracking-tight">FERRAMENTAS DE CÁLCULO</h2>
+                <p class="text-slate-400 text-sm mt-1">Dimensionamento automático baseado na fórmula oficial da ABNT NBR 9050: <span class="font-mono text-sky-300">i = (h * 100) / c</span></p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                <!-- CALCULADORA 1: CALCULAR INCLINAÇÃO (i) -->
+                <div class="bg-slate-900/90 rounded-2xl p-6 border border-sky-800/50 shadow-xl flex flex-col justify-between space-y-6 relative overflow-hidden">
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-sky-400 uppercase tracking-wider bg-sky-950 px-2.5 py-1 rounded border border-sky-800/50">Calculadora 01</span>
+                            <i class="fa-solid fa-calculator text-sky-500/40 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Calcular Inclinação da Rampa</h3>
+                        <p class="text-slate-400 text-xs">Insira a altura do desnível (h) e o comprimento da projeção horizontal (c) para obter a inclinação (%) e sua conformidade.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Altura do Desnível - h (metros):</label>
+                            <div class="relative">
+                                <input type="number" step="0.01" id="calc1-h" value="0.80" min="0.01" class="w-full bg-slate-950 border border-sky-800/80 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition">
+                                <span class="absolute right-3 top-2.5 text-xs text-slate-500">m</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Comprimento da Projeção Horizontal - c (metros):</label>
+                            <div class="relative">
+                                <input type="number" step="0.01" id="calc1-c" value="10.00" min="0.01" class="w-full bg-slate-950 border border-sky-800/80 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition">
+                                <span class="absolute right-3 top-2.5 text-xs text-slate-500">m</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resultado da Calc 1 -->
+                    <div id="calc1-result" class="bg-slate-950/80 rounded-xl p-4 border border-sky-900/60 space-y-3">
+                        <div class="flex items-baseline justify-between">
+                            <span class="text-xs font-medium text-slate-400">Inclinação Resultante (i):</span>
+                            <span id="calc1-i-val" class="text-2xl font-extrabold text-sky-400">8.00%</span>
+                        </div>
+                        <div id="calc1-status" class="text-xs px-3 py-2 rounded-lg bg-sky-950 border border-sky-800/60 text-sky-200">
+                            <!-- JS preenche -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CALCULADORA 2: CALCULAR COMPRIMENTO (c) -->
+                <div class="bg-slate-900/90 rounded-2xl p-6 border border-sky-800/50 shadow-xl flex flex-col justify-between space-y-6 relative overflow-hidden">
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-sky-400 uppercase tracking-wider bg-sky-950 px-2.5 py-1 rounded border border-sky-800/50">Calculadora 02</span>
+                            <i class="fa-solid fa-ruler-horizontal text-sky-500/40 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Calcular Comprimento da Rampa</h3>
+                        <p class="text-slate-400 text-xs">Insira a altura do desnível (h) e selecione a inclinação desejada (i) para descobrir o comprimento mínimo necessário (c).</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Altura do Desnível - h (metros):</label>
+                            <div class="relative">
+                                <input type="number" step="0.01" id="calc2-h" value="1.00" min="0.01" class="w-full bg-slate-950 border border-sky-800/80 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition">
+                                <span class="absolute right-3 top-2.5 text-xs text-slate-500">m</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Inclinação Desejada (i):</label>
+                            <select id="calc2-i" class="w-full bg-slate-950 border border-sky-800/80 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition">
+                                <option value="5.00">5,00% (1:20) - Rota ideal / Sem limite de segmentos</option>
+                                <option value="6.25">6,25% (1:16) - Desnível max 1,00m</option>
+                                <option value="8.33" selected>8,33% (1:12) - Máximo padrão (Desnível max 0,80m)</option>
+                                <option value="10.00">10,00% (1:10) - Situação Excepcional / Reforma (h max 0,20m)</option>
+                                <option value="12.50">12,50% (1:8) - Situação Excepcional / Reforma (h max 0,075m)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Resultado da Calc 2 -->
+                    <div id="calc2-result" class="bg-slate-950/80 rounded-xl p-4 border border-sky-900/60 space-y-3">
+                        <div class="flex items-baseline justify-between">
+                            <span class="text-xs font-medium text-slate-400">Comprimento Mínimo (c):</span>
+                            <span id="calc2-c-val" class="text-2xl font-extrabold text-sky-400">12.00 m</span>
+                        </div>
+                        <div id="calc2-status" class="text-xs px-3 py-2 rounded-lg bg-sky-950 border border-sky-800/60 text-sky-200">
+                            <!-- JS preenche -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- INFOGRÁFICO DE ESPECIFICAÇÕES E NORMAS -->
+        <section class="space-y-8">
+            <div class="border-l-4 border-sky-400 pl-4">
+                <h2 class="text-2xl font-bold text-white tracking-tight">DIRETRIZES NORMATIVAS</h2>
+                <p class="text-slate-400 text-sm mt-1">Trechos oficiais e tabelas extraídas da ABNT NBR 9050:2020</p>
+            </div>
+
+            <!-- Esquema Visual de Corte / Elevação da Rampa -->
+            <div class="bg-slate-900 rounded-2xl border border-sky-800/50 p-6 shadow-xl space-y-6">
+                <h3 class="text-lg font-bold text-sky-300 flex items-center gap-2">
+                    <i class="fa-solid fa-drafting-compass"></i>
+                    Figura 70 - Dimensionamento de Rampas (Corte e Projeção)
+                </h3>
+
+                <!-- SVG Rampa Diagrama Técnico -->
+                <div class="w-full overflow-x-auto bg-slate-950 p-4 rounded-xl border border-sky-900/60">
+                    <svg viewBox="0 0 800 280" class="w-full min-w-[600px] h-auto font-sans">
+                        <!-- Background Lines -->
+                        <line x1="50" y1="200" x2="750" y2="200" stroke="#1e293b" stroke-width="2" stroke-dasharray="4" />
+                        <line x1="50" y1="100" x2="750" y2="100" stroke="#1e293b" stroke-width="2" stroke-dasharray="4" />
+
+                        <!-- Patamar Inicial -->
+                        <rect x="50" y="200" width="120" height="10" fill="#0284c7" />
+                        <text x="110" y="225" fill="#94a3b8" font-size="12" text-anchor="middle">Patamar Inicial</text>
+                        <text x="110" y="240" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">1,20 m mín.</text>
+
+                        <!-- Rampa Inclinada -->
+                        <polygon points="170,200 570,100 570,200" fill="url(#rampGradient)" opacity="0.3" />
+                        <line x1="170" y1="200" x2="570" y2="100" stroke="#38bdf8" stroke-width="4" />
+
+                        <!-- Patamar Final -->
+                        <rect x="570" y="100" width="120" height="10" fill="#0284c7" />
+                        <text x="630" y="125" fill="#94a3b8" font-size="12" text-anchor="middle">Patamar Final</text>
+                        <text x="630" y="140" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">1,20 m mín.</text>
+
+                        <!-- Desnível h -->
+                        <line x1="720" y1="200" x2="720" y2="100" stroke="#f59e0b" stroke-width="2" />
+                        <polygon points="720,100 715,110 725,110" fill="#f59e0b" />
+                        <polygon points="720,200 715,190 725,190" fill="#f59e0b" />
+                        <text x="735" y="155" fill="#f59e0b" font-size="14" font-weight="bold" text-anchor="start">h (Desnível)</text>
+
+                        <!-- Comprimento c -->
+                        <line x1="170" y1="250" x2="570" y2="250" stroke="#38bdf8" stroke-width="2" />
+                        <polygon points="170,250 180,245 180,255" fill="#38bdf8" />
+                        <polygon points="570,250 560,245 560,255" fill="#38bdf8" />
+                        <text x="370" y="270" fill="#38bdf8" font-size="13" font-weight="bold" text-anchor="middle">c (Comprimento da projeção horizontal)</text>
+
+                        <!-- Inclinação i -->
+                        <path d="M 230,200 A 60,60 0 0,1 250,180" fill="none" stroke="#38bdf8" stroke-width="2" />
+                        <text x="270" y="180" fill="#38bdf8" font-size="14" font-weight="bold">i (%)</text>
+
+                        <!-- Corrimãos ilustrativos -->
+                        <line x1="170" y1="165" x2="570" y2="65" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="2" />
+                        <line x1="170" y1="150" x2="570" y2="50" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="2" />
+                        <text x="370" y="80" fill="#7dd3fc" font-size="10" text-anchor="middle">Corrimãos (0,70m e 0,92m)</text>
+
+                        <!-- Definição do Gradiente -->
+                        <defs>
+                            <linearGradient id="rampGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#0284c7" stop-opacity="0.8"/>
+                                <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.2"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- TABELAS NORMATIVAS OFICIAIS -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                <!-- TABELA 4 -->
+                <div class="bg-slate-900 rounded-2xl border border-sky-800/50 p-6 shadow-xl flex flex-col justify-between space-y-4">
+                    <div class="space-y-2">
+                        <div class="inline-block bg-sky-950 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded border border-sky-800">
+                            NOVOS PROJETOS
+                        </div>
+                        <h3 class="text-lg font-bold text-white">DIMENSIONAMENTO DE RAMPAS</h3>
+                        <p class="text-slate-400 text-xs">Parâmetros aplicáveis a projetos novos e condições padrão de acessibilidade.</p>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-slate-300 border-collapse">
+                            <thead>
+                                <tr class="border-b border-sky-800/80 bg-sky-950/50 text-sky-200">
+                                    <th class="p-3 font-semibold">Desníveis máximos de cada segmento de rampa (h) <br><span class="text-slate-400 font-normal">m</span></th>
+                                    <th class="p-3 font-semibold">Inclinação admissível em cada segmento de rampa (i) <br><span class="text-slate-400 font-normal">%</span></th>
+                                    <th class="p-3 font-semibold">Número máximo de segmentos de rampa</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-sky-900/40">
+                                <tr class="hover:bg-sky-950/30 transition">
+                                    <td class="p-3 font-medium text-white">1,50</td>
+                                    <td class="p-3 text-sky-400 font-bold">5,00 (1:20)</td>
+                                    <td class="p-3">Sem limite</td>
+                                </tr>
+                                <tr class="hover:bg-sky-950/30 transition">
+                                    <td class="p-3 font-medium text-white">1,00</td>
+                                    <td class="p-3 text-sky-400 font-bold">5,00 (1:20) &lt; i ≤ 6,25 (1:16)</td>
+                                    <td class="p-3">Sem limite</td>
+                                </tr>
+                                <tr class="hover:bg-sky-950/30 transition">
+                                    <td class="p-3 font-medium text-white">0,80</td>
+                                    <td class="p-3 text-sky-400 font-bold">6,25 (1:16) &lt; i ≤ 8,33 (1:12)</td>
+                                    <td class="p-3 font-semibold text-amber-400">15</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-[11px] text-slate-400 italic">
+                        6.6.2.1 Para inclinação entre 6,25% e 8,33%, é recomendado criar áreas de descanso nos patamares, a cada 50 m de percurso.
+                    </p>
+                </div>
+
+                <!-- TABELA 5 -->
+                <div class="bg-slate-900 rounded-2xl border border-sky-800/50 p-6 shadow-xl flex flex-col justify-between space-y-4">
+                    <div class="space-y-2">
+                        <div class="inline-block bg-amber-950 text-amber-300 text-xs font-semibold px-2.5 py-1 rounded border border-amber-800/60">
+                            SITUAÇÕES ADVERSAS
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Dimensionamento de rampas para situações excepcionais</h3>
+                        <p class="text-slate-400 text-xs">Exclusivo para reformas e quando esgotadas as possibilidades de atendimento à Tabela 4 (subseção 6.6.2.2).</p>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-slate-300 border-collapse">
+                            <thead>
+                                <tr class="border-b border-sky-800/80 bg-sky-950/50 text-sky-200">
+                                    <th class="p-3 font-semibold">Desníveis máximos de cada segmento de rampa (h) <br><span class="text-slate-400 font-normal">m</span></th>
+                                    <th class="p-3 font-semibold">Inclinação admissível em cada segmento de rampa (i) <br><span class="text-slate-400 font-normal">%</span></th>
+                                    <th class="p-3 font-semibold">Número máximo de segmentos de rampa</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-sky-900/40">
+                                <tr class="hover:bg-sky-950/30 transition">
+                                    <td class="p-3 font-medium text-white">0,20</td>
+                                    <td class="p-3 text-amber-400 font-bold">8,33 (1:12) &lt; i ≤ 10,00 (1:10)</td>
+                                    <td class="p-3 font-semibold text-amber-400">4</td>
+                                </tr>
+                                <tr class="hover:bg-sky-950/30 transition">
+                                    <td class="p-3 font-medium text-white">0,075</td>
+                                    <td class="p-3 text-amber-400 font-bold">10,00 (1:10) &lt; i ≤ 12,5 (1:8)</td>
+                                    <td class="p-3 font-semibold text-amber-400">1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-[11px] text-slate-400 italic">
+                        6.6.2.2 Em reformas, quando esgotadas as possibilidades de soluções que atendam integralmente à Tabela 4, podem ser utilizadas inclinações superiores a 8,33% até 12,5%.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- DETALHAMENTO TÉCNICO ADICIONAL -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- CARD LARGURA E PATAMARES -->
+                <div class="bg-slate-900/80 rounded-2xl p-5 border border-sky-800/40 space-y-3">
+                    <div class="w-10 h-10 rounded-lg bg-sky-950 border border-sky-700/50 flex items-center justify-center text-sky-400">
+                        <i class="fa-solid fa-arrows-left-right text-lg"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-base">Largura e Patamares</h4>
+                    <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+                        <li><strong class="text-sky-300">Largura livre recomendável:</strong> 1,50 m (mínimo admissível de 1,20 m) - <em>6.6.2.5</em></li>
+                        <li><strong class="text-sky-300">Em edificações existentes:</strong> Mínimo de 0,90 m com segmentos de no máximo 4,00 m - <em>6.6.2.7</em></li>
+                        <li><strong class="text-sky-300">Patamares:</strong> Mínimo de 1,20 m no início, término e patamares intermediários - <em>6.6.4</em></li>
+                    </ul>
+                </div>
+
+                <!-- CARD ELEMENTOS DE SEGURANÇA -->
+                <div class="bg-slate-900/80 rounded-2xl p-5 border border-sky-800/40 space-y-3">
+                    <div class="w-10 h-10 rounded-lg bg-sky-950 border border-sky-700/50 flex items-center justify-center text-sky-400">
+                        <i class="fa-solid fa-shield-halved text-lg"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-base">Corrimãos e Segurança</h4>
+                    <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+                        <li><strong class="text-sky-300">Duas Alturas:</strong> Corrimãos instalados a 0,70 m e 0,92 m do piso - <em>6.9.3.2</em></li>
+                        <li><strong class="text-sky-300">Prolongamento:</strong> Prolongar no mínimo 0,30 m nas extremidades - <em>6.9.3.2</em></li>
+                        <li><strong class="text-sky-300">Guia de Balizamento:</strong> Mínimo de 0,05 m de altura em rampas sem paredes laterais - <em>6.6.3</em></li>
+                    </ul>
+                </div>
+
+                <!-- CARD RAMPAS EM CURVA -->
+                <div class="bg-slate-900/80 rounded-2xl p-5 border border-sky-800/40 space-y-3">
+                    <div class="w-10 h-10 rounded-lg bg-sky-950 border border-sky-700/50 flex items-center justify-center text-sky-400">
+                        <i class="fa-solid fa-route text-lg"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-base">Rampas em Curva e Transversal</h4>
+                    <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+                        <li><strong class="text-sky-300">Inclinação Máxima em Curva:</strong> 8,33% (1:12) - <em>6.6.2.3</em></li>
+                        <li><strong class="text-sky-300">Raio Mínimo:</strong> 3,00 m medido no perímetro interno da curva - <em>6.6.2.3</em></li>
+                        <li><strong class="text-sky-300">Inclinação Transversal:</strong> Máximo de 2% em rampas internas e 3% em rampas externas - <em>6.6.2.4</em></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="border-t border-sky-900/60 bg-slate-950 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500 space-y-2">
+            <p>Infográfico interativo desenvolvido estritamente de acordo com os parâmetros normativos da <strong>ABNT NBR 9050:2020 (Versão corrigida 2021)</strong>.</p>
+            <p class="text-slate-600">Acessibilidade a edificações, mobiliário, espaços e equipamentos urbanos.</p>
+        </div>
+    </footer>
+
+    <!-- LÓGICA JAVASCRIPT DOS CÁLCULOS E REGRAS DA NORMA -->
+    <script>
+        // Função para formatar números
+        function fmt(num) {
+            return num.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        // LÓGICA CALCULADORA 01: Insere h e c -> Gera i
+        function calcularInclinacao() {
+            const h = parseFloat(document.getElementById('calc1-h').value);
+            const c = parseFloat(document.getElementById('calc1-c').value);
+            const iValEl = document.getElementById('calc1-i-val');
+            const statusEl = document.getElementById('calc1-status');
+
+            if (isNaN(h) || isNaN(c) || h <= 0 || c <= 0) {
+                iValEl.innerText = '---';
+                statusEl.className = 'text-xs px-3 py-2 rounded-lg bg-red-950 border border-red-800 text-red-200';
+                statusEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation mr-1"></i> Por favor, insira valores válidos e maiores que zero.';
+                return;
+            }
+
+            // Fórmula i = (h * 100) / c
+            const i = (h * 100) / c;
+            iValEl.innerText = fmt(i) + '%';
+
+            // Verificação de enquadramento segundo Tabelas 4 e 5
+            let msg = '';
+            let statusClass = '';
+
+            if (i <= 5.00) {
+                statusClass = 'bg-emerald-950 border-emerald-800 text-emerald-200';
+                msg = `<strong class="text-emerald-400"><i class="fa-solid fa-circle-check"></i> Rota Totalmente Acessível (Tabela 4):</strong> Inclinação ≤ 5,00%. Sem limite de segmentos para desnível máx. de 1,50 m por segmento.`;
+            } else if (i <= 6.25) {
+                statusClass = 'bg-sky-950 border-sky-800 text-sky-200';
+                msg = `<strong class="text-sky-300"><i class="fa-solid fa-circle-check"></i> Conforme Tabela 4:</strong> Inclinação entre 5,00% e 6,25%. Desnível máximo permitido por segmento: 1,00 m (Sem limite de segmentos).`;
+            } else if (i <= 8.3301) { // Tolerância de precisão
+                statusClass = 'bg-sky-950 border-sky-800 text-sky-200';
+                msg = `<strong class="text-sky-300"><i class="fa-solid fa-circle-check"></i> Conforme Tabela 4 (Limite Padrão):</strong> Inclinação entre 6,25% e 8,33%. Desnível máximo por segmento: 0,80 m. Máximo de 15 segmentos.`;
+            } else if (i <= 10.00) {
+                statusClass = 'bg-amber-950 border-amber-800 text-amber-200';
+                msg = `<strong class="text-amber-400"><i class="fa-solid fa-triangle-exclamation"></i> Situação Excepcional (Tabela 5 - Reformas):</strong> Inclinação entre 8,33% e 10,00%. Permitido apenas se h ≤ 0,20 m (máx. 4 segmentos).`;
+            } else if (i <= 12.5001) {
+                statusClass = 'bg-amber-950 border-amber-800 text-amber-200';
+                msg = `<strong class="text-amber-400"><i class="fa-solid fa-triangle-exclamation"></i> Situação Excepcional (Tabela 5 - Reformas):</strong> Inclinação entre 10,00% e 12,50%. Permitido apenas se h ≤ 0,075 m (máx. 1 segmento).`;
+            } else {
+                statusClass = 'bg-red-950 border-red-800 text-red-200';
+                msg = `<strong class="text-red-400"><i class="fa-solid fa-circle-xmark"></i> Não Conforme:</strong> Inclinação de ${fmt(i)}% excede o limite máximo permitido pela norma (12,50%). Aumente o comprimento da rampa.`;
+            }
+
+            statusEl.className = `text-xs px-3 py-2 rounded-lg border ${statusClass}`;
+            statusEl.innerHTML = msg;
+        }
+
+        // LÓGICA CALCULADORA 02: Insere h e escolhe i -> Gera c
+        function calcularComprimento() {
+            const h = parseFloat(document.getElementById('calc2-h').value);
+            const i = parseFloat(document.getElementById('calc2-i').value);
+            const cValEl = document.getElementById('calc2-c-val');
+            const statusEl = document.getElementById('calc2-status');
+
+            if (isNaN(h) || isNaN(i) || h <= 0 || i <= 0) {
+                cValEl.innerText = '---';
+                statusEl.className = 'text-xs px-3 py-2 rounded-lg bg-red-950 border border-red-800 text-red-200';
+                statusEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation mr-1"></i> Por favor, insira valores válidos.';
+                return;
+            }
+
+            // Fórmula c = (h * 100) / i
+            const c = (h * 100) / i;
+            cValEl.innerText = fmt(c) + ' m';
+
+            let msg = '';
+            let statusClass = 'bg-sky-950 border-sky-800 text-sky-200';
+
+            // Avisos normativos específicos por tipo de inclinação escolhida e desnível
+            if (i === 5.00) {
+                if (h > 1.50) {
+                    msg = `Comprimento mínimo de <strong>${fmt(c)} m</strong>. Como h > 1,50 m, deve-se dividir a rampa em segmentos com patamares intermediários de no mínimo 1,20 m.`;
+                } else {
+                    msg = `Comprimento mínimo de <strong>${fmt(c)} m</strong>. Rota contínua ideal (inclinação ≤ 5%).`;
+                }
+            } else if (i === 6.25) {
+                if (h > 1.00) {
+                    statusClass = 'bg-amber-950 border-amber-800 text-amber-200';
+                    msg = `Atenção: Para i = 6,25%, o desnível máximo por segmento na Tabela 4 é 1,00 m. O desnível atual (${fmt(h)} m) precisará ser dividido em múltiplos segmentos com patamares.`;
+                } else {
+                    msg = `Comprimento mínimo de <strong>${fmt(c)} m</strong> em projeção horizontal.`;
+                }
+            } else if (i === 8.33) {
+                if (h > 0.80) {
+                    statusClass = 'bg-amber-950 border-amber-800 text-amber-200';
+                    msg = `Atenção: Para i = 8,33%, o desnível máximo por segmento é 0,80 m. Como o desnível é de ${fmt(h)} m, serão necessários múltiplos segmentos (máximo de 15).`;
+                } else {
+                    msg = `Comprimento mínimo de <strong>${fmt(c)} m</strong>. Desnível atende ao limite de 0,80 m por segmento.`;
+                }
+            } else if (i === 10.00) {
+                if (h > 0.20) {
+                    statusClass = 'bg-red-950 border-red-800 text-red-200';
+                    msg = `<strong class="text-red-400"><i class="fa-solid fa-circle-xmark"></i> Excede Limite da Tabela 5:</strong> Inclinação de 10% só é permitida para desníveis h ≤ 0,20 m em reformas.`;
+                } else {
+                    statusClass = 'bg-amber-950 border-amber-800 text-amber-200';
+                    msg = `Situação Excepcional (Reforma): Comprimento de <strong>${fmt(c)} m</strong> (máximo de 4 segmentos).`;
+                }
+            } else if (i === 12.50) {
+                if (h > 0.075) {
+                    statusClass = 'bg-red-950 border-red-800 text-red-200';
+                    msg = `<strong class="text-red-400"><i class="fa-solid fa-circle-xmark"></i> Excede Limite da Tabela 5:</strong> Inclinação de 12,5% só é permitida para desníveis h ≤ 0,075 m em reformas.`;
+                } else {
+                    statusClass = 'bg-amber-950 border-amber-800 text-amber-200';
+                    msg = `Situação Excepcional (Reforma): Comprimento de <strong>${fmt(c)} m</strong> (máximo de 1 segmento).`;
+                }
+            }
+
+            statusEl.className = `text-xs px-3 py-2 rounded-lg border ${statusClass}`;
+            statusEl.innerHTML = msg;
+        }
+
+        // Event Listeners
+        document.getElementById('calc1-h').addEventListener('input', calcularInclinacao);
+        document.getElementById('calc1-c').addEventListener('input', calcularInclinacao);
+
+        document.getElementById('calc2-h').addEventListener('input', calcularComprimento);
+        document.getElementById('calc2-i').addEventListener('change', calcularComprimento);
+
+        // Inicializar cálculos ao carregar
+        window.addEventListener('DOMContentLoaded', () => {
+            calcularInclinacao();
+            calcularComprimento();
+        });
+    </script>
+</body>
+</html>
 
                 <!-- Table of Contents (Right Sticky Panel) -->
                 <aside class="w-56 hidden xl:block shrink-0">
