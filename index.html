@@ -231,29 +231,44 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            overflow: hidden;
         }
 
-        /* Impressão sem margens adicionais */
-        @media print {
-            @page {
-                size: A4 portrait;
-                margin: 0;
-            }
-            body {
-                background: white;
-            }
-            .no-print {
-                display: none !important;
-            }
-            .page-a4-portrait {
-                margin: 0;
-                box-shadow: none;
-                width: 210mm;
-                min-height: 297mm;
-                padding: 8mm 10mm;
-                page-break-after: always;
-            }
-        }
+                /* Impressão com formatação rigorosa A4 vertical sem margens do browser */
+                @media print {
+                    @page {
+                        size: A4 portrait;
+                        margin: 0;
+                    }
+                    body {
+                        background: white !important;
+                    }
+                    /* Esconde todos os elementos fora da aba de diretrizes e a barra de controle */
+                    aside, header, nav, .no-print, body > div:not(.flex-1), .tab-content:not(#guia-diretrizes-gerais) {
+                        display: none !important;
+                    }
+                    #guia-diretrizes-gerais {
+                        display: block !important;
+                        padding: 0 !important;
+                        margin: 0 !important;
+                        background: white !important;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 210mm;
+                        height: 297mm;
+                    }
+                    .page-a4-portrait {
+                        margin: 0 !important;
+                        box-shadow: none !important;
+                        width: 210mm !important;
+                        height: 297mm !important;
+                        max-height: 297mm !important;
+                        padding: 6mm 8mm !important;
+                        page-break-after: avoid !important;
+                        page-break-inside: avoid !important;
+                    }
+                }
 
         /* Estilos e Cores Principais fiéis ao Infográfico */
         .color-priorizar-bg { background-color: #1e7e45; }
