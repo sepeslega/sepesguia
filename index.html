@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -40,9 +41,10 @@
         }
     </script>
     <style>
-        .grid-pattern {
-            background-image: radial-gradient(rgba(2, 132, 199, 0.15) 1px, transparent 1px);
-            background-size: 24px 24px;
+.grid-pattern {
+            background-image:
+                radial-gradient(rgba(2, 132, 199, 0.18) 1px, transparent 1px);
+            background-size: 26px 26px;
         }
         .sheet-box {
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -56,23 +58,122 @@
             height: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: rgba(241, 245, 249, 1);
+            background: transparent;
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(148, 163, 184, 0.5);
+            background: linear-gradient(180deg, #38bdf8, #0284c7);
             border-radius: 3px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(100, 116, 139, 0.8);
+            background: #0369a1;
+        }
+
+        /* ─────────────────────────────────────────────
+           DESIGN SYSTEM — linguagem jovem e moderna,
+           inspirada na página de boas-vindas
+           (fundo escuro SOMENTE na seção de boas-vindas)
+        ───────────────────────────────────────────── */
+
+        /* Fundo geral das demais seções: claro com wash de cor */
+        .app-bg {
+            background:
+                radial-gradient(1100px 420px at 92% -6%, rgba(14,165,233,.14) 0%, transparent 55%),
+                radial-gradient(900px 420px at -6% 108%, rgba(2,132,199,.10) 0%, transparent 55%),
+                linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+            background-attachment: fixed;
+        }
+
+        /* Tipografia de destaque (Sora) nas seções — a boas-vindas fica intacta */
+        .tab-content:not(#tab-inicio) h1,
+        .tab-content:not(#tab-inicio) h2,
+        .tab-content:not(#tab-inicio) h3 {
+            font-family: 'Sora', 'Inter', sans-serif;
+            letter-spacing: -.011em;
+        }
+
+        /* ── Logo em gradiente sky→cyan (linguagem da boas-vindas) ── */
+        .logo-grad {
+            background: linear-gradient(135deg, #0284c7 0%, #0891b2 50%, #22d3ee 100%);
+            box-shadow: 0 8px 20px -6px rgba(2,132,199,.55);
+        }
+
+        /* ── Botão principal (Imprimir) ── */
+        .btn-grad {
+            background: linear-gradient(120deg, #0284c7, #0891b2);
+            box-shadow: 0 8px 20px -8px rgba(2,132,199,.6);
+            transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+        }
+        .btn-grad:hover {
+            filter: brightness(1.08);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 24px -8px rgba(2,132,199,.65);
+        }
+
+        /* ── Barra de controle de impressão: clara e moderna ── */
+        .app-toolbar {
+            background: rgba(255,255,255,.88);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(226,232,240,.95);
+            color: #334155;
+            box-shadow: 0 8px 22px -14px rgba(2,132,199,.35);
+        }
+
+        /* ── Cartões das seções modernas: elevação suave com acento ── */
+        #guia-nbr9050-rampas .bg-white,
+        #guia-pranchas-iso216 .bg-white,
+        #guia-reservatorios .bg-white {
+            box-shadow: 0 2px 4px rgba(15,23,42,.04), 0 18px 40px -24px rgba(2,132,199,.35);
+        }
+
+        /* ── Cabeçalhos de tabela padronizados (padrão jovem sky→cyan,
+              e variação âmbar para a Tabela 5 de reformas) ── */
+        .tab-content:not(#tab-inicio) table thead tr {
+            background: linear-gradient(120deg, #075985 0%, #0284c7 55%, #0ea5e9 100%) !important;
+            color: #ffffff !important;
+        }
+        .tab-content:not(#tab-inicio) table thead th {
+            color: #ffffff !important;
+        }
+        #guia-nbr9050-rampas table thead.thead-amber tr {
+            background: linear-gradient(120deg, #b45309 0%, #d97706 60%, #f59e0b 100%) !important;
+            color: #ffffff !important;
+        }
+        #guia-nbr9050-rampas table thead.thead-amber th { color: #ffffff !important; }
+
+        /* ── Painel de Observações Técnicas: claro, com acento ciano ── */
+        .notes-panel-modern {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 55%, #ecfeff 100%);
+            border: 1px solid rgba(125,211,252,.55);
+            box-shadow: 0 14px 34px -24px rgba(8,145,178,.5);
+        }
+        .notes-panel-modern p { color: #334155 !important; }
+        .notes-panel-modern p strong { color: #0369a1 !important; }
+
+        /* ── Painéis de resultado das calculadoras: leve gradiente ── */
+        #calc1-result, #calc2-result {
+            background: linear-gradient(135deg, #f8fafc, #f0f9ff) !important;
+            border-color: #e0f2fe !important;
+        }
+        #calc1-i-val, #calc2-c-val, #res-vol-l { color: #0369a1 !important; }
+
+        /* ── Navegação lateral: transições suaves ── */
+        .nav-item {
+            transition: all .18s ease;
+            border: 1px solid transparent;
+        }
+        .nav-item:hover {
+            border-color: rgba(186,230,253,.9);
+            transform: translateX(2px);
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans min-h-full flex flex-col md:flex-row antialiased selection:bg-sky-500 selection:text-white transition-colors duration-200">
+<body class="app-bg text-slate-800 font-sans min-h-full flex flex-col md:flex-row antialiased selection:bg-sky-500 selection:text-white transition-colors duration-200">
 
     <!-- BOTÃO MENU MOBILE -->
-    <div class="md:hidden bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-50">
+    <div class="md:hidden bg-white/85 backdrop-blur-md border-b border-slate-200/80 p-4 flex items-center justify-between sticky top-0 z-50">
         <div class="flex items-center gap-3">
-            <div class="bg-sky-600 text-white p-2 rounded-lg">
+            <div class="logo-grad text-white p-2 rounded-xl">
                 <i class="fa-solid fa-drafting-compass text-xl"></i>
             </div>
             <span class="font-bold text-slate-900 text-lg">Guias de Projeto</span>
@@ -89,7 +190,7 @@
             <!-- Logo Portal -->
             <div class="flex items-center justify-between pb-4 border-b border-slate-100">
                 <div class="flex items-center gap-3">
-                    <div class="bg-sky-600 text-white p-2.5 rounded-xl shadow-lg shadow-sky-600/20">
+                    <div class="logo-grad text-white p-2.5 rounded-2xl shadow-lg shadow-sky-600/25">
                         <i class="fa-solid fa-drafting-compass text-xl"></i>
                     </div>
                     <div>
@@ -210,7 +311,7 @@
             <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #e2e8f0;
+            background-color: transparent;
             color: #1e293b;
             margin: 0;
             padding: 0;
@@ -231,44 +332,29 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            overflow: hidden;
         }
 
-                /* Impressão com formatação rigorosa A4 vertical sem margens do browser */
-                @media print {
-                    @page {
-                        size: A4 portrait;
-                        margin: 0;
-                    }
-                    body {
-                        background: white !important;
-                    }
-                    /* Esconde todos os elementos fora da aba de diretrizes e a barra de controle */
-                    aside, header, nav, .no-print, body > div:not(.flex-1), .tab-content:not(#guia-diretrizes-gerais) {
-                        display: none !important;
-                    }
-                    #guia-diretrizes-gerais {
-                        display: block !important;
-                        padding: 0 !important;
-                        margin: 0 !important;
-                        background: white !important;
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        width: 210mm;
-                        height: 297mm;
-                    }
-                    .page-a4-portrait {
-                        margin: 0 !important;
-                        box-shadow: none !important;
-                        width: 210mm !important;
-                        height: 297mm !important;
-                        max-height: 297mm !important;
-                        padding: 6mm 8mm !important;
-                        page-break-after: avoid !important;
-                        page-break-inside: avoid !important;
-                    }
-                }
+        /* Impressão sem margens adicionais */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
+            body {
+                background: white;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .page-a4-portrait {
+                margin: 0;
+                box-shadow: none;
+                width: 210mm;
+                min-height: 297mm;
+                padding: 8mm 10mm;
+                page-break-after: always;
+            }
+        }
 
         /* Estilos e Cores Principais fiéis ao Infográfico */
         .color-priorizar-bg { background-color: #1e7e45; }
@@ -342,13 +428,13 @@
 <body>
 
     <!-- BARRA DE CONTROLE PARA IMPRESSÃO (Apenas tela) -->
-    <div class="no-print bg-slate-900 text-white p-2.5 shadow-md mb-2 flex justify-between items-center px-8">
+    <div class="no-print app-toolbar p-2.5 mb-2 flex justify-between items-center px-8">
         <div class="flex items-center space-x-3">
             <span class="inline-block w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
             <span class="font-semibold text-sm">Diretrizes de Projeto </span>
         </div>
         <div class="flex gap-3">
-            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-all flex items-center gap-2 shadow-sm">
+            <button onclick="window.print()" class="btn-grad text-white text-xs font-semibold py-2 px-4 rounded-lg transition-all flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
                 </svg>
@@ -676,10 +762,10 @@
 
         <!-- ARTICLE: GUIA NBR 9050 RAMPAS -->
         <article id="guia-nbr9050-rampas" class="tab-content hidden flex-1 grid-pattern">
-            <header class="border-b border-slate-200 bg-white/90 backdrop-blur-md sticky top-0 z-30 shadow-sm">
+            <header class="border-b border-slate-200 bg-white/85 backdrop-blur-md sticky top-0 z-30 shadow-sm">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div class="flex items-center space-x-3">
-                        <div class="bg-sky-600 text-white p-2.5 rounded-xl shadow-md shadow-sky-600/20">
+                        <div class="logo-grad text-white p-2.5 rounded-2xl shadow-md shadow-sky-600/25">
                             <i class="fa-solid font-bold fa-wheelchair-move text-2xl"></i>
                         </div>
                         <div>
@@ -771,7 +857,7 @@
                     <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
                         <div class="overflow-x-auto">
                             <table class="w-full text-left text-xs sm:text-sm">
-                                <thead class="bg-amber-50 text-amber-900 uppercase text-[11px] font-bold tracking-wider border-b border-amber-200">
+                                <thead class="thead-amber uppercase text-[11px] font-bold tracking-wider border-b border-amber-200">
                                     <tr>
                                         <th class="py-3.5 px-4">Inclinação (i) [%]</th>
                                         <th class="py-3.5 px-4">Proporção (h:c)</th>
@@ -908,7 +994,7 @@
                             <i class="fa-solid fa-microchip"></i> Arquitetura & Engenharia Técnica
                         </span>
                         <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
-                            Guia Completo de <span class="text-sky-600">Dimensionamento</span> de Pranchas
+                            Guia Completo de <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-cyan-500">Dimensionamento</span> de Pranchas
                         </h2>
                         <p class="text-slate-600 text-xs sm:text-sm max-w-2xl font-normal leading-relaxed">
                             Padrões normatizados ISO 216 e ABNT NBR 10068. Dimensões exatas, margens de arquivamento, área útil de desenho e posicionamento do selo técnico.
@@ -927,7 +1013,7 @@
                                 <span class="text-xs font-bold uppercase tracking-wider text-sky-700 flex items-center gap-2">
                                     <i class="fa-solid fa-layer-group"></i> Comparativo Dinâmico
                                 </span>
-                                <span id="formatBadge" class="bg-sky-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Formato A0</span>
+                                <span id="formatBadge" class="btn-grad text-white text-[10px] font-bold px-2 py-0.5 rounded">Formato A0</span>
                             </div>
                             
                             <!-- Desenho Visual em CSS -->
@@ -1103,20 +1189,20 @@
         <article id="guia-reservatorios" class="tab-content hidden flex-1 bg-slate-50 text-slate-800 p-4 sm:p-8 space-y-8 overflow-y-auto">
             
             <!-- HEADER DE RESERVATÓRIOS -->
-            <div class="bg-gradient-to-r from-slate-900 via-blue-900 to-sky-900 text-white rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border border-sky-800/30">
+            <div class="bg-gradient-to-br from-white via-sky-50 to-cyan-50 text-slate-900 rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border border-sky-200/80">
                 <div class="space-y-2">
                     <div class="flex items-center gap-2">
-                        <span class="bg-sky-500/20 border border-sky-400/30 text-sky-200 text-xs px-3 py-1 rounded-full font-semibold">
+                        <span class="bg-sky-600/10 border border-sky-400/40 text-sky-800 text-xs px-3 py-1 rounded-full font-semibold">
                             Secretaria de Projetos Estratégicos - SEPES
                         </span>
-                        <span class="bg-amber-500/20 border border-amber-400/30 text-amber-200 text-xs px-3 py-1 rounded-full font-semibold">
+                        <span class="bg-amber-500/15 border border-amber-400/40 text-amber-700 text-xs px-3 py-1 rounded-full font-semibold">
                             Lei Nº 16.292/97 - Código de Obras
                         </span>
                     </div>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
                         Guia de Boas Práticas: Reservatórios de Água Potável e Lixo
                     </h2>
-                    <p class="text-xs sm:text-sm text-sky-100 max-w-3xl font-normal leading-relaxed">
+                    <p class="text-xs sm:text-sm text-slate-600 max-w-3xl font-normal leading-relaxed">
                         Parâmetros oficiais de dimensionamento de água potável (reservatórios superior e inferior) e reservatórios de resíduos sólidos para os usos Habitacional, Não Habitacional e Misto.
                     </p>
                 </div>
@@ -1211,11 +1297,11 @@
                     </div>
 
                     <!-- OBSERVAÇÕES TÉCNICAS NOTAS 1 A 8 -->
-                    <div class="bg-slate-900 text-white rounded-xl p-4 space-y-2">
+                    <div class="notes-panel-modern rounded-xl p-4 space-y-2">
                         <span class="bg-sky-500 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wide inline-block">
                             OBSERVAÇÕES TÉCNICAS (NOTAS 1 A 8)
                         </span>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-300 leading-relaxed">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-600 leading-relaxed">
                             <div>
                                 <p><strong class="text-sky-400">1.</strong> O reservatório d'água inferior deverá ter o <u>dobro do volume</u> calculado para o reservatório superior.</p>
                                 <p><strong class="text-sky-400">2.</strong> Os volumes serão acrescidos de reserva para prevenção e combate a incêndio, de acordo com as normas do Corpo de Bombeiros Militar de Pernambuco.</p>
@@ -1251,7 +1337,7 @@
                                 <div class="text-[10px] font-bold">RES. INFERIOR</div>
                                 <div class="text-[9px] text-sky-100 font-semibold mt-0.5">66,7% Total</div>
                             </div>
-                            <div class="bg-slate-900 text-white p-2.5 rounded-xl">
+                            <div class="bg-gradient-to-br from-sky-700 to-cyan-600 text-white p-2.5 rounded-xl shadow-md shadow-sky-200">
                                 <div class="w-6 h-6 bg-sky-400 text-slate-950 rounded-full flex items-center justify-center font-bold text-xs mx-auto mb-1">3x</div>
                                 <div class="text-[10px] font-bold text-sky-300">VOL. TOTAL</div>
                                 <div class="text-[9px] text-slate-300 font-semibold mt-0.5">100% Capacidade</div>
@@ -1260,7 +1346,7 @@
                     </div>
 
                     <!-- CALCULADORA DE VOLUMES E DIMENSÕES -->
-                    <div class="bg-white rounded-2xl p-5 border-2 border-sky-500 shadow-sm space-y-4">
+                    <div class="bg-white rounded-2xl p-5 border-2 border-sky-400 shadow-xl shadow-sky-600/10 space-y-4">
                         <div class="flex justify-between items-center border-b border-slate-100 pb-2">
                             <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2">
                                 <i class="fa-solid fa-cube text-sky-600"></i> Calculadora de Reservatório
@@ -1283,7 +1369,7 @@
                             </div>
                         </div>
 
-                        <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 space-y-2">
+                        <div class="bg-gradient-to-br from-sky-50 to-cyan-50/60 rounded-xl p-3 border border-sky-100 space-y-2">
                             <div class="flex justify-between items-baseline">
                                 <span class="text-xs text-slate-500 font-medium">Volume Útil Obtido:</span>
                                 <span id="res-vol-m3" class="text-lg font-bold text-slate-900">9.00 m³</span>
