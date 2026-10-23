@@ -1,1171 +1,1371 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="h-full">
+<html lang="pt-BR" class="h-full bg-slate-50">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Guia de Projetos | Manual do Projetista</title>
+    <title>Portal de Guias de Projeto</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
                     colors: {
                         brand: {
-                            50:  '#eff6ff',
-                            100: '#dbeafe',
-                            200: '#bfdbfe',
-                            300: '#93c5fd',
-                            400: '#60a5fa',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            800: '#1e40af',
-                            900: '#1e3a8a',
-                            950: '#172554',
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                            800: '#0c4a6e',
+                            900: '#0a3651',
+                            950: '#082f49',
                         }
-                    },
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    animation: {
-                        'fade-in': 'fadeIn 0.3s ease-in-out',
-                        'slide-in': 'slideIn 0.25s ease-out',
-                    },
-                    keyframes: {
-                        fadeIn: { '0%': { opacity: '0', transform: 'translateY(8px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
-                        slideIn: { '0%': { opacity: '0', transform: 'translateX(-12px)' }, '100%': { opacity: '1', transform: 'translateX(0)' } },
                     }
                 }
             }
         }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
-        body { font-family: 'Inter', sans-serif; }
-
-        /* ── Scrollbar ── */
-        ::-webkit-scrollbar { width: 5px; height: 5px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(96,165,250,.35); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(59,130,246,.6); }
-
-        /* ── Gradient header ── */
-        .header-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #2563eb 100%);
+        .grid-pattern {
+            background-image: radial-gradient(rgba(2, 132, 199, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
         }
-
-        /* ── Sidebar gradient accent ── */
-        .sidebar-logo {
-            background: linear-gradient(135deg, #2563eb, #1d4ed8);
-            box-shadow: 0 4px 14px rgba(37,99,235,.45);
+        .sheet-box {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        /* ── Nav active link ── */
-        .guide-link.active {
-            background: linear-gradient(90deg, #eff6ff, #dbeafe);
-            color: #1d4ed8;
-            font-weight: 700;
-            box-shadow: inset 3px 0 0 #2563eb;
+        .sheet-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px -5px rgba(2, 132, 199, 0.2);
         }
-        .dark .guide-link.active {
-            background: linear-gradient(90deg, rgba(30,58,138,.25), rgba(29,78,216,.15));
-            color: #93c5fd;
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
         }
-
-        /* ── Card hover ── */
-        .guide-card-hover { transition: box-shadow .2s, transform .2s; }
-        .guide-card-hover:hover { box-shadow: 0 8px 30px rgba(37,99,235,.12); transform: translateY(-1px); }
-
-        /* ── Gradient hero banner ── */
-        .hero-banner {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 60%, #0ea5e9 100%);
-            position: relative;
-            overflow: hidden;
+        ::-webkit-scrollbar-track {
+            background: rgba(241, 245, 249, 1);
         }
-        .hero-banner::before {
-            content: '';
-            position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 80% 50%, rgba(255,255,255,.08) 0%, transparent 60%);
+        ::-webkit-scrollbar-thumb {
+            background: rgba(148, 163, 184, 0.5);
+            border-radius: 3px;
         }
-        .hero-banner::after {
-            content: '';
-            position: absolute;
-            width: 300px; height: 300px;
-            border-radius: 50%;
-            background: rgba(255,255,255,.05);
-            top: -80px; right: -60px;
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(100, 116, 139, 0.8);
         }
-
-        /* ── Infographic columns ── */
-        .color-priorizar-bg  { background: linear-gradient(135deg,#16a34a,#15803d); }
-        .color-priorizar-card { background-color: #f0fdf4; border-color: #bbf7d0; }
-        .color-priorizar-text { color: #14532d; }
-
-        .color-evitar-bg { background: linear-gradient(135deg,#d97706,#b45309); }
-        .color-evitar-card { background-color: #fffbeb; border-color: #fde68a; }
-        .color-evitar-text { color: #78350f; }
-
-        .color-nao-intervir-bg { background: linear-gradient(135deg,#dc2626,#b91c1c); }
-        .color-nao-intervir-card { background-color: #fef2f2; border-color: #fecaca; }
-        .color-nao-intervir-text { color: #7f1d1d; }
-
-        .color-checklist-bg { background: linear-gradient(135deg,#1d4ed8,#1e3a8a); }
-        .color-checklist-card { background-color: #eff6ff; border-color: #bfdbfe; }
-
-        .dark .color-priorizar-card { background-color: rgba(22,163,74,.12); border-color: rgba(74,222,128,.2); }
-        .dark .color-priorizar-text { color: #4ade80; }
-        .dark .color-evitar-card { background-color: rgba(217,119,6,.12); border-color: rgba(251,191,36,.2); }
-        .dark .color-evitar-text { color: #fbbf24; }
-        .dark .color-nao-intervir-card { background-color: rgba(220,38,38,.12); border-color: rgba(248,113,113,.2); }
-        .dark .color-nao-intervir-text { color: #f87171; }
-        .dark .color-checklist-card { background-color: rgba(29,78,216,.12); border-color: rgba(147,197,253,.2); }
-
-        /* ── Checkbox ── */
-        .custom-checkbox {
-            appearance: none; -webkit-appearance: none;
-            width: 15px; height: 15px;
-            border: 2px solid #3b82f6; border-radius: 3px;
-            outline: none; cursor: pointer; position: relative;
-            background-color: white; flex-shrink: 0; transition: .15s;
-        }
-        .custom-checkbox:checked { background-color: #2563eb; border-color: #2563eb; }
-        .custom-checkbox:checked::after {
-            content: ''; position: absolute;
-            left: 3px; top: 0px; width: 5px; height: 9px;
-            border: solid white; border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
-        }
-
-        /* ── Bullet list ── */
-        .bullet-list { list-style: none; padding-left: 0; }
-        .bullet-list li { position: relative; padding-left: 12px; margin-bottom: 2px; font-size: .8rem; line-height: 1.3; }
-        .bullet-list li::before { content: "›"; position: absolute; left: 0; color: currentColor; font-weight: 900; font-size: 1rem; line-height: 1; }
-
-        /* ── Tag badge ── */
-        .badge-infographic { background: linear-gradient(90deg,#fef3c7,#fde68a); color: #92400e; }
-        .badge-norma { background: linear-gradient(90deg,#dbeafe,#bfdbfe); color: #1e40af; }
-        .badge-dev { background: linear-gradient(90deg,#f3e8ff,#e9d5ff); color: #6b21a8; }
-
-        /* ── Category header pill ── */
-        .cat-pill {
-            display: inline-flex; align-items: center; gap: 6px;
-            font-size: .65rem; font-weight: 800; letter-spacing: .08em;
-            text-transform: uppercase; padding: 4px 10px; border-radius: 999px;
-            background: linear-gradient(90deg, #eff6ff, #dbeafe);
-            color: #1d4ed8;
-        }
-        .dark .cat-pill { background: rgba(29,78,216,.2); color: #93c5fd; }
-
-        /* ── Print ── */
-        @media print {
-            aside, header, #sidebar-backdrop, .no-print { display: none !important; }
-            main { padding: 0 !important; overflow: visible !important; }
-            .guide-content { display: block !important; }
-        }
-
-        /* ── Dark mode sidebar & header ── */
-        .dark .header-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); }
-
-        /* ── Animate guide content ── */
-        .guide-content:not(.hidden) { animation: fadeIn .28s ease; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ── Progress bar ── */
-        .progress-bar { height: 3px; background: linear-gradient(90deg,#60a5fa,#2563eb,#1d4ed8); border-radius: 2px; }
-
-        /* ── Search input ── */
-        #search-input:focus { box-shadow: 0 0 0 3px rgba(37,99,235,.2); }
     </style>
 </head>
-<body class="h-full bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 flex flex-col antialiased transition-colors duration-200">
+<body class="bg-slate-50 text-slate-800 font-sans min-h-full flex flex-col md:flex-row antialiased selection:bg-sky-500 selection:text-white transition-colors duration-200">
 
-    <!-- ═══════════════════════════ TOP HEADER ═══════════════════════════ -->
-    <header class="header-gradient h-16 px-4 lg:px-6 flex items-center justify-between sticky top-0 z-30 shadow-lg">
-
-        <!-- Left: logo + title -->
+    <!-- BOTÃO MENU MOBILE -->
+    <div class="md:hidden bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-50">
         <div class="flex items-center gap-3">
-            <button id="mobile-menu-toggle" class="lg:hidden text-white/80 hover:text-white p-2 rounded-lg mr-1">
-                <i class="fa-solid fa-bars text-lg"></i>
-            </button>
-            <div class="sidebar-logo text-white p-2 rounded-xl flex items-center justify-center w-10 h-10 shrink-0">
-                <i class="fa-solid fa-compass-drafting text-lg"></i>
+            <div class="bg-sky-600 text-white p-2 rounded-lg">
+                <i class="fa-solid fa-drafting-compass text-xl"></i>
             </div>
-            <div>
-                <h1 class="font-extrabold text-white text-base sm:text-lg leading-tight tracking-tight">Portal de Guia de Projetos</h1>
-                <p class="text-[11px] text-blue-200/80 hidden sm:block">Manual Técnico · Arquitetura & Engenharia</p>
-            </div>
+            <span class="font-bold text-slate-900 text-lg">Guias de Projeto</span>
         </div>
-
-        <!-- Right: breadcrumb + actions -->
-        <div class="flex items-center gap-2">
-            <div class="hidden md:flex items-center gap-2 text-[11px] text-blue-200 mr-3">
-                <span>Guias</span>
-                <i class="fa-solid fa-chevron-right text-[9px] opacity-60"></i>
-                <span id="breadcrumb-category" class="text-blue-100 font-medium">Legalização & Licenciamento</span>
-                <i class="fa-solid fa-chevron-right text-[9px] opacity-60"></i>
-                <span id="breadcrumb-title" class="text-white font-bold">Diretrizes SEPE</span>
-            </div>
-
-            <button onclick="window.print()" title="Imprimir" class="text-white/80 hover:text-white hover:bg-white/10 p-2 rounded-lg text-sm flex items-center gap-2 transition no-print">
-                <i class="fa-solid fa-print"></i>
-                <span class="hidden sm:inline text-xs font-medium">Imprimir</span>
-            </button>
-
-            <button id="theme-toggle" title="Alternar tema" class="text-white/80 hover:text-white hover:bg-white/10 p-2 rounded-lg transition no-print">
-                <i id="theme-toggle-dark-icon" class="fa-solid fa-moon hidden"></i>
-                <i id="theme-toggle-light-icon" class="fa-solid fa-sun"></i>
-            </button>
-        </div>
-    </header>
-    <!-- thin progress accent -->
-    <div class="progress-bar w-full shrink-0"></div>
-
-    <div class="flex flex-1 overflow-hidden relative">
-
-        <!-- Backdrop mobile -->
-        <div id="sidebar-backdrop" class="fixed inset-0 bg-slate-900/60 z-20 hidden lg:hidden backdrop-blur-sm"></div>
-
-        <!-- ═══════════════════════════ SIDEBAR ═══════════════════════════ -->
-        <aside id="sidebar" class="w-72 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 flex flex-col fixed lg:static inset-y-0 left-0 z-20 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out shrink-0">
-
-            <!-- Search -->
-            <div class="p-4 border-b border-slate-100 dark:border-slate-700">
-                <div class="relative">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-brand-400 text-sm"></i>
-                    <input type="text" id="search-input" placeholder="Buscar guia…"
-                        class="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 text-sm rounded-xl border border-slate-200 dark:border-slate-700 focus:border-brand-400 focus:bg-white dark:focus:bg-slate-800 outline-none transition">
-                </div>
-            </div>
-
-            <!-- Nav -->
-            <nav class="flex-1 overflow-y-auto p-3 space-y-3" id="nav-categories">
-
-                <!-- ── CATEGORIA 1 ── -->
-                <div class="nav-group">
-                    <button class="category-toggle w-full flex items-center justify-between px-2 py-1.5 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
-                        <span class="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
-                            <i class="fa-solid fa-building-circle-check text-brand-500 text-xs"></i>
-                            Legalização & Licenciamento
-                        </span>
-                        <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transform transition-transform duration-200"></i>
-                    </button>
-                    <ul class="space-y-0.5 pl-3 mt-1 border-l-2 border-brand-100 dark:border-brand-900">
-                        <li>
-                            <a href="#guia-aprovacao-prefeitura" data-guide="guia-aprovacao-prefeitura"
-                               class="guide-link active flex items-center justify-between px-3 py-2 text-sm rounded-lg transition">
-                                <span>Diretrizes de Projetos SEPE</span>
-                                <span class="text-[9px] font-bold badge-infographic px-1.5 py-0.5 rounded-full shrink-0 ml-1">Infográfico</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- ── CATEGORIA 2 ── -->
-                <div class="nav-group">
-                    <button class="category-toggle w-full flex items-center justify-between px-2 py-1.5 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
-                        <span class="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
-                            <i class="fa-solid fa-layer-group text-brand-500 text-xs"></i>
-                            Normas & Padronização
-                        </span>
-                        <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transform transition-transform duration-200"></i>
-                    </button>
-                    <ul class="space-y-0.5 pl-3 mt-1 border-l-2 border-brand-100 dark:border-brand-900">
-                        <li>
-                            <a href="#guia-folhas-pranchas" data-guide="guia-folhas-pranchas"
-                               class="guide-link flex items-center justify-between px-3 py-2 text-sm rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
-                                <span>Formatos de Pranchas (NBR 10068)</span>
-                                <span class="text-[9px] font-bold badge-norma px-1.5 py-0.5 rounded-full shrink-0 ml-1">Norma</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- ── CATEGORIA 3 ── -->
-                <div class="nav-group">
-                    <button class="category-toggle w-full flex items-center justify-between px-2 py-1.5 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
-                        <span class="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
-                            <i class="fa-solid fa-hospital text-brand-500 text-xs"></i>
-                            Projetos de Saúde
-                        </span>
-                        <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transform transition-transform duration-200"></i>
-                    </button>
-                    <ul class="space-y-0.5 pl-3 mt-1 border-l-2 border-brand-100 dark:border-brand-900">
-                        <li>
-                            <a href="#guia-rdc50" data-guide="guia-rdc50"
-                               class="guide-link flex items-center justify-between px-3 py-2 text-sm rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
-                                <span>Diretrizes RDC-50 ANVISA</span>
-                                <span class="text-[9px] font-bold badge-dev px-1.5 py-0.5 rounded-full shrink-0 ml-1">Em Dev</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- ── CATEGORIA 4 ── -->
-                <div class="nav-group">
-                    <button class="category-toggle w-full flex items-center justify-between px-2 py-1.5 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
-                        <span class="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
-                            <i class="fa-solid fa-faucet text-brand-500 text-xs"></i>
-                            Instalações Prediais
-                        </span>
-                        <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transform transition-transform duration-200"></i>
-                    </button>
-                    <ul class="space-y-0.5 pl-3 mt-1 border-l-2 border-brand-100 dark:border-brand-900">
-                        <li>
-                            <a href="#guia-reservatorios" data-guide="guia-reservatorios"
-                               class="guide-link flex items-center justify-between px-3 py-2 text-sm rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
-                                <span>Dimensionamento de Reservatórios</span>
-                                <span class="text-[9px] font-bold badge-norma px-1.5 py-0.5 rounded-full shrink-0 ml-1">Cálculo</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!--
-                ═══════════════════════════════════════════════════════════════
-                  COMO ADICIONAR NOVO GUIA:
-                  1. Copie um bloco <div class="nav-group"> acima e ajuste.
-                  2. Adicione um <article id="guia-NOVO"> no main abaixo.
-                  3. Pronto!
-                ═══════════════════════════════════════════════════════════════
-                -->
-
-            </nav>
-
-            <!-- Footer -->
-            <div class="p-4 border-t border-slate-100 dark:border-slate-700 flex justify-between items-center">
-                <span class="text-[11px] text-slate-400 font-medium">Guias v2.4</span>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
-                    <i class="fa-solid fa-circle-check text-[8px]"></i> Atualizado
-                </span>
-            </div>
-        </aside>
-
-        <!-- ═══════════════════════════ MAIN ═══════════════════════════ -->
-        <main class="flex-1 overflow-y-auto" id="main-content">
-            <div class="max-w-6xl mx-auto p-4 sm:p-6 lg:p-10 flex gap-8">
-
-                <!-- Guide Content -->
-                <div class="flex-1 min-w-0">
-
-                    <!-- ══════════════════════════════════════════════
-                         GUIA 1 – Diretrizes de Projetos SEPE
-                    ══════════════════════════════════════════════ -->
-                    <article id="guia-aprovacao-prefeitura" class="guide-content space-y-6">
-
-                        <!-- Hero Banner -->
-                        <div class="hero-banner rounded-2xl p-6 sm:p-8 text-white shadow-xl relative">
-                            <div class="relative z-10">
-                                <div class="cat-pill mb-3" style="background:rgba(255,255,255,.18); color:white;">
-                                    <i class="fa-solid fa-folder-open"></i> Legalização & Licenciamento
-                                </div>
-                                <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight leading-tight">
-                                    Diretrizes de Projetos — SEPE
-                                </h1>
-                                <p class="text-blue-100 mt-2 text-sm sm:text-base max-w-xl leading-relaxed">
-                                    Orientações para desenvolvimento de projetos e obras nas unidades de saúde, visando maior eficiência na elaboração, redução de impactos e licenciamentos menos complexos.
-                                </p>
-                                <div class="mt-4 flex flex-wrap gap-2 text-[11px] font-semibold">
-                                    <span class="bg-white/15 px-3 py-1 rounded-full flex items-center gap-1">
-                                        <i class="fa-solid fa-building-circle-check"></i> SEPE
-                                    </span>
-                                    <span class="bg-white/15 px-3 py-1 rounded-full flex items-center gap-1">
-                                        <i class="fa-solid fa-leaf"></i> Licenciamento Ambiental
-                                    </span>
-                                    <span class="bg-white/15 px-3 py-1 rounded-full flex items-center gap-1">
-                                        <i class="fa-solid fa-star text-amber-300"></i> Infográfico Interativo
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Infographic Panel -->
-                        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-4 sm:p-6 shadow-sm guide-card-hover">
-
-                            <!-- Infographic Header -->
-                            <header class="flex flex-col sm:flex-row justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-4 mb-5 gap-3">
-                                <div class="flex items-center gap-3">
-                                    <span class="h-8 w-1.5 bg-gradient-to-b from-brand-500 to-brand-800 rounded-full inline-block"></span>
-                                    <h2 class="text-base font-black text-brand-900 dark:text-brand-300 tracking-wide uppercase">Diretrizes de Projetos de Saúde</h2>
-                                </div>
-                                <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 px-3 py-1.5 rounded-xl">
-                                    <i class="fa-solid fa-landmark mr-1 text-brand-500"></i> SEPE — Secretaria de Projetos Estratégicos
-                                </span>
-                            </header>
-
-                            <!-- 4-column infographic -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-
-                                <!-- COL 1: PRIORIZAR -->
-                                <section class="flex flex-col rounded-xl border border-emerald-200 dark:border-emerald-900/40 overflow-hidden shadow-sm">
-                                    <div class="color-priorizar-bg text-white text-center py-2.5 px-2 font-extrabold text-[11px] tracking-widest uppercase">
-                                        <i class="fa-solid fa-circle-check mr-1.5"></i> PRIORIZAR
-                                    </div>
-                                    <div class="p-2.5 space-y-2 flex-grow bg-emerald-50/40 dark:bg-emerald-950/10">
-
-                                        <div class="color-priorizar-card p-2.5 rounded-xl border guide-card-hover">
-                                            <h3 class="font-black text-[11px] color-priorizar-text uppercase mb-1.5 flex items-center gap-1.5">
-                                                <i class="fa-solid fa-arrows-split-up-and-left"></i> Readequações Internas
-                                            </h3>
-                                            <ul class="bullet-list text-slate-700 dark:text-slate-300">
-                                                <li>Reorganização de layouts</li>
-                                                <li>Redistribuição de ambientes</li>
-                                                <li>Otimização de fluxos</li>
-                                                <li>Aproveitamento da estrutura existente</li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="color-priorizar-card p-2.5 rounded-xl border guide-card-hover">
-                                            <h3 class="font-black text-[11px] color-priorizar-text uppercase mb-1.5 flex items-center gap-1.5">
-                                                <i class="fa-solid fa-hammer"></i> Reformas em Edificações Existentes
-                                            </h3>
-                                            <ul class="bullet-list text-slate-700 dark:text-slate-300">
-                                                <li>Modernização de instalações</li>
-                                                <li>Adequações normativas</li>
-                                                <li>Atualizações funcionais</li>
-                                                <li>Retrofit</li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="color-priorizar-card p-2.5 rounded-xl border guide-card-hover">
-                                            <h3 class="font-black text-[11px] color-priorizar-text uppercase mb-1.5 flex items-center gap-1.5">
-                                                <i class="fa-solid fa-building-circle-arrow-right"></i> Ampliações
-                                            </h3>
-                                            <ul class="bullet-list text-slate-700 dark:text-slate-300">
-                                                <li>Verticais, sempre que viáveis, respeitando gabaritos e coeficientes urbanos</li>
-                                                <li>Horizontais apenas quando estritamente necessários</li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="color-priorizar-card p-2.5 rounded-xl border guide-card-hover">
-                                            <h3 class="font-black text-[11px] color-priorizar-text uppercase mb-1.5 flex items-center gap-1.5">
-                                                <i class="fa-solid fa-paint-roller"></i> Reformas de Fachadas
-                                            </h3>
-                                            <ul class="bullet-list text-slate-700 dark:text-slate-300">
-                                                <li>Recuperação de revestimentos</li>
-                                                <li>Modernização arquitetônica</li>
-                                                <li>Adequações de acessibilidade</li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="color-priorizar-card p-2.5 rounded-xl border guide-card-hover">
-                                            <h3 class="font-black text-[11px] color-priorizar-text uppercase mb-1.5 flex items-center gap-1.5">
-                                                <i class="fa-solid fa-plug-circle-check"></i> Aproveitamento de Infraestrutura
-                                            </h3>
-                                            <ul class="bullet-list text-slate-700 dark:text-slate-300">
-                                                <li>Redes de drenagem e esgoto</li>
-                                                <li>Sistemas elétricos</li>
-                                                <li>Reservatórios e redes de gases</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </section>
-
-                                <!-- COL 2: EVITAR -->
-                                <section class="flex flex-col rounded-xl border border-amber-200 dark:border-amber-900/40 overflow-hidden shadow-sm">
-                                    <div class="color-evitar-bg text-white text-center py-2.5 px-2 font-extrabold text-[11px] tracking-widest uppercase">
-                                        <i class="fa-solid fa-triangle-exclamation mr-1.5"></i> EVITAR
-                                    </div>
-                                    <div class="p-2.5 space-y-2 flex-grow bg-amber-50/40 dark:bg-amber-950/10">
-
-                                        <div class="color-evitar-card p-2.5 rounded-xl border guide-card-hover">
-                                            <h3 class="font-black text-[11px] color-evitar-text uppercase mb-1.5 flex items-center gap-1.5">
-                                                <i class="fa-solid fa-mountain"></i> Movimentações de Terra
-                                            </h3>
-                                            <ul class="bullet-list text-slate-700 dark:text-slate-300">
-                                                <li>Cortes e aterros excessivos</li>
-                                                <li>Contenções externas</li>
-                                                <li>Alterações topográficas relevantes</li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="color-evitar-card p-2.5 rounded-xl border guide-card-hover">
-                                            <h3 class="font-black text-[11px] color-evitar-text uppercase mb-1.5 flex items-center gap-1.5">
-                                                <i class="fa-solid fa-ruler-combined"></i> Ampliações Horizontais
-                                            </h3>
-                                            <ul class="bullet-list text-slate-700 dark:text-slate-300">
-                                                <li>Ocupação desnecessária de áreas livres</li>
-                                                <li>Aumento da impermeabilização do solo</li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="color-evitar-card p-2.5 rounded-xl border guide-card-hover">
-                                            <h3 class="font-black text-[11px] color-evitar-text uppercase mb-1.5 flex items-center gap-1.5">
-                                                <i class="fa-solid fa-water"></i> Proximidade com Corpos Hídricos
-                                            </h3>
-                                            <ul class="bullet-list text-slate-700 dark:text-slate-300">
-                                                <li>Rios, canais, lagoas e áreas alagáveis</li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="color-evitar-card p-2.5 rounded-xl border guide-card-hover">
-                                            <h3 class="font-black text-[11px] color-evitar-text uppercase mb-1.5 flex items-center gap-1.5">
-                                                <i class="fa-solid fa-cloud-showers-water"></i> Alterações de Drenagem
-                                            </h3>
-                                            <ul class="bullet-list text-slate-700 dark:text-slate-300">
-                                                <li>Canalizações e aterros de depressões naturais</li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="color-evitar-card p-2.5 rounded-xl border guide-card-hover">
-                                            <h3 class="font-black text-[11px] color-evitar-text uppercase mb-1.5 flex items-center gap-1.5">
-                                                <i class="fa-solid fa-tree"></i> Supressão de Vegetação
-                                            </h3>
-                                            <ul class="bullet-list text-slate-700 dark:text-slate-300">
-                                                <li>Supressão de espécies arbóreas</li>
-                                                <li>Intervenções em APPs</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </section>
-
-                                <!-- COL 3: NÃO INTERVIR -->
-                                <section class="flex flex-col rounded-xl border border-red-200 dark:border-red-900/40 overflow-hidden shadow-sm">
-                                    <div class="color-nao-intervir-bg text-white text-center py-2.5 px-1 font-extrabold text-[10px] tracking-tight uppercase">
-                                        <i class="fa-solid fa-ban mr-1"></i> NÃO INTERVIR SEM ANÁLISE PRÉVIA
-                                    </div>
-                                    <div class="p-2.5 space-y-2 flex-grow bg-red-50/40 dark:bg-red-950/10">
-
-                                        <div class="color-nao-intervir-card p-2.5 rounded-xl border guide-card-hover">
-                                            <h3 class="font-black text-[11px] color-nao-intervir-text uppercase mb-1.5 flex items-center gap-1.5">
-                                                <i class="fa-solid fa-leaf"></i> Vegetações
-                                            </h3>
-                                            <ul class="bullet-list text-slate-700 dark:text-slate-300">
-                                                <li>Preservação de espécies arbóreas</li>
-                                                <li>Compatibilização com Inventário Florestal</li>
-                                                <li>Compensações municipais de solo natural</li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="color-nao-intervir-card p-2.5 rounded-xl border guide-card-hover">
-                                            <h3 class="font-black text-[11px] color-nao-intervir-text uppercase mb-1.5 flex items-center gap-1.5">
-                                                <i class="fa-solid fa-faucet-drip"></i> Instalações & Conexões
-                                            </h3>
-                                            <ul class="bullet-list text-slate-700 dark:text-slate-300">
-                                                <li>Novas ETEs</li>
-                                                <li>Expansão de redes públicas de água/esgoto</li>
-                                                <li>Avaliar capacidade de carga elétrica e gases</li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="color-nao-intervir-card p-2.5 rounded-xl border guide-card-hover">
-                                            <h3 class="font-black text-[11px] color-nao-intervir-text uppercase mb-1.5 flex items-center gap-1.5">
-                                                <i class="fa-solid fa-road"></i> Rodovias e Acessos
-                                            </h3>
-                                            <ul class="bullet-list text-slate-700 dark:text-slate-300">
-                                                <li>Evitar novos acessos diretos em rodovias</li>
-                                                <li>Respeitar faixas de domínio e recuos</li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="color-nao-intervir-card p-2.5 rounded-xl border guide-card-hover">
-                                            <h3 class="font-black text-[11px] color-nao-intervir-text uppercase mb-1.5 flex items-center gap-1.5">
-                                                <i class="fa-solid fa-file-contract"></i> Licenciamento Ambiental
-                                            </h3>
-                                            <p class="text-[11px] text-slate-700 dark:text-slate-300 leading-tight">
-                                                Reforma interna sem acréscimo de área reduz prazos de licenciamento.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </section>
-
-                                <!-- COL 4: CHECKLIST -->
-                                <section class="flex flex-col rounded-xl border border-blue-200 dark:border-blue-900/40 overflow-hidden shadow-sm">
-                                    <div class="color-checklist-bg text-white text-center py-2.5 px-2 font-extrabold text-[11px] tracking-widest uppercase">
-                                        <i class="fa-solid fa-list-check mr-1.5"></i> CHECKLIST RÁPIDO
-                                    </div>
-                                    <div class="color-checklist-card dark:bg-blue-950/10 p-2.5 flex-grow flex flex-col gap-2">
-
-                                        <label class="flex items-start gap-2.5 bg-white dark:bg-slate-800 p-2 rounded-xl border border-blue-100 dark:border-slate-700 cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/20 transition">
-                                            <input type="checkbox" class="custom-checkbox mt-0.5">
-                                            <span class="text-[11px] font-semibold text-slate-800 dark:text-slate-200 leading-tight">Há necessidade de supressão vegetal?</span>
-                                        </label>
-                                        <label class="flex items-start gap-2.5 bg-white dark:bg-slate-800 p-2 rounded-xl border border-blue-100 dark:border-slate-700 cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/20 transition">
-                                            <input type="checkbox" class="custom-checkbox mt-0.5">
-                                            <span class="text-[11px] font-semibold text-slate-800 dark:text-slate-200 leading-tight">Existe movimentação significativa de terra?</span>
-                                        </label>
-                                        <label class="flex items-start gap-2.5 bg-white dark:bg-slate-800 p-2 rounded-xl border border-blue-100 dark:border-slate-700 cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/20 transition">
-                                            <input type="checkbox" class="custom-checkbox mt-0.5">
-                                            <span class="text-[11px] font-semibold text-slate-800 dark:text-slate-200 leading-tight">Haverá ampliação de área construída?</span>
-                                        </label>
-                                        <label class="flex items-start gap-2.5 bg-white dark:bg-slate-800 p-2 rounded-xl border border-blue-100 dark:border-slate-700 cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/20 transition">
-                                            <input type="checkbox" class="custom-checkbox mt-0.5">
-                                            <span class="text-[11px] font-semibold text-slate-800 dark:text-slate-200 leading-tight">Existe APP, manguezal ou corpo hídrico próximo?</span>
-                                        </label>
-                                        <label class="flex items-start gap-2.5 bg-white dark:bg-slate-800 p-2 rounded-xl border border-blue-100 dark:border-slate-700 cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/20 transition">
-                                            <input type="checkbox" class="custom-checkbox mt-0.5">
-                                            <span class="text-[11px] font-semibold text-slate-800 dark:text-slate-200 leading-tight">O projeto interfere na drenagem natural do terreno?</span>
-                                        </label>
-                                        <label class="flex items-start gap-2.5 bg-white dark:bg-slate-800 p-2 rounded-xl border border-blue-100 dark:border-slate-700 cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/20 transition">
-                                            <input type="checkbox" class="custom-checkbox mt-0.5">
-                                            <span class="text-[11px] font-semibold text-slate-800 dark:text-slate-200 leading-tight">O projeto prevê ETE ou tratamento de efluentes?</span>
-                                        </label>
-                                        <label class="flex items-start gap-2.5 bg-white dark:bg-slate-800 p-2 rounded-xl border border-blue-100 dark:border-slate-700 cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/20 transition">
-                                            <input type="checkbox" class="custom-checkbox mt-0.5">
-                                            <span class="text-[11px] font-semibold text-slate-800 dark:text-slate-200 leading-tight">A solução pode ser atendida por reforma interna?</span>
-                                        </label>
-                                    </div>
-                                </section>
-
-                            </div><!-- /4-col grid -->
-
-                            <!-- Footer bar -->
-                            <footer class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-700 grid grid-cols-1 md:grid-cols-12 gap-3">
-                                <div class="md:col-span-5 flex items-center gap-3 bg-brand-50 dark:bg-brand-950/30 p-3.5 rounded-xl border border-brand-100 dark:border-brand-900/50">
-                                    <div class="p-2.5 bg-gradient-to-br from-brand-700 to-brand-900 text-white rounded-xl shrink-0 shadow-md shadow-brand-900/30">
-                                        <i class="fa-solid fa-bullseye text-lg"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-black text-[11px] text-brand-900 dark:text-brand-300 uppercase tracking-wide">Objetivo</h3>
-                                        <p class="text-[11px] text-slate-700 dark:text-slate-300 leading-snug mt-0.5">
-                                            Estabelecer diretrizes que <strong class="text-brand-800 dark:text-brand-300">minimizem a mora dos licenciamentos</strong> e contribuam para a eficiência na entrega das unidades.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="md:col-span-7 bg-slate-50 dark:bg-slate-800/80 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700">
-                                    <h3 class="font-black text-[11px] text-brand-900 dark:text-brand-300 uppercase tracking-wide mb-1.5 flex items-center gap-1.5">
-                                        <i class="fa-solid fa-circle-info text-brand-500"></i> Notas Importantes
-                                    </h3>
-                                    <ul class="bullet-list text-slate-700 dark:text-slate-300 text-[11px] space-y-1">
-                                        <li>Realizar diagnóstico ambiental da área antes de propor qualquer intervenção;</li>
-                                        <li>O PGRCC (Resíduos da Construção Civil) é obrigatório para todas as intervenções;</li>
-                                        <li>Em caso de dúvidas técnicas, consulte o Núcleo de Legalização SEPE.</li>
-                                    </ul>
-                                </div>
-                            </footer>
-
-                        </div><!-- /panel -->
-                    </article>
-
-                    <!-- ══════════════════════════════════════════════
-                         GUIA 2 – Formatos de Pranchas (NBR 10068)
-                    ══════════════════════════════════════════════ -->
-                    <article id="guia-folhas-pranchas" class="guide-content space-y-6 hidden">
-
-                        <div class="hero-banner rounded-2xl p-6 sm:p-8 text-white shadow-xl relative">
-                            <div class="relative z-10">
-                                <div class="cat-pill mb-3" style="background:rgba(255,255,255,.18); color:white;">
-                                    <i class="fa-solid fa-layer-group"></i> Normas & Padronização
-                                </div>
-                                <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Formatos de Pranchas (NBR 10068)</h1>
-                                <p class="text-blue-100 mt-2 text-sm max-w-xl leading-relaxed">Especificações técnicas para dimensionamento, margens e dobras de folhas série A.</p>
-                            </div>
-                        </div>
-
-                        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm guide-card-hover space-y-6">
-
-                            <section>
-                                <h2 id="dimensoes-serie-a" class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2 scroll-mt-20">
-                                    <span class="w-7 h-7 rounded-lg bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center text-sm font-black shrink-0">1</span>
-                                    Dimensões Padrão de Folhas Cortadas (Série A)
-                                </h2>
-                                <div class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700">
-                                    <table class="w-full text-sm">
-                                        <thead>
-                                            <tr class="bg-brand-600 text-white">
-                                                <th class="px-4 py-3 text-left font-bold">Formato</th>
-                                                <th class="px-4 py-3 text-left font-bold">Dimensões (mm)</th>
-                                                <th class="px-4 py-3 text-left font-bold">Margem Esq.</th>
-                                                <th class="px-4 py-3 text-left font-bold">Demais Margens</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
-                                            <tr class="hover:bg-brand-50 dark:hover:bg-brand-900/10 transition">
-                                                <td class="px-4 py-3 font-black text-brand-700 dark:text-brand-400">A0</td>
-                                                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">841 × 1189</td>
-                                                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">25 mm</td>
-                                                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">10 mm</td>
-                                            </tr>
-                                            <tr class="hover:bg-brand-50 dark:hover:bg-brand-900/10 transition">
-                                                <td class="px-4 py-3 font-black text-brand-700 dark:text-brand-400">A1</td>
-                                                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">594 × 841</td>
-                                                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">25 mm</td>
-                                                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">10 mm</td>
-                                            </tr>
-                                            <tr class="hover:bg-brand-50 dark:hover:bg-brand-900/10 transition">
-                                                <td class="px-4 py-3 font-black text-brand-700 dark:text-brand-400">A2</td>
-                                                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">420 × 594</td>
-                                                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">25 mm</td>
-                                                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">7 mm</td>
-                                            </tr>
-                                            <tr class="hover:bg-brand-50 dark:hover:bg-brand-900/10 transition">
-                                                <td class="px-4 py-3 font-black text-brand-700 dark:text-brand-400">A3</td>
-                                                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">297 × 420</td>
-                                                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">25 mm</td>
-                                                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">7 mm</td>
-                                            </tr>
-                                            <tr class="hover:bg-brand-50 dark:hover:bg-brand-900/10 transition">
-                                                <td class="px-4 py-3 font-black text-brand-700 dark:text-brand-400">A4</td>
-                                                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">210 × 297</td>
-                                                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">25 mm</td>
-                                                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">7 mm</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </section>
-
-                            <section>
-                                <h2 id="dobramento-pranchas" class="text-lg font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2 scroll-mt-20">
-                                    <span class="w-7 h-7 rounded-lg bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center text-sm font-black shrink-0">2</span>
-                                    Diretrizes de Dobramento
-                                </h2>
-                                <div class="bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-900/40 rounded-xl p-4 flex items-start gap-3">
-                                    <i class="fa-solid fa-circle-info text-brand-500 mt-0.5 text-lg shrink-0"></i>
-                                    <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                                        Todas as pranchas maiores que A4 devem ser dobradas até atingir as dimensões do formato <strong class="text-brand-700 dark:text-brand-400">A4 (210 mm × 297 mm)</strong>, garantindo que o <strong>selo/carimbo</strong> fique visível no canto inferior direito da prancha dobrada.
-                                    </p>
-                                </div>
-                            </section>
-                        </div>
-                    </article>
-
-                    <!-- ══════════════════════════════════════════════
-                         GUIA 3 – Diretrizes RDC-50 ANVISA
-                    ══════════════════════════════════════════════ -->
-                    <article id="guia-rdc50" class="guide-content space-y-6 hidden">
-
-                        <div class="hero-banner rounded-2xl p-6 sm:p-8 text-white shadow-xl relative">
-                            <div class="relative z-10">
-                                <div class="cat-pill mb-3" style="background:rgba(255,255,255,.18); color:white;">
-                                    <i class="fa-solid fa-hospital"></i> Projetos de Saúde
-                                </div>
-                                <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Diretrizes RDC-50 ANVISA</h1>
-                                <p class="text-blue-100 mt-2 text-sm max-w-xl leading-relaxed">Critérios físicos de estabelecimentos assistenciais de saúde (EAS).</p>
-                            </div>
-                        </div>
-
-                        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm">
-                            <div class="flex flex-col items-center justify-center py-12 text-center gap-4">
-                                <div class="w-16 h-16 rounded-2xl bg-purple-50 dark:bg-purple-900/20 text-purple-400 flex items-center justify-center text-3xl">
-                                    <i class="fa-solid fa-code"></i>
-                                </div>
-                                <div>
-                                    <h2 class="text-lg font-bold text-slate-700 dark:text-slate-300">Guia em Desenvolvimento</h2>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-xs">
-                                        Este guia está sendo elaborado e será publicado em breve. Em caso de dúvidas, consulte a equipe técnica.
-                                    </p>
-                                </div>
-                                <span class="inline-flex items-center gap-1.5 text-[11px] font-bold text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20 px-3 py-1.5 rounded-full border border-purple-200 dark:border-purple-800">
-                                    <i class="fa-solid fa-spinner fa-spin text-[9px]"></i> Em desenvolvimento
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- ══════════════════════════════════════════════
-                         GUIA 4 – Dimensionamento de Reservatórios
-                    ══════════════════════════════════════════════ -->
-                    <article id="guia-reservatorios" class="guide-content space-y-6 hidden">
-
-                        <div class="hero-banner rounded-2xl p-6 sm:p-8 text-white shadow-xl relative">
-                            <div class="relative z-10">
-                                <div class="cat-pill mb-3" style="background:rgba(255,255,255,.18); color:white;">
-                                    <i class="fa-solid fa-faucet"></i> Instalações Prediais
-                                </div>
-                                <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Dimensionamento de Reservatórios de Água Potável e Lixo</h1>
-                                <p class="text-blue-100 mt-2 text-sm max-w-2xl leading-relaxed">Parâmetros e boas práticas para cálculo de reservatórios, baseado na Lei Nº 16.292/97 — Código de Obras do Recife. Núcleo de Legalização — SEPES.</p>
-                                <div class="mt-4 flex flex-wrap gap-2 text-[11px] font-semibold">
-                                    <span class="bg-white/15 px-3 py-1 rounded-full flex items-center gap-1"><i class="fa-solid fa-droplet"></i> Água Potável</span>
-                                    <span class="bg-white/15 px-3 py-1 rounded-full flex items-center gap-1"><i class="fa-solid fa-trash-can"></i> Reservatório de Lixo</span>
-                                    <span class="bg-white/15 px-3 py-1 rounded-full flex items-center gap-1"><i class="fa-solid fa-calculator text-amber-300"></i> Calculadora Interativa</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Main Content: Table + Visual -->
-                        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-5 shadow-sm space-y-5">
-
-                            <!-- Section header -->
-                            <div class="flex items-center gap-3 pb-3 border-b border-slate-100 dark:border-slate-700">
-                                <span class="h-8 w-1.5 bg-gradient-to-b from-brand-500 to-brand-800 rounded-full"></span>
-                                <h2 id="tabela-reservatorios" class="text-base font-black text-brand-900 dark:text-brand-300 uppercase tracking-wide scroll-mt-20">Regras para Usos Habitacional, Não Habitacional e Misto</h2>
-                            </div>
-
-                            <!-- Grid: Table (left) + Diagram + Calc (right) -->
-                            <div class="grid grid-cols-1 xl:grid-cols-12 gap-5">
-
-                                <!-- TABLE (7 cols) -->
-                                <div class="xl:col-span-7 space-y-3">
-                                    <div class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-                                        <table class="w-full text-xs">
-                                            <thead>
-                                                <tr class="bg-brand-700 text-white">
-                                                    <th class="px-3 py-2.5 text-left font-bold w-[14%]">USOS</th>
-                                                    <th class="px-3 py-2.5 text-left font-bold w-[28%]">ATIVIDADES</th>
-                                                    <th class="px-3 py-2.5 text-left font-bold w-[22%]">DENSIDADE POPULACIONAL</th>
-                                                    <th class="px-3 py-2.5 text-center font-bold w-[20%]">RES. D'ÁGUA SUPERIOR<br><span class="font-normal text-[9px] text-blue-200">Volume / Pessoa</span></th>
-                                                    <th class="px-3 py-2.5 text-center font-bold w-[16%]">LIXO<br><span class="font-normal text-[9px] text-blue-200">Volume / Pessoa</span></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
-                                                <tr class="bg-blue-50 dark:bg-blue-950/20">
-                                                    <td class="px-3 py-2 font-bold text-brand-800 dark:text-brand-400">Habitacional</td>
-                                                    <td class="px-3 py-2 font-semibold text-slate-800 dark:text-slate-200">Unifamiliar e Multifamiliar</td>
-                                                    <td class="px-3 py-2 text-slate-700 dark:text-slate-300">02 pessoas / quarto</td>
-                                                    <td class="px-3 py-2 text-center font-bold text-brand-800 dark:text-brand-300">150 lts / pessoa</td>
-                                                    <td class="px-3 py-2 text-center text-slate-700 dark:text-slate-300">4,6 lts / pessoa</td>
-                                                </tr>
-                                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition">
-                                                    <td class="px-3 py-2 font-bold text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-800" rowspan="7">Não Habitacional</td>
-                                                    <td class="px-3 py-2 text-slate-700 dark:text-slate-300">Comércio varejista</td>
-                                                    <td class="px-3 py-2 text-slate-700 dark:text-slate-300">01 pessoa / 7,00m²</td>
-                                                    <td class="px-3 py-2 text-center text-slate-700 dark:text-slate-300">80 lts / pessoa</td>
-                                                    <td class="px-3 py-2 text-center text-slate-700 dark:text-slate-300">4,6 lts / pessoa</td>
-                                                </tr>
-                                                <tr class="bg-slate-50/60 dark:bg-slate-700/20 hover:bg-slate-100 dark:hover:bg-slate-700/40 transition">
-                                                    <td class="px-3 py-2 text-slate-700 dark:text-slate-300">Comércio atacadista</td>
-                                                    <td class="px-3 py-2 text-slate-700 dark:text-slate-300">01 pessoa / 30,00m²</td>
-                                                    <td class="px-3 py-2 text-center text-slate-700 dark:text-slate-300">80 lts / pessoa</td>
-                                                    <td class="px-3 py-2 text-center text-slate-700 dark:text-slate-300">4,6 lts / pessoa</td>
-                                                </tr>
-                                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition">
-                                                    <td class="px-3 py-2 text-slate-700 dark:text-slate-300 text-[11px]">Serviços técnicos, financeiros, pessoais, de reparação, diversionais e religiosos e serviço público</td>
-                                                    <td class="px-3 py-2 text-slate-700 dark:text-slate-300">01 pessoa / 7,00m²</td>
-                                                    <td class="px-3 py-2 text-center text-slate-700 dark:text-slate-300">80 lts / pessoa</td>
-                                                    <td class="px-3 py-2 text-center text-slate-700 dark:text-slate-300">4,6 lts / pessoa</td>
-                                                </tr>
-                                                <tr class="bg-slate-50/60 dark:bg-slate-700/20 hover:bg-slate-100 dark:hover:bg-slate-700/40 transition">
-                                                    <td class="px-3 py-2 font-medium text-slate-700 dark:text-slate-300">Serviço de saúde</td>
-                                                    <td class="px-3 py-2 text-slate-700 dark:text-slate-300">2,5 pessoas / leito</td>
-                                                    <td class="px-3 py-2 text-center text-slate-700 dark:text-slate-300">160 lts / pessoa</td>
-                                                    <td class="px-3 py-2 text-center text-[10px] italic font-medium text-amber-800 dark:text-amber-300 bg-amber-50 dark:bg-amber-900/20">Consultar Órgão de Limpeza Urbana</td>
-                                                </tr>
-                                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition">
-                                                    <td class="px-3 py-2 font-medium text-slate-700 dark:text-slate-300">Serviço de educação</td>
-                                                    <td class="px-3 py-2 text-slate-700 dark:text-slate-300">01 aluno / 1,5m² de sala</td>
-                                                    <td class="px-3 py-2 text-center text-slate-700 dark:text-slate-300">40 lts / aluno</td>
-                                                    <td class="px-3 py-2 text-center text-slate-700 dark:text-slate-300">4,6 lts / pessoa</td>
-                                                </tr>
-                                                <tr class="bg-slate-50/60 dark:bg-slate-700/20 hover:bg-slate-100 dark:hover:bg-slate-700/40 transition">
-                                                    <td class="px-3 py-2 font-medium text-slate-700 dark:text-slate-300">Serviço de hotelaria</td>
-                                                    <td class="px-3 py-2 text-slate-700 dark:text-slate-300">02 pessoas / quarto</td>
-                                                    <td class="px-3 py-2 text-center text-slate-700 dark:text-slate-300">200 lts / pessoa</td>
-                                                    <td class="px-3 py-2 text-center text-slate-700 dark:text-slate-300">6,9 lts / pessoa</td>
-                                                </tr>
-                                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition">
-                                                    <td class="px-3 py-2 font-medium text-slate-700 dark:text-slate-300">Indústrias</td>
-                                                    <td class="px-3 py-2 text-slate-700 dark:text-slate-300">01 pessoa / 30,00m²</td>
-                                                    <td class="px-3 py-2 text-center text-slate-700 dark:text-slate-300">80 lts / pessoa</td>
-                                                    <td class="px-3 py-2 text-center text-[10px] italic font-medium text-amber-800 dark:text-amber-300 bg-amber-50 dark:bg-amber-900/20">Consultar Órgão de Limpeza Urbana</td>
-                                                </tr>
-                                                <tr class="border-t-2 border-slate-300 dark:border-slate-600 bg-blue-50/40 dark:bg-blue-950/10 hover:bg-blue-50 transition">
-                                                    <td class="px-3 py-2 font-bold text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-800" rowspan="2">Mistos</td>
-                                                    <td class="px-3 py-2 text-slate-700 dark:text-slate-300">Habitacional + não habitacional</td>
-                                                    <td class="px-3 py-2 text-center italic text-slate-400 font-semibold">(3)</td>
-                                                    <td class="px-3 py-2 text-center italic text-slate-400 font-semibold">(4)</td>
-                                                    <td class="px-3 py-2 text-center text-slate-700 dark:text-slate-300">4,6 lts / pessoa</td>
-                                                </tr>
-                                                <tr class="bg-blue-50/40 dark:bg-blue-950/10 hover:bg-blue-50 transition">
-                                                    <td class="px-3 py-2 text-slate-700 dark:text-slate-300">Não habitacional + não habitacional</td>
-                                                    <td class="px-3 py-2 text-center italic text-slate-400 font-semibold">(3)</td>
-                                                    <td class="px-3 py-2 text-center italic text-slate-400 font-semibold">(4)</td>
-                                                    <td class="px-3 py-2 text-center text-slate-700 dark:text-slate-300">4,6 lts / pessoa</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                    <!-- Observações Técnicas -->
-                                    <div class="bg-slate-900 dark:bg-slate-950 text-white rounded-xl p-4 border-l-4 border-cyan-400">
-                                        <div class="flex items-center justify-between mb-3 border-b border-slate-700 pb-2">
-                                            <span class="bg-cyan-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider flex items-center gap-1">
-                                                <i class="fa-solid fa-triangle-exclamation text-[9px]"></i> Observações Técnicas (Notas 1 a 8)
-                                            </span>
-                                            <span class="text-[10px] text-cyan-300 font-medium">Instruções aos Projetistas</span>
-                                        </div>
-                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-[11px] leading-snug text-slate-200">
-                                            <p><strong class="text-cyan-300">1.</strong> O reservatório inferior deverá ter o <u class="decoration-cyan-400">dobro do volume</u> calculado para o superior.</p>
-                                            <p><strong class="text-cyan-300">2.</strong> Os volumes serão acrescidos de reserva para combate a incêndio (Corpo de Bombeiros/PE).</p>
-                                            <p><strong class="text-cyan-300">3.</strong> A densidade populacional deverá ser aquela específica para as atividades inseridas na edificação.</p>
-                                            <p><strong class="text-cyan-300">4.</strong> Os volumes por pessoa deverão atender às quantidades indicadas para cada atividade.</p>
-                                            <p><strong class="text-cyan-300">5.</strong> <strong>Lixo:</strong> <span class="bg-slate-700 px-1 rounded text-cyan-100">Até 100 L = 01 tonel</span> | <span class="bg-slate-700 px-1 rounded text-cyan-100">Até 1.000 L = 10 tonéis ou 01 container</span></p>
-                                            <p><strong class="text-cyan-300">6.</strong> Quantidade máxima de containers = 03 (três) unidades.</p>
-                                            <p><strong class="text-cyan-300">7.</strong> Para quarto de serviço, quando houver, considerar 01 pessoa / quarto.</p>
-                                            <p><strong class="text-cyan-300">8.</strong> No cálculo da área, <u class="decoration-amber-400 text-amber-200">não computar</u> as áreas de estacionamento.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- RIGHT SIDE: Diagram + Calculator (5 cols) -->
-                                <div class="xl:col-span-5 flex flex-col gap-4">
-
-                                    <!-- Volume Ratio Diagram -->
-                                    <div class="bg-blue-50 dark:bg-blue-950/20 rounded-xl p-4 border border-blue-200 dark:border-blue-900/50 guide-card-hover">
-                                        <h3 id="regra-proporcional" class="text-sm font-extrabold text-brand-900 dark:text-brand-300 uppercase tracking-wide mb-3 flex items-center gap-2 scroll-mt-20">
-                                            <i class="fa-solid fa-chart-pie text-brand-500"></i> Regra Proporcional do Volume Total
-                                        </h3>
-                                        <div class="grid grid-cols-3 gap-2 text-center">
-                                            <div class="bg-white dark:bg-slate-800 p-3 rounded-xl border border-blue-200 dark:border-blue-800 flex flex-col items-center shadow-sm">
-                                                <div class="w-10 h-10 bg-brand-100 dark:bg-brand-900/40 rounded-full flex items-center justify-center text-brand-700 dark:text-brand-300 font-black text-base mb-2">1×</div>
-                                                <span class="text-[10px] font-bold text-brand-900 dark:text-brand-300 uppercase leading-tight">Res. Superior</span>
-                                                <span class="text-[10px] text-brand-600 dark:text-brand-400 mt-1">Vol. da Tabela</span>
-                                                <span class="text-[11px] font-extrabold text-brand-800 dark:text-brand-300 bg-brand-50 dark:bg-brand-900/30 px-2 py-0.5 rounded-full mt-1.5">33,3%</span>
-                                            </div>
-                                            <div class="bg-brand-600 text-white p-3 rounded-xl border border-brand-700 flex flex-col items-center shadow-md">
-                                                <div class="w-10 h-10 bg-white text-brand-900 rounded-full flex items-center justify-center font-black text-base mb-2">2×</div>
-                                                <span class="text-[10px] font-bold uppercase leading-tight">Res. Inferior</span>
-                                                <span class="text-[10px] text-brand-100 mt-1">Dobro do Sup.</span>
-                                                <span class="text-[11px] font-extrabold text-cyan-200 bg-brand-800/60 px-2 py-0.5 rounded-full mt-1.5">66,7%</span>
-                                            </div>
-                                            <div class="bg-slate-900 dark:bg-slate-950 text-white p-3 rounded-xl border border-slate-700 flex flex-col items-center shadow-md">
-                                                <div class="w-10 h-10 bg-cyan-400 text-slate-950 rounded-full flex items-center justify-center font-black text-base mb-2">3×</div>
-                                                <span class="text-[10px] font-bold text-cyan-300 uppercase leading-tight">Vol. Total</span>
-                                                <span class="text-[10px] text-slate-300 mt-1 font-mono">V_sup + V_inf</span>
-                                                <span class="text-[11px] font-extrabold text-white bg-slate-800 px-2 py-0.5 rounded-full mt-1.5">100%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Interactive Calculator -->
-                                    <div class="bg-white dark:bg-slate-800 rounded-xl p-4 border-2 border-brand-500 shadow-md flex-grow guide-card-hover">
-                                        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-3">
-                                            <span class="text-[11px] font-extrabold text-white bg-gradient-to-r from-brand-700 to-brand-600 px-3 py-1 rounded-lg uppercase flex items-center gap-1.5">
-                                                <i class="fa-solid fa-calculator text-cyan-300"></i> Calculadora Dinâmica de Volume
-                                            </span>
-                                            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">1 m³ = 1.000 Litros</span>
-                                        </div>
-
-                                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mb-3 leading-tight">Insira as dimensões internas úteis do reservatório para obter o volume:</p>
-
-                                        <div class="grid grid-cols-3 gap-2 bg-slate-50 dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-700 mb-3">
-                                            <div>
-                                                <label class="block text-[9px] font-black text-slate-600 dark:text-slate-400 uppercase mb-1">Comprimento (m)</label>
-                                                <input type="number" id="res-comprimento" step="0.1" min="0" value="3.0" oninput="calcReservatorio()"
-                                                    class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg px-2 py-1.5 font-mono text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200 dark:focus:ring-brand-800 transition">
-                                            </div>
-                                            <div>
-                                                <label class="block text-[9px] font-black text-slate-600 dark:text-slate-400 uppercase mb-1">Largura (m)</label>
-                                                <input type="number" id="res-largura" step="0.1" min="0" value="2.0" oninput="calcReservatorio()"
-                                                    class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg px-2 py-1.5 font-mono text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200 dark:focus:ring-brand-800 transition">
-                                            </div>
-                                            <div>
-                                                <label class="block text-[9px] font-black text-slate-600 dark:text-slate-400 uppercase mb-1">Alt. Útil (m)</label>
-                                                <input type="number" id="res-altura" step="0.1" min="0" value="1.0" oninput="calcReservatorio()"
-                                                    class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg px-2 py-1.5 font-mono text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200 dark:focus:ring-brand-800 transition">
-                                            </div>
-                                        </div>
-
-                                        <!-- Result display -->
-                                        <div class="bg-brand-950 dark:bg-slate-900 text-white p-3 rounded-xl border border-brand-800 shadow-inner flex justify-between items-center mb-3">
-                                            <div>
-                                                <span class="block text-[9px] text-cyan-400 font-black uppercase tracking-wider">Capacidade Total</span>
-                                                <span class="text-[11px] text-slate-300 font-mono" id="res-formula">3.0m × 2.0m × 1.0m = 6.00 m³</span>
-                                            </div>
-                                            <div class="text-right">
-                                                <span class="text-2xl font-black font-mono text-cyan-400" id="res-litros">6.000 L</span>
-                                            </div>
-                                        </div>
-
-                                        <!-- Reference example -->
-                                        <div class="space-y-1.5 border-t border-slate-100 dark:border-slate-700 pt-3">
-                                            <div class="bg-slate-50 dark:bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 flex justify-between items-center">
-                                                <span class="text-[10px] font-bold text-slate-700 dark:text-slate-300 uppercase">Exemplo de Referência (20 Quartos)</span>
-                                                <span class="text-[10px] font-mono text-brand-700 dark:text-brand-400 font-bold">Pop = 40 pess.</span>
-                                            </div>
-                                            <div class="grid grid-cols-2 gap-1.5 text-[11px]">
-                                                <div class="bg-brand-50 dark:bg-brand-950/30 p-2 rounded-lg border border-brand-100 dark:border-brand-900/50">
-                                                    <span class="block font-bold text-brand-800 dark:text-brand-400">V_sup (40 × 150 L):</span>
-                                                    <span class="font-mono text-brand-900 dark:text-brand-300 font-extrabold text-sm">6.000 Litros</span>
-                                                </div>
-                                                <div class="bg-brand-100 dark:bg-brand-900/30 p-2 rounded-lg border border-brand-200 dark:border-brand-800">
-                                                    <span class="block font-bold text-brand-900 dark:text-brand-300">V_inf (2 × V_sup):</span>
-                                                    <span class="font-mono text-brand-950 dark:text-brand-200 font-extrabold text-sm">12.000 Litros</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div><!-- /right side -->
-                            </div><!-- /grid -->
-
-                            <!-- Footer reference -->
-                            <div class="pt-3 border-t border-slate-100 dark:border-slate-700 flex flex-wrap justify-between items-center gap-2 text-[11px] text-slate-400 dark:text-slate-500">
-                                <span class="font-bold text-slate-600 dark:text-slate-400">Secretaria de Projetos Estratégicos · SEPES — Núcleo de Legalização</span>
-                                <span>Documento padronizado para orientação de projetistas e analistas de projetos. V00</span>
-                            </div>
-
-                        </div><!-- /panel -->
-                    </article>
-
-                    <!--
-                    ══════════════════════════════════════════════════════════
-                    TEMPLATE PARA NOVO GUIA — copie daqui para adicionar um novo:
-
-                    <article id="guia-SLUG" class="guide-content space-y-6 hidden">
-                        <div class="hero-banner rounded-2xl p-6 sm:p-8 text-white shadow-xl relative">
-                            <div class="relative z-10">
-                                <div class="cat-pill mb-3" style="background:rgba(255,255,255,.18);color:white;">
-                                    <i class="fa-solid fa-ICONE"></i> CATEGORIA
-                                </div>
-                                <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">TÍTULO DO GUIA</h1>
-                                <p class="text-blue-100 mt-2 text-sm max-w-xl leading-relaxed">SUBTÍTULO / DESCRIÇÃO</p>
-                            </div>
-                        </div>
-                        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm">
-                            CONTEÚDO DO GUIA AQUI
-                        </div>
-                    </article>
-
-                    + Adicionar no <nav> do sidebar:
-                    <li>
-                        <a href="#guia-SLUG" data-guide="guia-SLUG"
-                           class="guide-link flex items-center justify-between px-3 py-2 text-sm rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
-                            <span>NOME DO GUIA</span>
-                        </a>
-                    </li>
-                    ══════════════════════════════════════════════════════════
-                    -->
-
-                </div><!-- /guide content -->
-
-                <!-- Right TOC -->
-                <aside class="w-52 hidden xl:block shrink-0">
-                    <div class="sticky top-6 p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
-                        <h3 class="text-[11px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-list-ul text-brand-400"></i> Neste Guia
-                        </h3>
-                        <nav id="table-of-contents" class="text-xs space-y-1.5"></nav>
-                    </div>
-                </aside>
-
-            </div>
-        </main>
+        <button id="mobile-menu-btn" class="p-2 text-slate-600 hover:text-slate-900 bg-slate-100 rounded-lg">
+            <i class="fa-solid fa-bars text-xl"></i>
+        </button>
     </div>
 
-    <!-- ═══════════════════════════ SCRIPTS ═══════════════════════════ -->
+    <!-- NAVEGAÇÃO LATERAL (SIDEBAR) -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 w-72 bg-white border-r border-slate-200 transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col justify-between shrink-0 shadow-sm">
+        <div class="p-5 overflow-y-auto flex-1 space-y-6">
+            
+            <!-- Logo Portal -->
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                <div class="flex items-center gap-3">
+                    <div class="bg-sky-600 text-white p-2.5 rounded-xl shadow-lg shadow-sky-600/20">
+                        <i class="fa-solid fa-drafting-compass text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-extrabold text-slate-900 text-lg tracking-tight">Portal de Guias</h1>
+                        <p class="text-xs text-sky-600 font-medium">Arquitetura & Engenharia</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navegação por Categorias -->
+            <nav class="space-y-6">
+                <div>
+                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3">Geral</span>
+                    <div class="mt-2 space-y-1">
+                        <button onclick="switchTab('inicio')" id="nav-inicio" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold text-sky-700 bg-sky-50 border border-sky-200 text-left transition">
+                            <i class="fa-solid fa-house w-4 text-center"></i>
+                            <span>Início / Boas-Vindas</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3 flex items-center gap-2">
+                        <i class="fa-solid fa-compass-drafting text-sky-600"></i>
+                        <span>Diretrizes</span>
+                    </span>
+                    <div class="mt-2 space-y-1">
+                        <button onclick="switchTab('guia-diretrizes-gerais')" id="nav-guia-diretrizes-gerais" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-left transition">
+                            <i class="fa-solid fa-list-check w-4 text-center text-sky-600"></i>
+                            <span>DIRETRIZES GERAIS</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3 flex items-center gap-2">
+                        <i class="fa-solid fa-wheelchair text-sky-600"></i>
+                        <span>Acessibilidade</span>
+                    </span>
+                    <div class="mt-2 space-y-1">
+                        <button onclick="switchTab('guia-nbr9050-rampas')" id="nav-guia-nbr9050-rampas" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-left transition">
+                            <i class="fa-solid fa-wheelchair-move w-4 text-center text-sky-600"></i>
+                            <span>NBR 9050 - RAMPAS</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3 flex items-center gap-2">
+                        <i class="fa-solid fa-ruler-combined text-sky-600"></i>
+                        <span>BOAS PRÁTICAS</span>
+                    </span>
+                    <div class="mt-2 space-y-1">
+                        <button onclick="switchTab('guia-pranchas-iso216')" id="nav-guia-pranchas-iso216" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-left transition">
+                            <i class="fa-solid fa-file-lines w-4 text-center text-sky-600"></i>
+                            <span>PRANCHAS</span>
+                        </button>
+                        <button onclick="switchTab('guia-reservatorios')" id="nav-guia-reservatorios" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-left transition">
+                            <i class="fa-solid fa-faucet-drip w-4 text-center text-sky-600"></i>
+                            <span>RESERVATÓRIOS</span>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="p-4 border-t border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-3">
+                <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                <span class="text-xs text-slate-500 font-medium">Padrões NBR/ISO Ativos</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ÁREA DE CONTEÚDO PRINCIPAL -->
+    <div class="flex-1 min-w-0 flex flex-col h-screen overflow-y-auto">
+        
+        <!-- ARTICLE: INÍCIO -->
+        <article id="tab-inicio" class="tab-content active bg-black min-h-full">
+        <!-- Banner Jovem & Dinâmico -->
+        <section class="blueprint-bg text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div class="max-w-3xl space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-sky-500/20 text-sky-400 border border-sky-500/30">
+                        <i class="fa-solid fa-bolt text-amber-400"></i> Seu guia técnico sem complicação
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+                        Fala, galera! 👋<br>
+                        Bora simplificar o <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-brand-500">workflow técnico?</span>
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-light">
+                        Chega de perder tempo buscando informações desatualizadas e calculando equipamentos a mão. O <strong>Portal de Guias SEPE</strong> foi desenhado pra você mandar bem nos projetos com agilidade, precisão e zero perrengue.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                    </div>
+                </div>
+                <!-- LOGO GOVERNO DE PERNAMBUCO (CANTO SUPERIOR DIREITO) -->
+                <div class="shrink-0 self-start md:self-auto bg-slate-900/60 p-3 rounded-2xl border border-slate-700/50 backdrop-blur-sm">
+                    <img src="GOVPE-SPE-REC-HRETAP2-ARQ-ABLX-B-001-SEPE_Prancheta1(1)-4269909.jpg" alt="Secretaria de Projetos Estratégicos - Governo de Pernambuco" class="h-16 sm:h-20 w-auto object-contain">
+                </div>
+            </div>
+        </section>
+
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+            <!-- Texto de Base Adaptado -->
+            <div class="bg-gradient-to-br from-slate-900 to-slate-800 dark:from-slate-800/80 dark:to-slate-900 border border-slate-700/80 p-6 sm:p-8 rounded-2xl shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-10 text-sky-400 pointer-events-none">
+                    <i class="fa-solid fa-compass-drafting text-[180px]"></i>
+                </div>
+                <div class="relative z-10 space-y-3">
+                    <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-widest flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info"></i> Como utilizar o Portal?
+                    </span>
+                    <p class="text-slate-200 text-base sm:text-lg leading-relaxed font-medium">
+                        "Navegue pelas abas para consultar as guias técnicas que precisa. Cada seção reúne tabelas oficiais, parâmetros explicativos e calculadoras interativas 100% alinhadas às normas brasileiras e internacionais."
+                    </p>
+                </div>
+            </div>
+        </main>
+        </article>
+
+        <!-- ARTICLE: GUIA DIRETRIZES GERAIS -->
+        <article id="guia-diretrizes-gerais" class="tab-content hidden flex-1 p-4 sm:p-8 overflow-x-auto">
+            <style>
+                .color-priorizar-bg { background-color: #1e7e45; }
+                .color-priorizar-card { background-color: #edf7ed; }
+                .color-priorizar-text { color: #145a2d; }
+                .color-priorizar-border { border-color: #a3d9a5; }
+
+                .color-evitar-bg { background-color: #e59b12; }
+                .color-evitar-card { background-color: #fef8e8; }
+                .color-evitar-text { color: #925200; }
+                .color-evitar-border { border-color: #f7d282; }
+
+                .color-nao-intervir-bg { background-color: #be1e2d; }
+                .color-nao-intervir-card { background-color: #fde8e8; }
+                .color-nao-intervir-text { color: #8a1c1c; }
+                .color-nao-intervir-border { border-color: #f9b1b1; }
+
+                .color-checklist-bg { background-color: #0d47a1; }
+                .color-checklist-card { background-color: #eef5fc; }
+                .color-checklist-border { border-color: #b3d4fc; }
+
+                .custom-checkbox {
+                    appearance: none;
+                    -webkit-appearance: none;
+                    width: 14px;
+                    height: 14px;
+                    border: 2px solid #0d47a1;
+                    border-radius: 2px;
+                    outline: none;
+                    cursor: pointer;
+                    position: relative;
+                    background-color: white;
+                    flex-shrink: 0;
+                }
+                .custom-checkbox:checked {
+                    background-color: #0d47a1;
+                }
+                .custom-checkbox:checked::after {
+                    content: '';
+                    position: absolute;
+                    left: 3px;
+                    top: 0px;
+                    width: 4px;
+                    height: 8px;
+                    border: solid white;
+                    border-width: 0 2px 2px 0;
+                    transform: rotate(45deg);
+                }
+
+                .bullet-list {
+                    list-style: none;
+                    padding-left: 0;
+                }
+                .bullet-list li {
+                    position: relative;
+                    padding-left: 10px;
+                    margin-bottom: 2px;
+                    font-size: 8px;
+                    line-height: 1.25;
+                }
+                .bullet-list li::before {
+                    content: "•";
+                    position: absolute;
+                    left: 0;
+                    color: currentColor;
+                    font-weight: bold;
+                }
+            </style>
+
+            <div class="max-w-[1200px] mx-auto bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                
+                <!-- CABEÇALHO -->
+                <header class="flex justify-between items-center border-b border-slate-200 pb-1.5 mb-2">
+                    <div class="flex items-center gap-2 w-[22%]">
+                        <div>
+                            <h1 class="text-2xl font-black tracking-tight text-slate-900 leading-none">SEPE</h1>
+                        </div>
+                    </div>
+
+                    <div class="text-center w-[56%] px-2">
+                        <div class="flex items-center justify-center gap-2">
+                            <span class="h-6 w-1 bg-blue-700 inline-block"></span>
+                            <h1 class="text-xl font-black text-blue-900 tracking-wide uppercase leading-tight">DIRETRIZES DE PROJETOS</h1>
+                            <span class="h-6 w-1 bg-blue-700 inline-block"></span>
+                        </div>
+                        <p class="text-[8.5px] text-slate-600 font-medium leading-tight mt-0.5">
+                            Orientações para desenvolvimento de projetos e obras nas unidades de saúde, visando maior eficiência na elaboração de projetos, redução de impactos e licenciamentos menos complexos
+                        </p>
+                    </div>
+
+                    <div class="flex items-center justify-end gap-2 w-[22%]">
+                        <div class="text-right">
+                            <p class="text-[8px] font-semibold text-slate-700 leading-tight">Secretaria<br>de Projetos<br>Estratégicos</p>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- CORPO PRINCIPAL -->
+                <main class="grid grid-cols-1 md:grid-cols-4 gap-2 flex-grow">
+
+                    <!-- ================= COLUNA 1: PRIORIZAR ================= -->
+                    <section class="flex flex-col h-full">
+                        <div class="color-priorizar-bg text-white text-center py-1 px-2 rounded-t font-extrabold text-[11px] tracking-wider uppercase mb-1 shadow-xs">
+                            PRIORIZAR
+                        </div>
+                        <div class="space-y-1 flex-grow flex flex-col justify-between">
+                            <div class="color-priorizar-card p-1.5 rounded border color-priorizar-border flex gap-1.5 items-start">
+                                <svg class="w-5 h-5 color-priorizar-text flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V5l12-2v12M9 17l12-2M9 17H5a2 2 0 01-2-2V5a2 2 0 012-2h4M9 5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H11a2 2 0 01-2-2"></path>
+                                </svg>
+                                <div>
+                                    <h2 class="font-black text-[9px] color-priorizar-text uppercase leading-tight mb-0.5">READEQUAÇÕES INTERNAS</h2>
+                                    <ul class="bullet-list text-slate-700">
+                                        <li>Reorganização de layouts</li>
+                                        <li>Redistribuição de ambientes</li>
+                                        <li>Otimização de fluxos</li>
+                                        <li>Aproveitamento da estrutura existente</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="color-priorizar-card p-1.5 rounded border color-priorizar-border flex gap-1.5 items-start">
+                                <svg class="w-5 h-5 color-priorizar-text flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a2 2 0 01-2 2 2 2 0 01-2-2V4zm-6 8a2 2 0 100-4 2 2 0 000 4zm0 0v8m0-8h14m0 0a2 2 0 100-4 2 2 0 000 4zm0 0v8m-7-4h.01"></path>
+                                </svg>
+                                <div>
+                                    <h2 class="font-black text-[9px] color-priorizar-text uppercase leading-tight mb-0.5">REFORMAS EM EDIFICAÇÕES EXISTENTES</h2>
+                                    <ul class="bullet-list text-slate-700">
+                                        <li>Modernização de instalações</li>
+                                        <li>Adequações normativas</li>
+                                        <li>Atualizações funcionais</li>
+                                        <li>Retrofit</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="color-priorizar-card p-1.5 rounded border color-priorizar-border flex gap-1.5 items-start">
+                                <svg class="w-5 h-5 color-priorizar-text flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V11m0 0V7m0 4h4m-4 0H7"></path>
+                                </svg>
+                                <div>
+                                    <h2 class="font-black text-[9px] color-priorizar-text uppercase leading-tight mb-0.5">AMPLIAÇÕES</h2>
+                                    <ul class="bullet-list text-slate-700">
+                                        <li>Verticais, sempre que tecnicamente viáveis, respeitando gabaritos e coeficientes urbanos</li>
+                                        <li>Horizontais apenas quando estritamente necessários</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="color-priorizar-card p-1.5 rounded border color-priorizar-border flex gap-1.5 items-start">
+                                <svg class="w-5 h-5 color-priorizar-text flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                                </svg>
+                                <div>
+                                    <h2 class="font-black text-[9px] color-priorizar-text uppercase leading-tight mb-0.5">REFORMAS DE FACHADAS</h2>
+                                    <ul class="bullet-list text-slate-700">
+                                        <li>Recuperação de revestimentos</li>
+                                        <li>Modernização arquitetônica</li>
+                                        <li>Adequações de acessibilidade</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="color-priorizar-card p-1.5 rounded border color-priorizar-border flex gap-1.5 items-start">
+                                <svg class="w-5 h-5 color-priorizar-text flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4 2 2 0 000 4zm0 0v2m0-6V4m6 6v10m6-2a2 2 0 100-4 2 2 0 000 4zm0 0v2m0-6V4"></path>
+                                </svg>
+                                <div>
+                                    <h2 class="font-black text-[9px] color-priorizar-text uppercase leading-tight mb-0.5">APROVEITAMENTO DA INFRAESTRUTURA EXISTENTE</h2>
+                                    <ul class="bullet-list text-slate-700">
+                                        <li>Redes de drenagem</li>
+                                        <li>Redes de esgoto</li>
+                                        <li>Sistemas Elétricos</li>
+                                        <li>Reservatórios existentes</li>
+                                        <li>Redes de gases</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- ================= COLUNA 2: EVITAR ================= -->
+                    <section class="flex flex-col h-full">
+                        <div class="color-evitar-bg text-white text-center py-1 px-2 rounded-t font-extrabold text-[11px] tracking-wider uppercase mb-1 shadow-xs">
+                            EVITAR
+                        </div>
+                        <div class="space-y-1 flex-grow flex flex-col justify-between">
+                            <div class="color-evitar-card p-1.5 rounded border color-evitar-border flex gap-1.5 items-start">
+                                <svg class="w-5 h-5 color-evitar-text flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
+                                </svg>
+                                <div>
+                                    <h2 class="font-black text-[9px] color-evitar-text uppercase leading-tight mb-0.5">MOVIMENTAÇÕES SIGNIFICATIVAS DE TERRA</h2>
+                                    <ul class="bullet-list text-slate-700">
+                                        <li>Cortes</li>
+                                        <li>Aterros</li>
+                                        <li>Contenções externas</li>
+                                        <li>Alterações topográficas relevantes</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="color-evitar-card p-1.5 rounded border color-evitar-border flex gap-1.5 items-start">
+                                <svg class="w-5 h-5 color-evitar-text flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                                </svg>
+                                <div>
+                                    <h2 class="font-black text-[9px] color-evitar-text uppercase leading-tight mb-0.5">AMPLIAÇÕES HORIZONTAIS DESNECESSÁRIAS</h2>
+                                    <ul class="bullet-list text-slate-700">
+                                        <li>Ocupação de áreas livres</li>
+                                        <li>Aumento da impermeabilização do solo</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="color-evitar-card p-1.5 rounded border color-evitar-border flex gap-1.5 items-start">
+                                <svg class="w-5 h-5 color-evitar-text flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                                <div>
+                                    <h2 class="font-black text-[9px] color-evitar-text uppercase leading-tight mb-0.5">INTERVENÇÕES PRÓXIMAS A CORPOS HÍDRICOS</h2>
+                                    <ul class="bullet-list text-slate-700">
+                                        <li>Rios</li>
+                                        <li>Canais</li>
+                                        <li>Lagoas</li>
+                                        <li>Áreas alagáveis</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="color-evitar-card p-1.5 rounded border color-evitar-border flex gap-1.5 items-start">
+                                <svg class="w-5 h-5 color-evitar-text flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                                </svg>
+                                <div>
+                                    <h2 class="font-black text-[9px] color-evitar-text uppercase leading-tight mb-0.5">ALTERAÇÕES EM SISTEMAS NATURAIS DE DRENAGEM</h2>
+                                    <ul class="bullet-list text-slate-700">
+                                        <li>Canalizações</li>
+                                        <li>Aterros de depressões naturais</li>
+                                        <li>Modificações de escoamento superficial</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="color-evitar-card p-1.5 rounded border color-evitar-border flex gap-1.5 items-start">
+                                <svg class="w-5 h-5 color-evitar-text flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                </svg>
+                                <div>
+                                    <h2 class="font-black text-[9px] color-evitar-text uppercase leading-tight mb-0.5">VEGETAÇÕES</h2>
+                                    <ul class="bullet-list text-slate-700">
+                                        <li>Supressão de espécies arbóreas</li>
+                                        <li>Intervenções em APPs</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- ================= COLUNA 3: NÃO INTERVIR SEM ANÁLISE PRÉVIA ================= -->
+                    <section class="flex flex-col h-full">
+                        <div class="color-nao-intervir-bg text-white text-center py-1 px-1 rounded-t font-extrabold text-[10px] tracking-tight uppercase mb-1 shadow-xs leading-tight">
+                            NÃO INTERVIR SEM ANÁLISE PRÉVIA DE VIABILIDADES
+                        </div>
+                        <div class="space-y-1 flex-grow flex flex-col justify-between">
+                            <div class="color-nao-intervir-card p-1.5 rounded border color-nao-intervir-border flex gap-1.5 items-start">
+                                <svg class="w-5 h-5 color-nao-intervir-text flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                </svg>
+                                <div>
+                                    <h2 class="font-black text-[9px] color-nao-intervir-text uppercase leading-tight mb-0.5">VEGETAÇÕES</h2>
+                                    <ul class="bullet-list text-slate-700">
+                                        <li>Priorizar preservação de espécies arbóreas</li>
+                                        <li>Compatibilização com Inventário Florestal</li>
+                                        <li>Compensações municipais de solo natural</li>
+                                        <li>Recuos em torno de áreas úmidas e alagadas</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="color-nao-intervir-card p-1.5 rounded border color-nao-intervir-border flex gap-1.5 items-start">
+                                <svg class="w-5 h-5 color-nao-intervir-text flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                                <div>
+                                    <h2 class="font-black text-[9px] color-nao-intervir-text uppercase leading-tight mb-0.5">INSTALAÇÕES</h2>
+                                    <ul class="bullet-list text-slate-700">
+                                        <li>Novas ETEs</li>
+                                        <li>Expansão de redes públicas de água e esgoto, priorizando o aproveitamento dos pontos de conexão existentes</li>
+                                        <li>Aumento das demandas de água, esgoto, drenagem, energia e gases (avaliar a capacidade das infraestruturas existentes)</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="color-nao-intervir-card p-1.5 rounded border color-nao-intervir-border flex gap-1.5 items-start">
+                                <svg class="w-5 h-5 color-nao-intervir-text flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                                </svg>
+                                <div>
+                                    <h2 class="font-black text-[9px] color-nao-intervir-text uppercase leading-tight mb-0.5">ESTRADAS E RODOVIAS</h2>
+                                    <ul class="bullet-list text-slate-700">
+                                        <li>Novos acessos diretos em estradas e rodovias (priorize o uso de vias locais)</li>
+                                        <li>Ocupar no limite dos recuos e faixas de domínio</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="color-nao-intervir-card p-1.5 rounded border color-nao-intervir-border flex gap-1.5 items-start">
+                                <svg class="w-5 h-5 color-nao-intervir-text flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
+                                </svg>
+                                <div>
+                                    <h2 class="font-black text-[9px] color-nao-intervir-text uppercase leading-tight mb-0.5">PROJETOS ARQUITETÔNICOS</h2>
+                                    <p class="text-[8px] text-slate-700 leading-tight">
+                                        Sempre que as intervenções forem passíveis de aprovação de projetos arquitetônicos nos municípios elas terão como requisito a emissão de Licenciamentos Ambientais. Reformas internas e readequações sem acréscimos de área construída são processos mais simplificados de licenciamento
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- ================= COLUNA 4: CHECKLIST RÁPIDO ================= -->
+                    <section class="flex flex-col h-full">
+                        <div class="color-checklist-bg text-white text-center py-1 px-2 rounded-t font-extrabold text-[11px] tracking-wider uppercase mb-1 shadow-xs">
+                            CHECKLIST RÁPIDO
+                        </div>
+                        <div class="color-checklist-card p-1.5 rounded border color-checklist-border flex-grow flex flex-col justify-between space-y-1">
+                            <label class="flex items-start gap-2 bg-white p-1 rounded border border-blue-100 shadow-2xs cursor-pointer hover:bg-blue-50/50 transition-colors">
+                                <input type="checkbox" class="custom-checkbox mt-0.5">
+                                <span class="text-[8px] font-semibold text-slate-800 leading-tight">Há necessidade se supressão vegetal?</span>
+                            </label>
+                            <label class="flex items-start gap-2 bg-white p-1 rounded border border-blue-100 shadow-2xs cursor-pointer hover:bg-blue-50/50 transition-colors">
+                                <input type="checkbox" class="custom-checkbox mt-0.5">
+                                <span class="text-[8px] font-semibold text-slate-800 leading-tight">Existe movimentação significativa de terra?</span>
+                            </label>
+                            <label class="flex items-start gap-2 bg-white p-1 rounded border border-blue-100 shadow-2xs cursor-pointer hover:bg-blue-50/50 transition-colors">
+                                <input type="checkbox" class="custom-checkbox mt-0.5">
+                                <span class="text-[8px] font-semibold text-slate-800 leading-tight">Haverá ampliação de área construída?</span>
+                            </label>
+                            <label class="flex items-start gap-2 bg-white p-1 rounded border border-blue-100 shadow-2xs cursor-pointer hover:bg-blue-50/50 transition-colors">
+                                <input type="checkbox" class="custom-checkbox mt-0.5">
+                                <span class="text-[8px] font-semibold text-slate-800 leading-tight">Existe APP, manguezal ou corpo hídrico próximo?</span>
+                            </label>
+                            <label class="flex items-start gap-2 bg-white p-1 rounded border border-blue-100 shadow-2xs cursor-pointer hover:bg-blue-50/50 transition-colors">
+                                <input type="checkbox" class="custom-checkbox mt-0.5">
+                                <span class="text-[8px] font-semibold text-slate-800 leading-tight">O projeto interfere na drenagem natural do terreno?</span>
+                            </label>
+                            <label class="flex items-start gap-2 bg-white p-1 rounded border border-blue-100 shadow-2xs cursor-pointer hover:bg-blue-50/50 transition-colors">
+                                <input type="checkbox" class="custom-checkbox mt-0.5">
+                                <span class="text-[8px] font-semibold text-slate-800 leading-tight">O projeto prevê ETE ou tratamento próprio de efluentes?</span>
+                            </label>
+                            <label class="flex items-start gap-2 bg-white p-1 rounded border border-blue-100 shadow-2xs cursor-pointer hover:bg-blue-50/50 transition-colors">
+                                <input type="checkbox" class="custom-checkbox mt-0.5">
+                                <span class="text-[8px] font-semibold text-slate-800 leading-tight">O projeto prevê central de resíduos de saúde?</span>
+                            </label>
+                            <label class="flex items-start gap-2 bg-white p-1 rounded border border-blue-100 shadow-2xs cursor-pointer hover:bg-blue-50/50 transition-colors">
+                                <input type="checkbox" class="custom-checkbox mt-0.5">
+                                <span class="text-[8px] font-semibold text-slate-800 leading-tight">A solução pode ser atendida por reforma ou readequação interna?</span>
+                            </label>
+                            <label class="flex items-start gap-2 bg-white p-1 rounded border border-blue-100 shadow-2xs cursor-pointer hover:bg-blue-50/50 transition-colors">
+                                <input type="checkbox" class="custom-checkbox mt-0.5">
+                                <span class="text-[8px] font-semibold text-slate-800 leading-tight">É possível utilizar a área já edificada em vez de expandir a ocupação do terreno?</span>
+                            </label>
+                        </div>
+                    </section>
+
+                </main>
+
+                <!-- RODAPÉ DE PÁGINA DO INFOGRÁFICO -->
+                <footer class="mt-2 pt-2 border-t border-slate-200 grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+                    <div class="md:col-span-5 flex items-center gap-2 bg-blue-50/60 p-2 rounded-lg border border-blue-200">
+                        <div class="p-1.5 bg-blue-900 text-white rounded-full flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-black text-[10px] text-blue-900 uppercase tracking-wide">OBJETIVO</h3>
+                            <p class="text-[8px] text-slate-700 leading-tight">
+                                Estabelecer diretrizes que orientem a elaboração de projetos e a execução de obras nas unidades de saúde, de forma que <strong class="text-blue-900 font-extrabold">minimizem a mora dos licenciamentos</strong> e contribuam para a eficiência das políticas públicas da saúde.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-7 bg-slate-50 p-2 rounded-lg border border-slate-200">
+                        <h3 class="font-black text-[10px] text-blue-900 uppercase tracking-wide mb-1">IMPORTANTE</h3>
+                        <ul class="bullet-list text-slate-700 space-y-0.5">
+                            <li>Seguir as legislações aplicáveis à cada projeto;</li>
+                            <li>Realizar o diagnóstico ambiental da área antes de propor qualquer intervenção;</li>
+                            <li>Consultar previamente os órgãos ambientais pertinentes;</li>
+                            <li>O Plano de Gerenciamento de Resíduos (PGRCC) deverá ser feito para qualquer tipo de intervenção (passível ou não de Licenças Ambientais) seguindo rigorosamente o projeto arquitetônico. A obra só poderá iniciar com essa documentação aprovada pelo Órgão competente;</li>
+                            <li>Em caso de dúvidas ou necessidade de orientações adicionais, consulte o Núcleo de Legalização.</li>
+                        </ul>
+                    </div>
+                </footer>
+
+                <div class="flex justify-between items-center text-[7.5px] font-semibold text-slate-400 mt-1 pt-0.5 border-t border-slate-100">
+                    <span>V00 . JUNHO/2026 . NÚCLEO DE LEGALIZAÇÃO SEPES</span>
+                    <span>Documento Oficial de Diretrizes de Projeto - Secretaria de Projetos Estratégicos</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE: GUIA NBR 9050 RAMPAS -->
+        <article id="guia-nbr9050-rampas" class="tab-content hidden flex-1 grid-pattern">
+            <header class="border-b border-slate-200 bg-white/90 backdrop-blur-md sticky top-0 z-30 shadow-sm">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="bg-sky-600 text-white p-2.5 rounded-xl shadow-md shadow-sky-600/20">
+                            <i class="fa-solid font-bold fa-wheelchair-move text-2xl"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold tracking-wider text-sky-600 uppercase">Norma Brasileira Corrigida 2021</span>
+                            <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">ABNT NBR 9050:2020</h1>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2 text-xs font-medium text-sky-800 bg-sky-50 border border-sky-200 px-3 py-1.5 rounded-full">
+                        <i class="fa-solid fa-book-bookmark text-sky-600"></i>
+                        <span>Seção 6.6 - Rampas</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+                <!-- Banner Introdutório / Resumo Normativo -->
+                <section class="relative overflow-hidden rounded-3xl bg-white border border-slate-200 p-6 sm:p-10 shadow-sm">
+                    <div class="max-w-3xl space-y-4 relative z-10">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-medium bg-sky-100 text-sky-700 border border-sky-200">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <span>Conceito Técnico Básico</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight">
+                            PARÂMETROS DE ACESSIBILIDADE EM RAMPAS
+                        </h2>
+                        <blockquote class="p-4 bg-slate-50 rounded-xl border-l-4 border-sky-500 text-slate-700 text-sm leading-relaxed italic">
+                            "3.1.30 DEFINIÇÃO OFICIAL PARA RAMPA: inclinação da superfície do piso, longitudinal ao sentido de caminhamento, com declividade igual ou superior a 5%."
+                        </blockquote>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            A NBR 9050 fixa as dimensões, limites de inclinação, patamares de descanso e elementos de segurança necessários para garantir o acesso autônomo e seguro para todas as pessoas em edificações, mobiliários e vias públicas.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- TABELA 4: Dimensionamento Padrão de Rampas -->
+                <section class="space-y-6">
+                    <div class="border-l-4 border-sky-500 pl-4">
+                        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">TABELA 04 - DIMENSIONAMENTO DE RAMPAS (PROJETOS NOVOS)</h2>
+                        <p class="text-slate-500 text-sm mt-1">Parâmetros normativos obrigatórios para construção e novos projetos conforme a NBR 9050.</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs sm:text-sm">
+                                <thead class="bg-slate-100 text-slate-700 uppercase text-[11px] font-bold tracking-wider border-b border-slate-200">
+                                    <tr>
+                                        <th class="py-3.5 px-4">Inclinação (i) [%]</th>
+                                        <th class="py-3.5 px-4">Proporção (h:c)</th>
+                                        <th class="py-3.5 px-4">Desnível Máximo por Segmento - h (m)</th>
+                                        <th class="py-3.5 px-4">Número Máximo de Segmentos</th>
+                                        <th class="py-3.5 px-4">Observações Normativas</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 text-slate-700 font-mono text-xs">
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="py-3.5 px-4 font-bold text-emerald-600">5,00 %</td>
+                                        <td class="py-3.5 px-4">1 : 20</td>
+                                        <td class="py-3.5 px-4 font-semibold">Sem limite</td>
+                                        <td class="py-3.5 px-4">Sem limite</td>
+                                        <td class="py-3.5 px-4 font-sans text-slate-600 text-[11px]">Rota com inclinação suave. Dispensa obrigatoriedade de patamares intermediários contínuos.</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="py-3.5 px-4 font-bold text-sky-600">5,00 &lt; i ≤ 6,25 %</td>
+                                        <td class="py-3.5 px-4">1:20 a 1:16</td>
+                                        <td class="py-3.5 px-4 font-semibold">1,00 m</td>
+                                        <td class="py-3.5 px-4 font-semibold">Sem limite</td>
+                                        <td class="py-3.5 px-4 font-sans text-slate-600 text-[11px]">Recomendado para vencimento de grandes desníveis com segurança superior.</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="py-3.5 px-4 font-bold text-amber-600">6,25 &lt; i ≤ 8,33 %</td>
+                                        <td class="py-3.5 px-4">1:16 a 1:12.5</td>
+                                        <td class="py-3.5 px-4 font-semibold">0,80 m</td>
+                                        <td class="py-3.5 px-4 font-semibold">15 segmentos</td>
+                                        <td class="py-3.5 px-4 font-sans text-slate-600 text-[11px]">Limite máximo padrão para edificações e equipamentos urbanos normais.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TABELA 5: Reformas e Edificações Existentes -->
+                <section class="space-y-6">
+                    <div class="border-l-4 border-amber-500 pl-4">
+                        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">TABELA 05 - RAMPAS EM REFORMAS (EXCEÇÕES NORMATIVAS)</h2>
+                        <p class="text-slate-500 text-sm mt-1">Permitido exclusivamente quando comprovada a impossibilidade técnica em edificações existentes.</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs sm:text-sm">
+                                <thead class="bg-amber-50 text-amber-900 uppercase text-[11px] font-bold tracking-wider border-b border-amber-200">
+                                    <tr>
+                                        <th class="py-3.5 px-4">Inclinação (i) [%]</th>
+                                        <th class="py-3.5 px-4">Proporção (h:c)</th>
+                                        <th class="py-3.5 px-4">Desnível Máximo - h (m)</th>
+                                        <th class="py-3.5 px-4">Aplicação Restrita</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 text-slate-700 font-mono text-xs">
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="py-3.5 px-4 font-bold text-amber-600">8,33 &lt; i ≤ 10,00 %</td>
+                                        <td class="py-3.5 px-4">1:12.5 a 1:10</td>
+                                        <td class="py-3.5 px-4 font-semibold">0,20 m</td>
+                                        <td class="py-3.5 px-4 font-sans text-slate-600 text-[11px]">Apenas pequenos desníveis existentes em reformas com laudo de inviabilidade.</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="py-3.5 px-4 font-bold text-rose-600">10,00 &lt; i ≤ 12,50 %</td>
+                                        <td class="py-3.5 px-4">1:10 a 1:8</td>
+                                        <td class="py-3.5 px-4 font-semibold">0,075 m (7,5 cm)</td>
+                                        <td class="py-3.5 px-4 font-sans text-slate-600 text-[11px]">Uso estritamente excepcional para transição de soleiras ou pequenos degraus soltos.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- LARGURAS, PATAMARES E SEGURANÇA -->
+                <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                        <div class="w-10 h-10 bg-sky-100 text-sky-700 rounded-xl flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-arrows-left-right"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Largura Mínima Recomendada</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            A largura livre mínima recomendada para rampas é de <strong>1,20 m</strong> (largura admissível mínima em casos excepcionais de <strong>1,00 m</strong>).
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                        <div class="w-10 h-10 bg-sky-100 text-sky-700 rounded-xl flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-vector-square"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Patamares de Descanso</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Devem ser dispostos no início e no término de cada segmento. O comprimento longitudinal mínimo do patamar deve ser de <strong>1,20 m</strong>.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                        <div class="w-10 h-10 bg-sky-100 text-sky-700 rounded-xl flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-hands-holding"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Corrimãos Duplos</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Obrigatórios em ambos os lados, instalados em duas alturas: <strong>0,92 m</strong> e 0,70 m em relação ao nível do piso acabado.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- CALCULADORAS INTERATIVAS -->
+                <section class="space-y-6">
+                    <div class="border-l-4 border-sky-500 pl-4">
+                        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">FERRAMENTAS DE CÁLCULO</h2>
+                        <p class="text-slate-500 text-sm mt-1">Dimensionamento automático baseado na fórmula oficial da ABNT NBR 9050: <span class="font-mono text-sky-700 bg-sky-50 px-1.5 py-0.5 rounded border border-sky-200">i = (h * 100) / c</span></p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
+                            <div class="space-y-2">
+                                <span class="text-xs font-bold text-sky-700 uppercase tracking-wider bg-sky-50 px-2.5 py-1 rounded border border-sky-200">Calculadora 01</span>
+                                <h3 class="text-xl font-bold text-slate-900">Calcular Inclinação da Rampa</h3>
+                            </div>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-700 mb-1">Altura do Desnível - h (m):</label>
+                                    <input type="number" step="0.01" id="calc1-h" value="0.80" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-700 mb-1">Comprimento Horizontal - c (m):</label>
+                                    <input type="number" step="0.01" id="calc1-c" value="10.00" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                                </div>
+                            </div>
+                            <div id="calc1-result" class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="text-xs font-medium text-slate-500">Inclinação (i):</span>
+                                    <span id="calc1-i-val" class="text-2xl font-extrabold text-sky-600">8.00%</span>
+                                </div>
+                                <div id="calc1-status" class="text-xs px-3 py-2 rounded-lg bg-sky-50 border border-sky-200 text-sky-900 font-medium"></div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
+                            <div class="space-y-2">
+                                <span class="text-xs font-bold text-sky-700 uppercase tracking-wider bg-sky-50 px-2.5 py-1 rounded border border-sky-200">Calculadora 02</span>
+                                <h3 class="text-xl font-bold text-slate-900">Calcular Comprimento da Rampa</h3>
+                            </div>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-700 mb-1">Altura do Desnível - h (m):</label>
+                                    <input type="number" step="0.01" id="calc2-h" value="1.00" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-700 mb-1">Inclinação Desejada (i):</label>
+                                    <select id="calc2-i" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                                        <option value="5.00">5,00% (1:20) - Rota ideal</option>
+                                        <option value="6.25">6,25% (1:16) - Desnível max 1,00m</option>
+                                        <option value="8.33" selected>8,33% (1:12) - Máximo padrão</option>
+                                        <option value="10.00">10,00% (1:10) - Reforma (h max 0,20m)</option>
+                                        <option value="12.50">12,50% (1:8) - Reforma (h max 0,075m)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="calc2-result" class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="text-xs font-medium text-slate-500">Comprimento Mínimo (c):</span>
+                                    <span id="calc2-c-val" class="text-2xl font-extrabold text-sky-600">12.00 m</span>
+                                </div>
+                                <div id="calc2-status" class="text-xs px-3 py-2 rounded-lg bg-sky-50 border border-sky-200 text-sky-900 font-medium"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </article>
+
+        <!-- ARTICLE: GUIA PRANCHAS -->
+        <article id="guia-pranchas-iso216" class="tab-content hidden flex-1 bg-slate-50 text-slate-800 p-4 sm:p-8 space-y-8 overflow-y-auto">
+            
+            <!-- Banner Inicial de Pranchas - Tema Claro -->
+            <div class="bg-white text-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-200 relative overflow-hidden shadow-sm">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-sky-100 text-sky-700 border border-sky-200">
+                            <i class="fa-solid fa-microchip"></i> Arquitetura & Engenharia Técnica
+                        </span>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                            Guia Completo de <span class="text-sky-600">Dimensionamento</span> de Pranchas
+                        </h2>
+                        <p class="text-slate-600 text-xs sm:text-sm max-w-2xl font-normal leading-relaxed">
+                            Padrões normatizados ISO 216 e ABNT NBR 10068. Dimensões exatas, margens de arquivamento, área útil de desenho e posicionamento do selo técnico.
+                        </p>
+                        <div class="pt-2 flex flex-wrap gap-2 text-[11px] font-mono text-slate-700">
+                            <span class="bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200 flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i>Proporção 1:1,414</span>
+                            <span class="bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200 flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i>Selo Padrão 175mm</span>
+                            <span class="bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200 flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i>Norma NBR 10068</span>
+                        </div>
+                    </div>
+
+                    <!-- Comparativo Dinâmico de Formatos - Tema Claro -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl shadow-sm w-full max-w-md">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs font-bold uppercase tracking-wider text-sky-700 flex items-center gap-2">
+                                    <i class="fa-solid fa-layer-group"></i> Comparativo Dinâmico
+                                </span>
+                                <span id="formatBadge" class="bg-sky-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Formato A0</span>
+                            </div>
+                            
+                            <!-- Desenho Visual em CSS -->
+                            <div class="relative w-full aspect-[1.414/1] bg-white rounded-lg p-2 border border-slate-300 shadow-inner overflow-hidden flex flex-col justify-between" id="visualizerCanvas">
+                                <div id="visualSheetContainer" class="w-full h-full relative border-2 border-dashed border-sky-500/80 transition-all duration-300 flex items-center justify-center bg-sky-50/60 rounded">
+                                    <div class="text-center p-2">
+                                        <div id="visualName" class="text-2xl font-black text-sky-700">A0</div>
+                                        <div id="visualDims" class="text-xs font-mono text-slate-700 font-semibold mt-1">841 x 1189 mm</div>
+                                        <div id="visualArea" class="text-[10px] text-sky-600 font-medium mt-0.5">Área: 1,000 m²</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Botões de Seleção -->
+                            <div class="grid grid-cols-7 gap-1 mt-3">
+                                <button onclick="selectVisualSheet('A0')" class="sheet-btn active bg-sky-600 text-white py-1 text-xs font-bold rounded hover:bg-sky-500 transition-colors">A0</button>
+                                <button onclick="selectVisualSheet('A1')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A1</button>
+                                <button onclick="selectVisualSheet('A2')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A2</button>
+                                <button onclick="selectVisualSheet('A3')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A3</button>
+                                <button onclick="selectVisualSheet('A4')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A4</button>
+                                <button onclick="selectVisualSheet('A5')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A5</button>
+                                <button onclick="selectVisualSheet('A6')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A6</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TABELA DE DIMENSÕES E MARGENS -->
+            <section class="space-y-4">
+                <div class="border-l-4 border-sky-600 pl-3">
+                    <h3 class="text-xl font-bold text-slate-900">1. Especificações Técnicas e Margens (NBR 10068)</h3>
+                    <p class="text-slate-600 text-xs mt-0.5">Valores padronizados para margem de encadernação/arquivamento e espessuras de borda.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-100 text-slate-700 uppercase text-[10px] font-bold tracking-wider border-b border-slate-200">
+                                <tr>
+                                    <th class="py-3 px-4">Formato</th>
+                                    <th class="py-3 px-4">Dimensões Recortadas (mm)</th>
+                                    <th class="py-3 px-4">Área Útil (m²)</th>
+                                    <th class="py-3 px-4">Margem Esq. (mm)</th>
+                                    <th class="py-3 px-4">Demais Margens (mm)</th>
+                                    <th class="py-3 px-4">Espessura Borda (mm)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 font-mono text-[11px]">
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="py-3 px-4 font-bold text-sky-600 font-sans"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800">A0</span></td>
+                                    <td class="py-3 px-4 font-semibold">841 × 1189</td>
+                                    <td class="py-3 px-4">1,000</td>
+                                    <td class="py-3 px-4 text-amber-600 font-bold">25 mm</td>
+                                    <td class="py-3 px-4">10 mm</td>
+                                    <td class="py-3 px-4">1,0 mm</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="py-3 px-4 font-bold text-sky-600 font-sans"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800">A1</span></td>
+                                    <td class="py-3 px-4 font-semibold">594 × 841</td>
+                                    <td class="py-3 px-4">0,500</td>
+                                    <td class="py-3 px-4 text-amber-600 font-bold">25 mm</td>
+                                    <td class="py-3 px-4">10 mm</td>
+                                    <td class="py-3 px-4">1,0 mm</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="py-3 px-4 font-bold text-sky-600 font-sans"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800">A2</span></td>
+                                    <td class="py-3 px-4 font-semibold">420 × 594</td>
+                                    <td class="py-3 px-4">0,250</td>
+                                    <td class="py-3 px-4 text-amber-600 font-bold">25 mm</td>
+                                    <td class="py-3 px-4">10 mm</td>
+                                    <td class="py-3 px-4">0,7 mm</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="py-3 px-4 font-bold text-sky-600 font-sans"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800">A3</span></td>
+                                    <td class="py-3 px-4 font-semibold">297 × 420</td>
+                                    <td class="py-3 px-4">0,125</td>
+                                    <td class="py-3 px-4 text-amber-600 font-bold">25 mm</td>
+                                    <td class="py-3 px-4">10 mm</td>
+                                    <td class="py-3 px-4">0,7 mm</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="py-3 px-4 font-bold text-sky-600 font-sans"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800">A4</span></td>
+                                    <td class="py-3 px-4 font-semibold">210 × 297</td>
+                                    <td class="py-3 px-4">0,062</td>
+                                    <td class="py-3 px-4 text-amber-600 font-bold">25 mm</td>
+                                    <td class="py-3 px-4">7 mm</td>
+                                    <td class="py-3 px-4">0,5 mm</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="py-3 px-4 font-bold text-slate-500 font-sans">A5</td>
+                                    <td class="py-3 px-4">148 × 210</td>
+                                    <td class="py-3 px-4">0,031</td>
+                                    <td class="py-3 px-4 font-bold">15 mm</td>
+                                    <td class="py-3 px-4">5 mm</td>
+                                    <td class="py-3 px-4">0,5 mm</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="py-3 px-4 font-bold text-slate-500 font-sans">A6</td>
+                                    <td class="py-3 px-4">105 × 148</td>
+                                    <td class="py-3 px-4">0,015</td>
+                                    <td class="py-3 px-4 font-bold">10 mm</td>
+                                    <td class="py-3 px-4">5 mm</td>
+                                    <td class="py-3 px-4">0,5 mm</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="p-3.5 bg-amber-50 border-t border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
+                        <i class="fa-solid fa-lightbulb text-amber-600 text-sm mt-0.5"></i>
+                        <div>
+                            <strong>Por que a margem esquerda de 25 mm é maior?</strong>
+                            <p class="mt-0.5 text-slate-700">A margem esquerda ampliada em 25 mm (A0 a A4) garante espaço suficiente para furar, grampear e arquivar as pranchas em pastas sem cobrir as linhas do desenho ou elementos técnicos.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ANATOMIA ESTRUTURAL DA PRANCHA - TEMA CLARO -->
+            <section class="space-y-4">
+                <div class="border-l-4 border-sky-600 pl-3">
+                    <h3 class="text-xl font-bold text-slate-900">2. Anatomia Estrutural da Prancha (Layout Técnico)</h3>
+                    <p class="text-slate-600 text-xs mt-0.5">Distribuição dos componentes essenciais no papel de projeto.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="relative w-full max-w-4xl mx-auto bg-slate-50 p-4 sm:p-6 rounded-xl border-2 border-slate-300 font-mono text-xs text-slate-800">
+                        <div class="absolute top-1.5 left-1/2 -translate-x-1/2 text-[10px] text-sky-700 font-bold uppercase tracking-widest">
+                            Margem Superior (10mm)
+                        </div>
+                        
+                        <div class="w-full border-2 border-sky-600 rounded p-4 relative bg-white min-h-[300px] flex flex-col justify-between shadow-xs">
+                            <div class="absolute left-0 top-0 bottom-0 w-8 sm:w-10 bg-amber-100/80 border-r-2 border-dashed border-amber-500/80 flex items-center justify-center">
+                                <span class="rotate-[-90deg] text-[9px] font-bold text-amber-800 whitespace-nowrap">MARGEM ESQUERDA (25mm)</span>
+                            </div>
+
+                            <div class="ml-6 sm:ml-10 p-4 border border-dashed border-slate-300 rounded bg-slate-50/50 flex-1 flex items-center justify-center text-center">
+                                <div>
+                                    <i class="fa-solid fa-drafting-compass text-2xl text-sky-600 mb-1"></i>
+                                    <div class="font-bold text-slate-900 text-xs">ÁREA ÚTIL DE DESENHO</div>
+                                    <div class="text-slate-500 text-[10px] font-sans mt-0.5">Plantas Baixas, Cortes, Fachadas, Detalhamentos e Imagens 3D</div>
+                                </div>
+                            </div>
+
+                            <div class="ml-6 sm:ml-10 mt-3 flex flex-col sm:flex-row justify-end items-end gap-2.5">
+                                <div class="w-full sm:w-52 p-2.5 bg-slate-100 border border-slate-300 rounded text-[10px]">
+                                    <div class="font-bold text-slate-800 border-b border-slate-300 pb-1 mb-1">NOTAS / LEGENDA</div>
+                                    <div class="text-slate-600 space-y-0.5 text-[9px]">
+                                        <div>• Especificações técnicas</div>
+                                        <div>• Quadro de esquadrias</div>
+                                    </div>
+                                </div>
+
+                                <div class="w-full sm:w-60 p-2.5 bg-sky-50 border-2 border-sky-600 rounded text-[10px] shadow-xs">
+                                    <div class="flex justify-between items-center font-bold text-sky-900 border-b border-sky-200 pb-1 mb-1">
+                                        <span>SELO / CARIMBO</span>
+                                        <span class="text-[8px] bg-sky-600 text-white px-1.5 py-0.2 rounded">175 mm</span>
+                                    </div>
+                                    <div class="text-slate-700 text-[9px] space-y-0.5 font-sans">
+                                        <div class="font-bold text-slate-900">Nome do Empreendimento</div>
+                                        <div>Conteúdo: Planta Baixa 1:50</div>
+                                        <div class="text-sky-700 font-semibold">Canto Inferior Direito (Obrigatório)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- ARTICLE: GUIA RESERVATÓRIOS -->
+        <article id="guia-reservatorios" class="tab-content hidden flex-1 bg-slate-50 text-slate-800 p-4 sm:p-8 space-y-8 overflow-y-auto">
+            
+            <!-- HEADER DE RESERVATÓRIOS -->
+            <div class="bg-gradient-to-r from-slate-900 via-blue-900 to-sky-900 text-white rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border border-sky-800/30">
+                <div class="space-y-2">
+                    <div class="flex items-center gap-2">
+                        <span class="bg-sky-500/20 border border-sky-400/30 text-sky-200 text-xs px-3 py-1 rounded-full font-semibold">
+                            Secretaria de Projetos Estratégicos - SEPES
+                        </span>
+                        <span class="bg-amber-500/20 border border-amber-400/30 text-amber-200 text-xs px-3 py-1 rounded-full font-semibold">
+                            Lei Nº 16.292/97 - Código de Obras
+                        </span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                        Guia de Boas Práticas: Reservatórios de Água Potável e Lixo
+                    </h2>
+                    <p class="text-xs sm:text-sm text-sky-100 max-w-3xl font-normal leading-relaxed">
+                        Parâmetros oficiais de dimensionamento de água potável (reservatórios superior e inferior) e reservatórios de resíduos sólidos para os usos Habitacional, Não Habitacional e Misto.
+                    </p>
+                </div>
+            </div>
+
+            <!-- TABELA DE PARÂMETROS E OBSERVAÇÕES -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- COLUNA ESQUERDA: TABELA -->
+                <div class="lg:col-span-8 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="border-l-4 border-sky-600 pl-3">
+                        <h3 class="text-lg font-bold text-slate-900">Regras para Usos Habitacional, Não Habitacional e Misto</h3>
+                        <p class="text-slate-500 text-xs">Cálculo de densidade populacional e volumes recomendados por pessoa.</p>
+                    </div>
+
+                    <div class="overflow-x-auto rounded-xl border border-slate-200">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-sky-900 text-white uppercase text-[10px] font-bold tracking-wider">
+                                <tr>
+                                    <th class="py-3 px-3">USOS</th>
+                                    <th class="py-3 px-3">ATIVIDADES</th>
+                                    <th class="py-3 px-3">DENSIDADE POPULACIONAL</th>
+                                    <th class="py-3 px-3 text-center">RES. SUPERIOR (1) (2)<br><span class="text-[9px] font-normal text-sky-200">VOL. / PESSOA</span></th>
+                                    <th class="py-3 px-3 text-center">LIXO (5)<br><span class="text-[9px] font-normal text-sky-200">VOL. / PESSOA</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 text-[11px]">
+                                <tr class="bg-sky-50/50">
+                                    <td class="py-2.5 px-3 font-bold text-sky-900">HABITACIONAL</td>
+                                    <td class="py-2.5 px-3 font-semibold">UNIFAMILIAR E MULTIFAMILIAR</td>
+                                    <td class="py-2.5 px-3">02 pessoas / quarto</td>
+                                    <td class="py-2.5 px-3 text-center font-bold text-sky-700">150 lts / PESSOA</td>
+                                    <td class="py-2.5 px-3 text-center font-medium">4,6 lts / PESSOA</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-bold text-slate-700 bg-slate-50" rowspan="7">NÃO HABITACIONAL</td>
+                                    <td class="py-2.5 px-3">Comércio varejista</td>
+                                    <td class="py-2.5 px-3">01 pessoa / 7,00m² de área</td>
+                                    <td class="py-2.5 px-3 text-center">80 litros / pessoa</td>
+                                    <td class="py-2.5 px-3 text-center">4,6 litros / pessoa</td>
+                                </tr>
+                                <tr class="bg-slate-50/50">
+                                    <td class="py-2.5 px-3">Comércio atacadista</td>
+                                    <td class="py-2.5 px-3">01 pessoa / 30,00m² de área</td>
+                                    <td class="py-2.5 px-3 text-center">80 litros / pessoa</td>
+                                    <td class="py-2.5 px-3 text-center">4,6 litros / pessoa</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 text-[10px]">Serviços técnicos, financeiros, pessoais, de reparação e públicos</td>
+                                    <td class="py-2.5 px-3">01 pessoa / 7,00m² de área</td>
+                                    <td class="py-2.5 px-3 text-center">80 litros / pessoa</td>
+                                    <td class="py-2.5 px-3 text-center">4,6 litros / pessoa</td>
+                                </tr>
+                                <tr class="bg-slate-50/50">
+                                    <td class="py-2.5 px-3 font-medium">Serviço de saúde</td>
+                                    <td class="py-2.5 px-3">2,5 pessoas / leito</td>
+                                    <td class="py-2.5 px-3 text-center">160 litros / pessoa</td>
+                                    <td class="py-2.5 px-3 text-center text-[10px] italic text-amber-800 bg-amber-50">Consulta Órgão Limpeza</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">Serviço de educação</td>
+                                    <td class="py-2.5 px-3">01 aluno / 1,5m² de sala</td>
+                                    <td class="py-2.5 px-3 text-center">40 litros / aluno</td>
+                                    <td class="py-2.5 px-3 text-center">4,6 litros / pessoa</td>
+                                </tr>
+                                <tr class="bg-slate-50/50">
+                                    <td class="py-2.5 px-3 font-medium">Serviço de hotelaria</td>
+                                    <td class="py-2.5 px-3">02 pessoas / quarto</td>
+                                    <td class="py-2.5 px-3 text-center">200 litros / pessoa</td>
+                                    <td class="py-2.5 px-3 text-center">6,9 litros / pessoa</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">Indústrias</td>
+                                    <td class="py-2.5 px-3">01 pessoa / 30,00m² de área</td>
+                                    <td class="py-2.5 px-3 text-center">80 litros / pessoa</td>
+                                    <td class="py-2.5 px-3 text-center text-[10px] italic text-amber-800 bg-amber-50">Consulta Órgão Limpeza</td>
+                                </tr>
+                                <tr class="border-t-2 border-slate-300 bg-sky-50/30">
+                                    <td class="py-2.5 px-3 font-bold text-slate-700 bg-slate-50" rowspan="2">MISTOS</td>
+                                    <td class="py-2.5 px-3">Habitacional + Não Habitacional</td>
+                                    <td class="py-2.5 px-3 italic text-slate-500">(3) Específica p/ atividades</td>
+                                    <td class="py-2.5 px-3 text-center italic text-slate-500">(4) Atende por atividade</td>
+                                    <td class="py-2.5 px-3 text-center">4,6 litros / pessoa</td>
+                                </tr>
+                                <tr class="bg-sky-50/30">
+                                    <td class="py-2.5 px-3">Não Habitacional + Não Habitacional</td>
+                                    <td class="py-2.5 px-3 italic text-slate-500">(3) Específica p/ atividades</td>
+                                    <td class="py-2.5 px-3 text-center italic text-slate-500">(4) Atende por atividade</td>
+                                    <td class="py-2.5 px-3 text-center">4,6 litros / pessoa</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- OBSERVAÇÕES TÉCNICAS NOTAS 1 A 8 -->
+                    <div class="bg-slate-900 text-white rounded-xl p-4 space-y-2">
+                        <span class="bg-sky-500 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wide inline-block">
+                            OBSERVAÇÕES TÉCNICAS (NOTAS 1 A 8)
+                        </span>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-300 leading-relaxed">
+                            <div>
+                                <p><strong class="text-sky-400">1.</strong> O reservatório d'água inferior deverá ter o <u>dobro do volume</u> calculado para o reservatório superior.</p>
+                                <p><strong class="text-sky-400">2.</strong> Os volumes serão acrescidos de reserva para prevenção e combate a incêndio, de acordo com as normas do Corpo de Bombeiros Militar de Pernambuco.</p>
+                                <p><strong class="text-sky-400">3.</strong> A densidade populacional deverá ser aquela específica para as atividades inseridas na edificação.</p>
+                                <p><strong class="text-sky-400">4.</strong> As quantidades de volume por pessoa devem atender às quantidades indicadas para cada atividade.</p>
+                            </div>
+                            <div>
+                                <p><strong class="text-sky-400">5.</strong> <strong>Para LIXO:</strong> Até 100 L = 01 tonel | Até 1.000 L = 10 tonéis (máx) ou 01 container.</p>
+                                <p><strong class="text-sky-400">6.</strong> Quantidade máxima de containers = 03 (três) unidades.</p>
+                                <p><strong class="text-sky-400">7.</strong> Para o quarto de serviço, quando houver, considerar 01 pessoa / quarto.</p>
+                                <p><strong class="text-sky-400">8.</strong> No cálculo da área de construção, <u>não computar</u> as áreas de estacionamento.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUNA DIREITA: ESTRUTURA VISUAL E CALCULADORA -->
+                <div class="lg:col-span-4 space-y-6 flex flex-col justify-between">
+                    
+                    <!-- REGRAS DE PROPORÇÃO -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
+                        <h3 class="text-sm font-extrabold text-sky-900 uppercase tracking-wide flex items-center gap-2">
+                            <i class="fa-solid fa-calculator text-sky-600"></i> Proporção de Água Reservada
+                        </h3>
+                        <div class="grid grid-cols-3 gap-2 text-center">
+                            <div class="bg-sky-50 border border-sky-200 p-2.5 rounded-xl">
+                                <div class="w-6 h-6 bg-sky-600 text-white rounded-full flex items-center justify-center font-bold text-xs mx-auto mb-1">1x</div>
+                                <div class="text-[10px] font-bold text-sky-900">RES. SUPERIOR</div>
+                                <div class="text-[9px] text-slate-600 font-semibold mt-0.5">33,3% Total</div>
+                            </div>
+                            <div class="bg-sky-600 text-white p-2.5 rounded-xl">
+                                <div class="w-6 h-6 bg-white text-sky-900 rounded-full flex items-center justify-center font-bold text-xs mx-auto mb-1">2x</div>
+                                <div class="text-[10px] font-bold">RES. INFERIOR</div>
+                                <div class="text-[9px] text-sky-100 font-semibold mt-0.5">66,7% Total</div>
+                            </div>
+                            <div class="bg-slate-900 text-white p-2.5 rounded-xl">
+                                <div class="w-6 h-6 bg-sky-400 text-slate-950 rounded-full flex items-center justify-center font-bold text-xs mx-auto mb-1">3x</div>
+                                <div class="text-[10px] font-bold text-sky-300">VOL. TOTAL</div>
+                                <div class="text-[9px] text-slate-300 font-semibold mt-0.5">100% Capacidade</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CALCULADORA DE VOLUMES E DIMENSÕES -->
+                    <div class="bg-white rounded-2xl p-5 border-2 border-sky-500 shadow-sm space-y-4">
+                        <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                            <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-cube text-sky-600"></i> Calculadora de Reservatório
+                            </h3>
+                            <span class="text-[10px] font-mono text-sky-700 bg-sky-50 px-2 py-0.5 rounded border border-sky-200">1 m³ = 1.000 L</span>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Comprimento Interno - A (m):</label>
+                                <input type="number" step="0.1" id="res-comp" value="3.0" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Largura Interna - B (m):</label>
+                                <input type="number" step="0.1" id="res-larg" value="2.0" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Altura Útil de Água - H (m):</label>
+                                <input type="number" step="0.1" id="res-alt" value="1.5" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500">
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 space-y-2">
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-xs text-slate-500 font-medium">Volume Útil Obtido:</span>
+                                <span id="res-vol-m3" class="text-lg font-bold text-slate-900">9.00 m³</span>
+                            </div>
+                            <div class="flex justify-between items-baseline border-t border-slate-200 pt-1.5">
+                                <span class="text-xs text-slate-500 font-medium">Capacidade Total:</span>
+                                <span id="res-vol-l" class="text-xl font-extrabold text-sky-600">9.000 Litros</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </article>
+
+    </div>
+
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.nav-item').forEach(el => {
+                el.classList.remove('bg-sky-50', 'border', 'border-sky-200', 'text-sky-700', 'font-semibold');
+                el.classList.add('text-slate-600', 'font-medium');
+            });
 
-        // 1. Theme Toggle
-        const themeBtn = document.getElementById('theme-toggle');
-        const darkIco = document.getElementById('theme-toggle-dark-icon');
-        const lightIco = document.getElementById('theme-toggle-light-icon');
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) targetContent.classList.remove('hidden');
 
-        const applyTheme = (dark) => {
-            document.documentElement.classList.toggle('dark', dark);
-            darkIco.classList.toggle('hidden', !dark);
-            lightIco.classList.toggle('hidden', dark);
-        };
+            const targetNav = document.getElementById('nav-' + tabId);
+            if (targetNav) {
+                targetNav.classList.add('bg-sky-50', 'border', 'border-sky-200', 'text-sky-700', 'font-semibold');
+                targetNav.classList.remove('text-slate-600', 'font-medium');
+            }
 
-        const stored = localStorage.getItem('color-theme');
-        applyTheme(stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches));
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar && !sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.add('-translate-x-full');
+            }
+        }
 
-        themeBtn.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            applyTheme(!isDark);
-            localStorage.setItem('color-theme', isDark ? 'light' : 'dark');
-        });
-
-        // 2. Mobile sidebar
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const sidebar = document.getElementById('sidebar');
-        const backdrop = document.getElementById('sidebar-backdrop');
-        const toggleSidebar = () => {
-            sidebar.classList.toggle('-translate-x-full');
-            backdrop.classList.toggle('hidden');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('-translate-x-full');
+            });
+        }
+
+        function fmt(num) {
+            return num.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function calcularInclinacao() {
+            const h = parseFloat(document.getElementById('calc1-h').value);
+            const c = parseFloat(document.getElementById('calc1-c').value);
+            const iValEl = document.getElementById('calc1-i-val');
+            const statusEl = document.getElementById('calc1-status');
+
+            if (isNaN(h) || isNaN(c) || h <= 0 || c <= 0) return;
+
+            const i = (h * 100) / c;
+            iValEl.innerText = fmt(i) + '%';
+
+            if (i <= 5.00) {
+                statusEl.innerHTML = 'Conforme NBR 9050: Acessível sem limite de segmentos.';
+            } else if (i <= 8.33) {
+                statusEl.innerHTML = 'Conforme NBR 9050: Máximo 0,80m de desnível por segmento.';
+            } else {
+                statusEl.innerHTML = 'Atenção: Inclinação acima do padrão (verifique regras de reformas/Tabela 5).';
+            }
+        }
+
+        function calcularComprimento() {
+            const h = parseFloat(document.getElementById('calc2-h').value);
+            const i = parseFloat(document.getElementById('calc2-i').value);
+            const cValEl = document.getElementById('calc2-c-val');
+            const statusEl = document.getElementById('calc2-status');
+
+            if (isNaN(h) || isNaN(i) || h <= 0 || i <= 0) return;
+
+            const c = (h * 100) / i;
+            cValEl.innerText = fmt(c) + ' m';
+            statusEl.innerHTML = 'Comprimento mínimo recomendado de projeção horizontal.';
+        }
+
+        function calcularReservatorio() {
+            const comp = parseFloat(document.getElementById('res-comp')?.value || 0);
+            const larg = parseFloat(document.getElementById('res-larg')?.value || 0);
+            const alt = parseFloat(document.getElementById('res-alt')?.value || 0);
+
+            if (comp > 0 && larg > 0 && alt > 0) {
+                const volM3 = comp * larg * alt;
+                const volL = volM3 * 1000;
+                document.getElementById('res-vol-m3').innerText = fmt(volM3) + ' m³';
+                document.getElementById('res-vol-l').innerText = fmt(volL) + ' Litros';
+            }
+        }
+
+        const paperData = {
+            'A0': { dims: '841 x 1189 mm', area: '1,000 m²' },
+            'A1': { dims: '594 x 841 mm', area: '0,500 m²' },
+            'A2': { dims: '420 x 594 mm', area: '0,250 m²' },
+            'A3': { dims: '297 x 420 mm', area: '0,125 m²' },
+            'A4': { dims: '210 x 297 mm', area: '0,062 m²' },
+            'A5': { dims: '148 x 210 mm', area: '0,031 m²' },
+            'A6': { dims: '105 x 148 mm', area: '0,015 m²' }
         };
-        document.getElementById('mobile-menu-toggle').addEventListener('click', toggleSidebar);
-        backdrop.addEventListener('click', toggleSidebar);
 
-        // 3. Collapsible categories
-        document.querySelectorAll('.category-toggle').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const icon = btn.querySelector('.fa-chevron-down');
-                const list = btn.nextElementSibling;
-                const hidden = list.style.display === 'none';
-                list.style.display = hidden ? 'block' : 'none';
-                icon.style.transform = hidden ? 'rotate(0deg)' : 'rotate(-90deg)';
-            });
-        });
+        function selectVisualSheet(code) {
+            const data = paperData[code];
+            if (!data) return;
+            document.getElementById('formatBadge').innerText = 'Formato ' + code;
+            document.getElementById('visualName').innerText = code;
+            document.getElementById('visualDims').innerText = data.dims;
+            document.getElementById('visualArea').innerText = 'Área: ' + data.area;
 
-        // 4. Guide switching
-        const guideLinks = document.querySelectorAll('.guide-link');
-        const guideArticles = document.querySelectorAll('.guide-content');
-        const bcTitle = document.getElementById('breadcrumb-title');
-        const bcCat = document.getElementById('breadcrumb-category');
-
-        function switchGuide(id) {
-            guideArticles.forEach(a => a.classList.toggle('hidden', a.id !== id));
-
-            guideLinks.forEach(link => {
-                const isActive = link.getAttribute('data-guide') === id;
-                link.classList.toggle('active', isActive);
-                link.classList.toggle('text-slate-600', !isActive);
-                link.classList.toggle('dark:text-slate-400', !isActive);
-            });
-
-            const activeLink = document.querySelector(`.guide-link[data-guide="${id}"]`);
-            if (activeLink) {
-                bcTitle.textContent = activeLink.querySelector('span').textContent;
-                const catBtn = activeLink.closest('.nav-group')?.querySelector('.category-toggle span');
-                if (catBtn) bcCat.textContent = catBtn.textContent.trim();
-            }
-
-            generateTOC(document.getElementById(id));
-            document.getElementById('main-content').scrollTop = 0;
-            if (!sidebar.classList.contains('-translate-x-full') && window.innerWidth < 1024) toggleSidebar();
-        }
-
-        guideLinks.forEach(link => {
-            link.addEventListener('click', e => {
-                e.preventDefault();
-                switchGuide(link.getAttribute('data-guide'));
-            });
-        });
-
-        // 5. Table of Contents
-        function generateTOC(article) {
-            const toc = document.getElementById('table-of-contents');
-            toc.innerHTML = '';
-            if (!article) return;
-            const headings = article.querySelectorAll('h2[id]');
-            if (!headings.length) {
-                toc.innerHTML = '<span class="text-slate-400 italic text-[11px]">Sem seções</span>';
-                return;
-            }
-            headings.forEach(h => {
-                const a = document.createElement('a');
-                a.href = '#' + h.id;
-                a.textContent = h.textContent;
-                a.className = 'block text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition truncate py-0.5 border-l-2 border-transparent hover:border-brand-400 pl-2 rounded-r';
-                a.addEventListener('click', e => { e.preventDefault(); h.scrollIntoView({ behavior: 'smooth' }); });
-                toc.appendChild(a);
+            document.querySelectorAll('.sheet-btn').forEach(btn => {
+                if (btn.innerText === code) {
+                    btn.classList.add('bg-sky-600', 'text-white');
+                    btn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+                } else {
+                    btn.classList.remove('bg-sky-600', 'text-white');
+                    btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+                }
             });
         }
 
-        // 6. Search
-        const searchInput = document.getElementById('search-input');
-        searchInput.addEventListener('input', e => {
-            const q = e.target.value.toLowerCase().trim();
-            guideLinks.forEach(link => {
-                link.parentElement.style.display = link.textContent.toLowerCase().includes(q) ? 'block' : 'none';
-            });
-            document.querySelectorAll('.nav-group').forEach(g => {
-                const visible = [...g.querySelectorAll('li')].some(li => li.style.display !== 'none');
-                g.style.display = (q && !visible) ? 'none' : 'block';
-            });
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('calc1-h')?.addEventListener('input', calcularInclinacao);
+            document.getElementById('calc1-c')?.addEventListener('input', calcularInclinacao);
+            document.getElementById('calc2-h')?.addEventListener('input', calcularComprimento);
+            document.getElementById('calc2-i')?.addEventListener('change', calcularComprimento);
+            
+            document.getElementById('res-comp')?.addEventListener('input', calcularReservatorio);
+            document.getElementById('res-larg')?.addEventListener('input', calcularReservatorio);
+            document.getElementById('res-alt')?.addEventListener('input', calcularReservatorio);
+
+            calcularInclinacao();
+            calcularComprimento();
+            calcularReservatorio();
         });
-
-        // Init
-        generateTOC(document.getElementById('guia-aprovacao-prefeitura'));
-    });
-
-    // Calculator for Reservatórios guide
-    function calcReservatorio() {
-        const c = parseFloat(document.getElementById('res-comprimento').value) || 0;
-        const l = parseFloat(document.getElementById('res-largura').value) || 0;
-        const a = parseFloat(document.getElementById('res-altura').value) || 0;
-        const m3 = c * l * a;
-        const litros = m3 * 1000;
-        document.getElementById('res-formula').textContent = `${c.toFixed(1)}m × ${l.toFixed(1)}m × ${a.toFixed(1)}m = ${m3.toFixed(2)} m³`;
-        document.getElementById('res-litros').textContent = `${litros.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} L`;
-    }
     </script>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"f0f03d0605bf45f1a3b17cf7d5e6861f","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
