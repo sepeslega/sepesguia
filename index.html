@@ -121,7 +121,7 @@
 
         /* ── Cartões das seções modernas: elevação suave com acento ── */
         #guia-nbr9050-rampas .bg-white,
-        #guia-pranchas-iso216 .bg-white,
+        #guia-nbr16.752/2020-pranchas-iso216 .bg-white,
         #guia-reservatorios .bg-white {
             box-shadow: 0 2px 4px rgba(15,23,42,.04), 0 18px 40px -24px rgba(2,132,199,.35);
         }
@@ -195,7 +195,7 @@
                     </div>
                     <div>
                         <h1 class="font-extrabold text-slate-900 text-lg tracking-tight">Portal de Guias</h1>
-                        <p class="text-xs text-sky-600 font-medium">Arquitetura & Engenharia</p>
+                        <p class="text-xs text-sky-600 font-medium">Arquitetura & Engenharias</p>
                     </div>
                 </div>
             </div>
@@ -205,9 +205,9 @@
                 <div>
                     <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3">Geral</span>
                     <div class="mt-2 space-y-1">
-                        <button onclick="switchTab('inicio')" id="nav-inicio" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold text-sky-700 bg-sky-50 border border-sky-200 text-left transition">
+                        <button onclick="switchTab('tab-inicio')" id="nav-tab-inicio" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold text-sky-700 bg-sky-50 border border-sky-200 text-left transition">
                             <i class="fa-solid fa-house w-4 text-center"></i>
-                            <span>Início / Boas-Vindas</span>
+                            <span>BEM VINDOS</span>
                         </button>
                     </div>
                 </div>
@@ -241,16 +241,49 @@
                 <div>
                     <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3 flex items-center gap-2">
                         <i class="fa-solid fa-ruler-combined text-sky-600"></i>
-                        <span>BOAS PRÁTICAS</span>
+                        <span>NORMATIVAS E LEGISLAÇÕES</span>
                     </span>
                     <div class="mt-2 space-y-1">
-                        <button onclick="switchTab('guia-pranchas-iso216')" id="nav-guia-pranchas-iso216" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-left transition">
+                        <button onclick="switchTab('guia-NBR-16.752/2020-pranchas-iso216')" id="nav-guia-NBR 16.752/2020-pranchas-iso216" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-left transition">
                             <i class="fa-solid fa-file-lines w-4 text-center text-sky-600"></i>
-                            <span>PRANCHAS</span>
+                            <span>NBR 16.752/2020 - PRANCHAS</span>
                         </button>
-                        <button onclick="switchTab('guia-reservatorios')" id="nav-guia-reservatorios" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-left transition">
-                            <i class="fa-solid fa-faucet-drip w-4 text-center text-sky-600"></i>
-                            <span>RESERVATÓRIOS</span>
+                        <button onclick="switchTab('guia-legislacoes-municipais')" id="nav-guia-legislacoes-municipais" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-left transition">
+                            <i class="fa-solid fa-landmark w-4 text-center text-sky-600"></i>
+                            <span>LEGISLAÇÕES MUNICIPAIS</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3 flex items-center gap-2">
+                        <i class="fa-solid fa-gears text-sky-600"></i>
+                        <span>ENGENHARIAS</span>
+                    </span>
+                    <div class="mt-2 space-y-1">
+                        <button onclick="switchTab('guia-canteiro-obras')" id="nav-guia-canteiro-obras" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-left transition">
+                            <i class="fa-solid fa-helmet-safety w-4 text-center text-sky-600"></i>
+                            <span>CANTEIRO DE OBRAS</span>
+                        </button>
+                        <button onclick="switchTab('guia-estrutural')" id="nav-guia-estrutural" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-left transition">
+                            <i class="fa-solid fa-building w-4 text-center text-sky-600"></i>
+                            <span>ESTRUTURAL</span>
+                        </button>
+                        <button onclick="switchTab('guia-hidrossanitario')" id="nav-guia-hidrossanitario" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-left transition">
+                            <i class="fa-solid fa-faucet w-4 text-center text-sky-600"></i>
+                            <span>HIDROSSANITÁRIO</span>
+                        </button>
+                        <button onclick="switchTab('guia-eletrica')" id="nav-guia-eletrica" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-left transition">
+                            <i class="fa-solid fa-bolt w-4 text-center text-sky-600"></i>
+                            <span>ELÉTRICA</span>
+                        </button>
+                        <button onclick="switchTab('guia-pci')" id="nav-guia-pci" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-left transition">
+                            <i class="fa-solid fa-fire-extinguisher w-4 text-center text-sky-600"></i>
+                            <span>PCI</span>
+                        </button>
+                        <button onclick="switchTab('guia-gases-medicinais')" id="nav-guia-gases-medicinais" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-left transition">
+                            <i class="fa-solid fa-lungs w-4 text-center text-sky-600"></i>
+                            <span>GASES MEDICINAIS</span>
                         </button>
                     </div>
                 </div>
@@ -275,14 +308,18 @@
                 <div class="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                     <div class="max-w-3xl space-y-6">
                         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-sky-500/20 text-sky-400 border border-sky-500/30">
-                            <i class="fa-solid fa-bolt text-amber-400"></i> Seu guia técnico sem complicação
+                           
+                        <!-- EDITE AQUI: logomarca do Governo do Estado -->
+<div class="shrink-0 bg-white/95 rounded-2xl p-4 sm:p-5 shadow-lg shadow-sky-900/40 border border-sky-500/30">
+    <img src="logo-governo.png" alt="Governo do Estado" class="h-16 sm:h-24 w-auto object-contain">
+</div>
                         </div>
                         <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
                             Fala, galera! 👋<br>
                             Bora simplificar o <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-cyan-400">workflow técnico?</span>
                         </h1>
                         <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-light">
-                            Chega de perder tempo buscando informações desatualizadas e calculando equipamentos à mão. O <strong>Portal de Guias SEPE</strong> foi desenhado pra você mandar bem nos projetos com agilidade, precisão e zero perrengue.
+                            Chega de perder tempo buscando informações desatualizadas e calculando equipamentos à mão. O <strong>Portal de Guias SEPES</strong> foi desenhado pra você mandar bem nos projetos com agilidade, precisão e zero perrengue.
                         </p>
                     </div>
                 </div>
@@ -424,8 +461,7 @@
             font-size: 12px;
         }
     </style>
-</head>
-<body>
+
 
     <!-- BARRA DE CONTROLE PARA IMPRESSÃO (Apenas tela) -->
     <div class="no-print app-toolbar p-2.5 mb-2 flex justify-between items-center px-8">
@@ -445,34 +481,28 @@
 
     <div class="page-a4-portrait">
 
-        <!-- CABEÇALHO -->
-        <header class="flex justify-between items-center border-b border-slate-200 pb-2 mb-2">
-            <!-- LOGO ESQUERDA SEPE -->
-            <div class="flex items-center gap-2 w-[22%]">
-                <div>
-                    <h1 class="text-2xl font-black tracking-tight text-slate-900 leading-none">SEPE</h1>
-                </div>
-            </div>
-
-            <!-- TÍTULO CENTRAL -->
-            <div class="text-center w-[56%] px-5">
-                <div class="flex items-center justify-center gap-2">
-                    <span class="h-5 w-1 bg-blue-700 inline-block"></span>
-                    <h1 class="text-base font-black text-blue-900 tracking-wide uppercase leading-tight">DIRETRIZES DE PROJETOS</h1>
-                    <span class="h-5 w-1 bg-blue-700 inline-block"></span>
-                </div>
-                <p class="text-[9.5px] text-slate-600 font-medium leading-tight mt-0.5">
-                    Orientações para desenvolvimento de projetos e obras nas unidades de saúde, visando maior eficiência na elaboração de projetos, redução de impactos e licenciamentos menos complexos
-                </p>
-            </div>
-
-            <!-- LOGO DIREITA GOVERNO / BRASÃO -->
-            <div class="flex items-center justify-end gap-2 w-[22%]">
-                <div class="text-right">
-                    <p class="text-[7.5px] font-semibold text-slate-700 leading-tight">Secretaria<br>de Projetos<br>Estratégicos</p>
-                </div>
-            </div>
-        </header>
+            <!-- CABEÇALHO (padrão modelo base) -->
+<div class="bg-gradient-to-br from-white via-sky-50 to-cyan-50 text-slate-900 rounded-3xl p-4 sm:p-8 shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border border-sky-200/80 mb-4">
+    <div class="space-y-2">
+        <div class="flex items-center gap-2 flex-wrap">
+            <span class="bg-sky-600/10 border border-sky-400/40 text-sky-800 text-xs px-3 py-1 rounded-full font-semibold">
+                Secretaria de Projetos Estratégicos - SEPES
+            </span>
+            <!-- EDITE AQUI: etiqueta secundária (opcional) -->
+            <span class="bg-amber-500/15 border border-amber-400/40 text-amber-700 text-xs px-3 py-1 rounded-full font-semibold">
+                Unidades de Saúde
+            </span>
+        </div>
+        <!-- EDITE AQUI: título -->
+        <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Diretrizes de Projetos
+        </h2>
+        <!-- EDITE AQUI: subtítulo -->
+        <p class="text-xs sm:text-sm text-slate-600 max-w-3xl font-normal leading-relaxed">
+            Orientações para desenvolvimento de projetos e obras nas unidades de saúde, visando maior eficiência na elaboração de projetos, redução de impactos e licenciamentos menos complexos.
+        </p>
+    </div>
+</div>
 
         <!-- CORPO PRINCIPAL - COLUNAS COLORIDAS EM PILHA VERTICAL -->
         <main class="flex flex-col gap-2 flex-grow">
@@ -712,7 +742,7 @@
                         <span class="text-[10px] font-semibold text-slate-800 leading-tight">A solução pode ser atendida por reforma ou readequação interna?</span>
                     </label>
                     <label class="flex items-start gap-1.5 bg-white p-1 rounded border border-blue-100 shadow-2xs cursor-pointer hover:bg-blue-50/50 transition-colors">
-                        <input <input type="checkbox" class="custom-checkbox mt-0.5">
+                        <input type="checkbox" class="custom-checkbox mt-0.5">
                         <span class="text-[10px] font-semibold text-slate-800 leading-tight">É possível utilizar a área já edificada em vez de expandir a ocupação do terreno?</span>
                     </label>
                 </div>
@@ -750,60 +780,35 @@
             </div>
         </footer>
 
-        <!-- RODAPÉ DE PÁGINA -->
-        <div class="flex justify-between items-center text-[8px] font-semibold text-slate-400 mt-1 pt-0.5 border-t border-slate-100">
-            <span>V00 . JUNHO/2026 . NÚCLEO DE LEGALIZAÇÃO SEPES</span>
-            <span>Documento Oficial de Diretrizes de Projeto - Secretaria de Projetos Estratégicos</span>
         </div>
-
-    </div>
         
         </article>
 
         <!-- ARTICLE: GUIA NBR 9050 RAMPAS -->
-        <article id="guia-nbr9050-rampas" class="tab-content hidden flex-1 grid-pattern">
-            <header class="border-b border-slate-200 bg-white/85 backdrop-blur-md sticky top-0 z-30 shadow-sm">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div class="flex items-center space-x-3">
-                        <div class="logo-grad text-white p-2.5 rounded-2xl shadow-md shadow-sky-600/25">
-                            <i class="fa-solid font-bold fa-wheelchair-move text-2xl"></i>
-                        </div>
-                        <div>
-                            <span class="text-xs font-semibold tracking-wider text-sky-600 uppercase">Norma Brasileira Corrigida 2021</span>
-                            <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">ABNT NBR 9050:2020</h1>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-2 text-xs font-medium text-sky-800 bg-sky-50 border border-sky-200 px-3 py-1.5 rounded-full">
-                        <i class="fa-solid fa-book-bookmark text-sky-600"></i>
-                        <span>Seção 6.6 - Rampas</span>
-                    </div>
-                </div>
-            </header>
+     <article id="guia-nbr9050-rampas" class="tab-content hidden flex-1 p-4 sm:p-8 overflow-y-auto">
+        <div class="max-w-7xl mx-auto space-y-8">
 
-            <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
-                <!-- Banner Introdutório / Resumo Normativo -->
-                <section class="relative overflow-hidden rounded-3xl bg-white border border-slate-200 p-6 sm:p-10 shadow-sm">
-                    <div class="max-w-3xl space-y-4 relative z-10">
-                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-medium bg-sky-100 text-sky-700 border border-sky-200">
-                            <i class="fa-solid fa-circle-info"></i>
-                            <span>Conceito Técnico Básico</span>
-                        </div>
-                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight">
-                            PARÂMETROS DE ACESSIBILIDADE EM RAMPAS
-                        </h2>
-                        <blockquote class="p-4 bg-slate-50 rounded-xl border-l-4 border-sky-500 text-slate-700 text-sm leading-relaxed italic">
-                            "3.1.30 DEFINIÇÃO OFICIAL PARA RAMPA: inclinação da superfície do piso, longitudinal ao sentido de caminhamento, com declividade igual ou superior a 5%."
+            <!-- ==== BLOCO 1: CABEÇALHO ==== -->
+            <div class="bg-gradient-to-br from-white via-sky-50 to-cyan-50 rounded-3xl p-6 sm:p-8 shadow-xl border border-sky-200/80 space-y-2">
+                <div class="flex items-center gap-2 flex-wrap">
+                    <span class="bg-sky-600/10 border border-sky-400/40 text-sky-800 text-xs px-3 py-1 rounded-full font-semibold">Secretaria de Projetos Estratégicos - SEPES</span>
+                    <span class="bg-amber-500/15 border border-amber-400/40 text-amber-700 text-xs px-3 py-1 rounded-full font-semibold">NBR 9050:2020</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Parâmetros de Acessibilidade em Rampas</h2>
+                <blockquote class="p-4 bg-slate-50 rounded-xl border-l-4 border-sky-500 text-slate-700 text-sm leading-relaxed italic">
+                            "DEFINIÇÃO OFICIAL PARA RAMPA: 3.1.30 - inclinação da superfície do piso, longitudinal ao sentido de caminhamento, com declividade igual ou superior a 5%."
                         </blockquote>
                         <p class="text-slate-600 text-sm leading-relaxed">
                             A NBR 9050 fixa as dimensões, limites de inclinação, patamares de descanso e elementos de segurança necessários para garantir o acesso autônomo e seguro para todas as pessoas em edificações, mobiliários e vias públicas.
                         </p>
                     </div>
+
                 </section>
 
                 <!-- TABELA 4: Dimensionamento Padrão de Rampas -->
                 <section class="space-y-6">
                     <div class="border-l-4 border-sky-500 pl-4">
-                        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">TABELA 04 - DIMENSIONAMENTO DE RAMPAS (PROJETOS NOVOS)</h2>
+                        <h2 class="text-xl sm:text-xl font-extrabold text-slate-900 tracking-tight">TABELA 01 - DIMENSIONAMENTO DE RAMPAS (PROJETOS NOVOS)</h2>
                         <p class="text-slate-500 text-sm mt-1">Parâmetros normativos obrigatórios para construção e novos projetos conforme a NBR 9050.</p>
                     </div>
 
@@ -850,7 +855,7 @@
                 <!-- TABELA 5: Reformas e Edificações Existentes -->
                 <section class="space-y-6">
                     <div class="border-l-4 border-amber-500 pl-4">
-                        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">TABELA 05 - RAMPAS EM REFORMAS (EXCEÇÕES NORMATIVAS)</h2>
+                        <h2 class="text-xl sm:text-xl font-extrabold text-slate-900 tracking-tight">TABELA 02 - RAMPAS EM REFORMAS (EXCEÇÕES NORMATIVAS)</h2>
                         <p class="text-slate-500 text-sm mt-1">Permitido exclusivamente quando comprovada a impossibilidade técnica em edificações existentes.</p>
                     </div>
 
@@ -920,7 +925,7 @@
                 <!-- CALCULADORAS INTERATIVAS -->
                 <section class="space-y-6">
                     <div class="border-l-4 border-sky-500 pl-4">
-                        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">FERRAMENTAS DE CÁLCULO</h2>
+                        <h2 class="text-xl sm:text-xl font-extrabold text-slate-900 tracking-tight">FERRAMENTAS DE CÁLCULO</h2>
                         <p class="text-slate-500 text-sm mt-1">Dimensionamento automático baseado na fórmula oficial da ABNT NBR 9050: <span class="font-mono text-sky-700 bg-sky-50 px-1.5 py-0.5 rounded border border-sky-200">i = (h * 100) / c</span></p>
                     </div>
 
@@ -983,210 +988,252 @@
             </div>
         </article>
 
-        <!-- ARTICLE: GUIA PRANCHAS -->
-        <article id="guia-pranchas-iso216" class="tab-content hidden flex-1 bg-slate-50 text-slate-800 p-4 sm:p-8 space-y-8 overflow-y-auto">
-            
-            <!-- Banner Inicial de Pranchas - Tema Claro -->
-            <div class="bg-white text-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-200 relative overflow-hidden shadow-sm">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <div class="lg:col-span-7 space-y-4">
-                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-sky-100 text-sky-700 border border-sky-200">
-                            <i class="fa-solid fa-microchip"></i> Arquitetura & Engenharia Técnica
-                        </span>
-                        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
-                            Guia Completo de <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-cyan-500">Dimensionamento</span> de Pranchas
-                        </h2>
-                        <p class="text-slate-600 text-xs sm:text-sm max-w-2xl font-normal leading-relaxed">
-                            Padrões normatizados ISO 216 e ABNT NBR 10068. Dimensões exatas, margens de arquivamento, área útil de desenho e posicionamento do selo técnico.
-                        </p>
-                        <div class="pt-2 flex flex-wrap gap-2 text-[11px] font-mono text-slate-700">
-                            <span class="bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200 flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i>Proporção 1:1,414</span>
-                            <span class="bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200 flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i>Selo Padrão 175mm</span>
-                            <span class="bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200 flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i>Norma NBR 10068</span>
-                        </div>
-                    </div>
+<!-- ARTICLE: GUIA NBR 16.752/2020 - PRANCHAS (padrão modelo base) -->
+        <article id="guia-NBR-16.752/2020-pranchas-iso216" class="tab-content hidden flex-1 p-4 sm:p-8 overflow-y-auto">
+        <div class="max-w-7xl mx-auto space-y-8">
 
-                    <!-- Comparativo Dinâmico de Formatos - Tema Claro -->
-                    <div class="lg:col-span-5 flex justify-center">
-                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl shadow-sm w-full max-w-md">
-                            <div class="flex justify-between items-center mb-3">
-                                <span class="text-xs font-bold uppercase tracking-wider text-sky-700 flex items-center gap-2">
-                                    <i class="fa-solid fa-layer-group"></i> Comparativo Dinâmico
-                                </span>
-                                <span id="formatBadge" class="btn-grad text-white text-[10px] font-bold px-2 py-0.5 rounded">Formato A0</span>
-                            </div>
-                            
-                            <!-- Desenho Visual em CSS -->
-                            <div class="relative w-full aspect-[1.414/1] bg-white rounded-lg p-2 border border-slate-300 shadow-inner overflow-hidden flex flex-col justify-between" id="visualizerCanvas">
-                                <div id="visualSheetContainer" class="w-full h-full relative border-2 border-dashed border-sky-500/80 transition-all duration-300 flex items-center justify-center bg-sky-50/60 rounded">
-                                    <div class="text-center p-2">
-                                        <div id="visualName" class="text-2xl font-black text-sky-700">A0</div>
-                                        <div id="visualDims" class="text-xs font-mono text-slate-700 font-semibold mt-1">841 x 1189 mm</div>
-                                        <div id="visualArea" class="text-[10px] text-sky-600 font-medium mt-0.5">Área: 1,000 m²</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Botões de Seleção -->
-                            <div class="grid grid-cols-7 gap-1 mt-3">
-                                <button onclick="selectVisualSheet('A0')" class="sheet-btn active bg-sky-600 text-white py-1 text-xs font-bold rounded hover:bg-sky-500 transition-colors">A0</button>
-                                <button onclick="selectVisualSheet('A1')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A1</button>
-                                <button onclick="selectVisualSheet('A2')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A2</button>
-                                <button onclick="selectVisualSheet('A3')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A3</button>
-                                <button onclick="selectVisualSheet('A4')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A4</button>
-                                <button onclick="selectVisualSheet('A5')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A5</button>
-                                <button onclick="selectVisualSheet('A6')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A6</button>
-                            </div>
-                        </div>
-                    </div>
+            <!-- ==== BLOCO 1: CABEÇALHO ==== -->
+            <div class="bg-gradient-to-br from-white via-sky-50 to-cyan-50 rounded-3xl p-6 sm:p-8 shadow-xl border border-sky-200/80 space-y-2">
+                <div class="flex items-center gap-2 flex-wrap">
+                    <span class="bg-sky-600/10 border border-sky-400/40 text-sky-800 text-xs px-3 py-1 rounded-full font-semibold">Secretaria de Projetos Estratégicos - SEPES</span>
+                    <span class="bg-amber-500/15 border border-amber-400/40 text-amber-700 text-xs px-3 py-1 rounded-full font-semibold">ISO 216 / ABNT NBR 16.752/2020</span>
                 </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Dimensionamento de Pranchas</h2>
+                <p class="text-xs sm:text-sm text-slate-600 max-w-3xl leading-relaxed">Padrões normatizados ISO 216 e ABNT NBR 16.752/2020. Dimensões exatas, margens de arquivamento, área útil de desenho e posicionamento do selo técnico.</p>
             </div>
 
-            <!-- TABELA DE DIMENSÕES E MARGENS -->
-            <section class="space-y-4">
-                <div class="border-l-4 border-sky-600 pl-3">
-                    <h3 class="text-xl font-bold text-slate-900">1. Especificações Técnicas e Margens (NBR 10068)</h3>
-                    <p class="text-slate-600 text-xs mt-0.5">Valores padronizados para margem de encadernação/arquivamento e espessuras de borda.</p>
-                </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-                    <div class="overflow-x-auto">
+                <!-- ==== BLOCO 2: TABELA (coluna esquerda) ==== -->
+                <div class="lg:col-span-8 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="border-l-4 border-sky-600 pl-3">
+                        <h3 class="text-lg font-bold text-slate-900">Especificações Técnicas e Margens (NBR 16.752/2020)</h3>
+                        <p class="text-slate-500 text-xs">Valores padronizados para margem de encadernação/arquivamento e espessuras de borda.</p>
+                    </div>
+
+                    <div class="overflow-x-auto rounded-xl border border-slate-200">
                         <table class="w-full text-left text-xs">
-                            <thead class="bg-slate-100 text-slate-700 uppercase text-[10px] font-bold tracking-wider border-b border-slate-200">
-                                <tr>
-                                    <th class="py-3 px-4">Formato</th>
-                                    <th class="py-3 px-4">Dimensões Recortadas (mm)</th>
-                                    <th class="py-3 px-4">Área Útil (m²)</th>
-                                    <th class="py-3 px-4">Margem Esq. (mm)</th>
-                                    <th class="py-3 px-4">Demais Margens (mm)</th>
-                                    <th class="py-3 px-4">Espessura Borda (mm)</th>
-                                </tr>
+                            <thead class="uppercase text-[10px] font-bold tracking-wider">
+                            <tr>
+                            <th class="py-3 px-3">FORMATO</th>
+                            <th class="py-3 px-3">DIMENSÕES RECORTADAS (mm)</th>
+                            <th class="py-3 px-3 text-center">ÁREA ÚTIL (m²)</th>
+                            <th class="py-3 px-3 text-center">MARGEM ESQ. (mm)</th>
+                            <th class="py-3 px-3 text-center">DEMAIS MARGENS (mm)</th>
+                            <th class="py-3 px-3 text-center">ESPESSURA BORDA (mm)</th>
+                            </tr>
                             </thead>
-                            <tbody class="divide-y divide-slate-200 font-mono text-[11px]">
-                                <tr class="hover:bg-slate-50 transition-colors">
-                                    <td class="py-3 px-4 font-bold text-sky-600 font-sans"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800">A0</span></td>
-                                    <td class="py-3 px-4 font-semibold">841 × 1189</td>
-                                    <td class="py-3 px-4">1,000</td>
-                                    <td class="py-3 px-4 text-amber-600 font-bold">25 mm</td>
-                                    <td class="py-3 px-4">10 mm</td>
-                                    <td class="py-3 px-4">1,0 mm</td>
-                                </tr>
-                                <tr class="hover:bg-slate-50 transition-colors">
-                                    <td class="py-3 px-4 font-bold text-sky-600 font-sans"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800">A1</span></td>
-                                    <td class="py-3 px-4 font-semibold">594 × 841</td>
-                                    <td class="py-3 px-4">0,500</td>
-                                    <td class="py-3 px-4 text-amber-600 font-bold">25 mm</td>
-                                    <td class="py-3 px-4">10 mm</td>
-                                    <td class="py-3 px-4">1,0 mm</td>
-                                </tr>
-                                <tr class="hover:bg-slate-50 transition-colors">
-                                    <td class="py-3 px-4 font-bold text-sky-600 font-sans"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800">A2</span></td>
-                                    <td class="py-3 px-4 font-semibold">420 × 594</td>
-                                    <td class="py-3 px-4">0,250</td>
-                                    <td class="py-3 px-4 text-amber-600 font-bold">25 mm</td>
-                                    <td class="py-3 px-4">10 mm</td>
-                                    <td class="py-3 px-4">0,7 mm</td>
-                                </tr>
-                                <tr class="hover:bg-slate-50 transition-colors">
-                                    <td class="py-3 px-4 font-bold text-sky-600 font-sans"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800">A3</span></td>
-                                    <td class="py-3 px-4 font-semibold">297 × 420</td>
-                                    <td class="py-3 px-4">0,125</td>
-                                    <td class="py-3 px-4 text-amber-600 font-bold">25 mm</td>
-                                    <td class="py-3 px-4">10 mm</td>
-                                    <td class="py-3 px-4">0,7 mm</td>
-                                </tr>
-                                <tr class="hover:bg-slate-50 transition-colors">
-                                    <td class="py-3 px-4 font-bold text-sky-600 font-sans"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800">A4</span></td>
-                                    <td class="py-3 px-4 font-semibold">210 × 297</td>
-                                    <td class="py-3 px-4">0,062</td>
-                                    <td class="py-3 px-4 text-amber-600 font-bold">25 mm</td>
-                                    <td class="py-3 px-4">7 mm</td>
-                                    <td class="py-3 px-4">0,5 mm</td>
-                                </tr>
-                                <tr class="hover:bg-slate-50 transition-colors">
-                                    <td class="py-3 px-4 font-bold text-slate-500 font-sans">A5</td>
-                                    <td class="py-3 px-4">148 × 210</td>
-                                    <td class="py-3 px-4">0,031</td>
-                                    <td class="py-3 px-4 font-bold">15 mm</td>
-                                    <td class="py-3 px-4">5 mm</td>
-                                    <td class="py-3 px-4">0,5 mm</td>
-                                </tr>
-                                <tr class="hover:bg-slate-50 transition-colors">
-                                    <td class="py-3 px-4 font-bold text-slate-500 font-sans">A6</td>
-                                    <td class="py-3 px-4">105 × 148</td>
-                                    <td class="py-3 px-4">0,015</td>
-                                    <td class="py-3 px-4 font-bold">10 mm</td>
-                                    <td class="py-3 px-4">5 mm</td>
-                                    <td class="py-3 px-4">0,5 mm</td>
-                                </tr>
+                            <tbody class="divide-y divide-slate-200 text-[11px]">
+                            <tr>
+                            <td class="py-2.5 px-3 font-semibold"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold">4A0</span></td>
+                            <td class="py-2.5 px-3 font-mono font-semibold">1682 × 2378</td>
+                            <td class="py-2.5 px-3 text-center">1,000</td>
+                            <td class="py-2.5 px-3 text-center text-amber-600 font-bold">25</td>
+                            <td class="py-2.5 px-3 text-center">10</td>
+                            <td class="py-2.5 px-3 text-center">1,0</td>
+                            </tr>
+                            <tr>
+                            <td class="py-2.5 px-3 font-semibold"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold">2A0</span></td>
+                            <td class="py-2.5 px-3 font-mono font-semibold">1189 × 1682</td>
+                            <td class="py-2.5 px-3 text-center">1,000</td>
+                            <td class="py-2.5 px-3 text-center text-amber-600 font-bold">25</td>
+                            <td class="py-2.5 px-3 text-center">10</td>
+                            <td class="py-2.5 px-3 text-center">1,0</td>
+                            </tr>
+                            <td class="py-2.5 px-3 font-semibold"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold">A0</span></td>
+                            <td class="py-2.5 px-3 font-mono font-semibold">841 × 1189</td>
+                            <td class="py-2.5 px-3 text-center">1,000</td>
+                            <td class="py-2.5 px-3 text-center text-amber-600 font-bold">25</td>
+                            <td class="py-2.5 px-3 text-center">10</td>
+                            <td class="py-2.5 px-3 text-center">1,0</td>
+                            </tr>
+                            <tr class="bg-slate-50/50">
+                            <td class="py-2.5 px-3 font-semibold"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold">A1</span></td>
+                            <td class="py-2.5 px-3 font-mono font-semibold">594 × 841</td>
+                            <td class="py-2.5 px-3 text-center">0,500</td>
+                            <td class="py-2.5 px-3 text-center text-amber-600 font-bold">25</td>
+                            <td class="py-2.5 px-3 text-center">10</td>
+                            <td class="py-2.5 px-3 text-center">1,0</td>
+                            </tr>
+                            <tr>
+                            <td class="py-2.5 px-3 font-semibold"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold">A2</span></td>
+                            <td class="py-2.5 px-3 font-mono font-semibold">420 × 594</td>
+                            <td class="py-2.5 px-3 text-center">0,250</td>
+                            <td class="py-2.5 px-3 text-center text-amber-600 font-bold">25</td>
+                            <td class="py-2.5 px-3 text-center">10</td>
+                            <td class="py-2.5 px-3 text-center">0,7</td>
+                            </tr>
+                            <tr class="bg-slate-50/50">
+                            <td class="py-2.5 px-3 font-semibold"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold">A3</span></td>
+                            <td class="py-2.5 px-3 font-mono font-semibold">297 × 420</td>
+                            <td class="py-2.5 px-3 text-center">0,125</td>
+                            <td class="py-2.5 px-3 text-center text-amber-600 font-bold">25</td>
+                            <td class="py-2.5 px-3 text-center">10</td>
+                            <td class="py-2.5 px-3 text-center">0,7</td>
+                            </tr>
+                            <tr>
+                            <td class="py-2.5 px-3 font-semibold"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold">A4</span></td>
+                            <td class="py-2.5 px-3 font-mono font-semibold">210 × 297</td>
+                            <td class="py-2.5 px-3 text-center">0,062</td>
+                            <td class="py-2.5 px-3 text-center text-amber-600 font-bold">25</td>
+                            <td class="py-2.5 px-3 text-center">7</td>
+                            <td class="py-2.5 px-3 text-center">0,5</td>
+                            </tr>
+                            <tr class="bg-slate-50/50">
+                            <td class="py-2.5 px-3 font-semibold text-slate-500">A5</td>
+                            <td class="py-2.5 px-3 font-mono">148 × 210</td>
+                            <td class="py-2.5 px-3 text-center">0,031</td>
+                            <td class="py-2.5 px-3 text-center font-bold">15</td>
+                            <td class="py-2.5 px-3 text-center">5</td>
+                            <td class="py-2.5 px-3 text-center">0,5</td>
+                            </tr>
+                            <tr>
+                            <td class="py-2.5 px-3 font-semibold text-slate-500">A6</td>
+                            <td class="py-2.5 px-3 font-mono">105 × 148</td>
+                            <td class="py-2.5 px-3 text-center">0,015</td>
+                            <td class="py-2.5 px-3 text-center font-bold">10</td>
+                            <td class="py-2.5 px-3 text-center">5</td>
+                            <td class="py-2.5 px-3 text-center">0,5</td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="p-3.5 bg-amber-50 border-t border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
-                        <i class="fa-solid fa-lightbulb text-amber-600 text-sm mt-0.5"></i>
-                        <div>
-                            <strong>Por que a margem esquerda de 25 mm é maior?</strong>
-                            <p class="mt-0.5 text-slate-700">A margem esquerda ampliada em 25 mm (A0 a A4) garante espaço suficiente para furar, grampear e arquivar as pranchas em pastas sem cobrir as linhas do desenho ou elementos técnicos.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-            <!-- ANATOMIA ESTRUTURAL DA PRANCHA - TEMA CLARO -->
-            <section class="space-y-4">
-                <div class="border-l-4 border-sky-600 pl-3">
-                    <h3 class="text-xl font-bold text-slate-900">2. Anatomia Estrutural da Prancha (Layout Técnico)</h3>
-                    <p class="text-slate-600 text-xs mt-0.5">Distribuição dos componentes essenciais no papel de projeto.</p>
-                </div>
-
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                    <div class="relative w-full max-w-4xl mx-auto bg-slate-50 p-4 sm:p-6 rounded-xl border-2 border-slate-300 font-mono text-xs text-slate-800">
-                        <div class="absolute top-1.5 left-1/2 -translate-x-1/2 text-[10px] text-sky-700 font-bold uppercase tracking-widest">
-                            Margem Superior (10mm)
-                        </div>
-                        
-                        <div class="w-full border-2 border-sky-600 rounded p-4 relative bg-white min-h-[300px] flex flex-col justify-between shadow-xs">
-                            <div class="absolute left-0 top-0 bottom-0 w-8 sm:w-10 bg-amber-100/80 border-r-2 border-dashed border-amber-500/80 flex items-center justify-center">
-                                <span class="rotate-[-90deg] text-[9px] font-bold text-amber-800 whitespace-nowrap">MARGEM ESQUERDA (25mm)</span>
+                    <!-- ==== BLOCO 3: OBSERVAÇÕES ==== -->
+                    <div class="notes-panel-modern rounded-xl p-4 space-y-2">
+                        <span class="bg-sky-500 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wide inline-block">OBSERVAÇÕES TÉCNICAS</span>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs leading-relaxed">
+                            <div>
+                            <p><strong>1.</strong> <strong>Margem esquerda de 25 mm (A0 a A4):</strong> garante espaço para furar, grampear e arquivar as pranchas em pastas sem cobrir as linhas do desenho ou elementos técnicos.</p>
+                            <p><strong>2.</strong> Todos os formatos da série A mantêm a <u>proporção 1:1,414</u> (1:√2); cada formato equivale à metade do anterior.</p>
                             </div>
-
-                            <div class="ml-6 sm:ml-10 p-4 border border-dashed border-slate-300 rounded bg-slate-50/50 flex-1 flex items-center justify-center text-center">
-                                <div>
-                                    <i class="fa-solid fa-drafting-compass text-2xl text-sky-600 mb-1"></i>
-                                    <div class="font-bold text-slate-900 text-xs">ÁREA ÚTIL DE DESENHO</div>
-                                    <div class="text-slate-500 text-[10px] font-sans mt-0.5">Plantas Baixas, Cortes, Fachadas, Detalhamentos e Imagens 3D</div>
-                                </div>
-                            </div>
-
-                            <div class="ml-6 sm:ml-10 mt-3 flex flex-col sm:flex-row justify-end items-end gap-2.5">
-                                <div class="w-full sm:w-52 p-2.5 bg-slate-100 border border-slate-300 rounded text-[10px]">
-                                    <div class="font-bold text-slate-800 border-b border-slate-300 pb-1 mb-1">NOTAS / LEGENDA</div>
-                                    <div class="text-slate-600 space-y-0.5 text-[9px]">
-                                        <div>• Especificações técnicas</div>
-                                        <div>• Quadro de esquadrias</div>
-                                    </div>
-                                </div>
-
-                                <div class="w-full sm:w-60 p-2.5 bg-sky-50 border-2 border-sky-600 rounded text-[10px] shadow-xs">
-                                    <div class="flex justify-between items-center font-bold text-sky-900 border-b border-sky-200 pb-1 mb-1">
-                                        <span>SELO / CARIMBO</span>
-                                        <span class="text-[8px] bg-sky-600 text-white px-1.5 py-0.2 rounded">175 mm</span>
-                                    </div>
-                                    <div class="text-slate-700 text-[9px] space-y-0.5 font-sans">
-                                        <div class="font-bold text-slate-900">Nome do Empreendimento</div>
-                                        <div>Conteúdo: Planta Baixa 1:50</div>
-                                        <div class="text-sky-700 font-semibold">Canto Inferior Direito (Obrigatório)</div>
-                                    </div>
-                                </div>
+                            <div>
+                            <p><strong>3.</strong> O <strong>selo / carimbo</strong> deve ter largura padrão de <u>175 mm</u> e ser posicionado obrigatoriamente no <strong>canto inferior direito</strong> da prancha.</p>
+                            <p><strong>4.</strong> A espessura da borda (linha de margem) varia conforme o formato: 1,0 mm (A0/A1), 0,7 mm (A2/A3) e 0,5 mm (A4 a A6).</p>
+                            <p><strong>5.</strong> Para os formatos 2A0 e 4A0, aplicam-se os mesmos requisitos estabelecidos nesta Norma para o formato A0.</p>
+                            <p><strong>6.</strong> Para os formatos A5 e A6, os requisitos estabelecidos nesta Norma são orientativos, </p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+
+                <!-- ==== BLOCO 4: CARTÕES LATERAIS (coluna direita) ==== -->
+                <div class="lg:col-span-4 space-y-6">
+
+                    <!-- CARTÃO 1: COMPARATIVO DINÂMICO -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-sm font-extrabold text-sky-900 uppercase tracking-wide flex items-center gap-2">
+                                <i class="fa-solid fa-layer-group text-sky-600"></i> Comparativo Dinâmico
+                            </h3>
+                            <span id="formatBadge" class="btn-grad text-white text-[10px] font-bold px-2 py-0.5 rounded">Formato A0</span>
+                        </div>
+
+                        <div class="relative w-full aspect-[1.414/1] bg-slate-50 rounded-lg p-2 border border-slate-300 shadow-inner overflow-hidden" id="visualizerCanvas">
+                            <div id="visualSheetContainer" class="w-full h-full relative border-2 border-dashed border-sky-500/80 transition-all duration-300 flex items-center justify-center bg-sky-50/60 rounded">
+                                <div class="text-center p-2">
+                                    <div id="visualName" class="text-2xl font-black text-sky-700">A0</div>
+                                    <div id="visualDims" class="text-xs font-mono text-slate-700 font-semibold mt-1">841 x 1189 mm</div>
+                                    <div id="visualArea" class="text-[10px] text-sky-600 font-medium mt-0.5">Área: 1,000 m²</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-7 gap-1">
+                            <button onclick="selectVisualSheet('4A0')" class="sheet-btn active bg-sky-600 text-white py-1 text-xs font-bold rounded hover:bg-sky-500 transition-colors">4A0</button>
+                            <button onclick="selectVisualSheet('2A0')" class="sheet-btn active bg-sky-600 text-white py-1 text-xs font-bold rounded hover:bg-sky-500 transition-colors">2A0</button>
+                            <button onclick="selectVisualSheet('A0')" class="sheet-btn active bg-sky-600 text-white py-1 text-xs font-bold rounded hover:bg-sky-500 transition-colors">A0</button>
+                            <button onclick="selectVisualSheet('A1')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A1</button>
+                            <button onclick="selectVisualSheet('A2')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A2</button>
+                            <button onclick="selectVisualSheet('A3')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A3</button>
+                            <button onclick="selectVisualSheet('A4')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A4</button>
+                            <button onclick="selectVisualSheet('A5')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A5</button>
+                            <button onclick="selectVisualSheet('A6')" class="sheet-btn bg-white text-slate-700 border border-slate-300 py-1 text-xs font-bold rounded hover:bg-sky-600 hover:text-white transition-colors">A6</button>
+                        </div>
+                    </div>
+
+                    <!-- CARTÃO 2: ANATOMIA DA PRANCHA -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
+                        <h3 class="text-sm font-extrabold text-sky-900 uppercase tracking-wide flex items-center gap-2">
+                            <i class="fa-solid fa-drafting-compass text-sky-600"></i> Anatomia da Prancha
+                        </h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Distribuição dos componentes essenciais no papel de projeto.</p>
+
+                        <div class="relative bg-slate-50 p-3 pt-5 rounded-xl border-2 border-slate-300 font-mono text-[9px] text-slate-800">
+                            <div class="absolute top-1 left-1/2 -translate-x-1/2 text-[8px] text-sky-700 font-bold uppercase tracking-widest">Margem Sup. (10mm)</div>
+                            <div class="w-full border-2 border-sky-600 rounded p-2 pl-8 relative bg-white min-h-[190px] flex flex-col justify-between gap-2">
+                                <div class="absolute left-0 top-0 bottom-0 w-6 bg-amber-100/80 border-r-2 border-dashed border-amber-500/80 flex items-center justify-center">
+                                    <span class="rotate-[-90deg] text-[7px] font-bold text-amber-800 whitespace-nowrap">MARGEM ESQ. (25mm)</span>
+                                </div>
+                                <div class="p-2 border border-dashed border-slate-300 rounded bg-slate-50/50 flex-1 flex items-center justify-center text-center">
+                                    <div>
+                                        <div class="font-bold text-slate-900 text-[9px]">ÁREA ÚTIL DE DESENHO</div>
+                                        <div class="text-slate-500 text-[8px] font-sans">Plantas, Cortes, Fachadas, Detalhes</div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-end gap-1.5">
+                                    <div class="w-1/2 p-1.5 bg-slate-100 border border-slate-300 rounded">
+                                        <div class="font-bold text-slate-800 border-b border-slate-300 pb-0.5 mb-0.5">NOTAS / LEGENDA</div>
+                                        <div class="text-slate-600 text-[8px]">• Especificações<br>• Quadro de esquadrias</div>
+                                    </div>
+                                    <div class="w-1/2 p-1.5 bg-sky-50 border-2 border-sky-600 rounded">
+                                        <div class="flex justify-between items-center font-bold text-sky-900 border-b border-sky-200 pb-0.5 mb-0.5">
+                                            <span>SELO</span>
+                                            <span class="text-[7px] bg-sky-600 text-white px-1 rounded">175 mm</span>
+                                        </div>
+                                        <div class="text-sky-700 font-semibold text-[8px] font-sans">Canto Inf. Direito</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
         </article>
 
-        <!-- ARTICLE: GUIA RESERVATÓRIOS -->
-        <article id="guia-reservatorios" class="tab-content hidden flex-1 bg-slate-50 text-slate-800 p-4 sm:p-8 space-y-8 overflow-y-auto">
+        <article id="guia-legislacoes-municipais" class="tab-content hidden flex-1 p-4 sm:p-8 overflow-y-auto">
+            <div class="max-w-7xl mx-auto space-y-8">
+                <header class="bg-gradient-to-br from-white via-sky-50 to-cyan-50 rounded-3xl p-6 sm:p-8 shadow-xl border border-sky-200/80 space-y-3">
+                    <span class="inline-flex items-center gap-2 bg-sky-600/10 border border-sky-400/40 text-sky-800 text-xs px-3 py-1 rounded-full font-semibold">
+                        <i class="fa-solid fa-landmark"></i>
+                        Consulta por município
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Legislações Municipais</h2>
+                    <p class="text-sm text-slate-600 max-w-3xl leading-relaxed">
+                        Normas municipais que orientam a elaboração e a análise de projetos. A legislação aplicável varia conforme o município; confirme sempre a versão vigente e consulte a publicação oficial.
+                    </p>
+                </header>
+
+                <section class="space-y-4">
+                    <div class="border-l-4 border-sky-600 pl-3">
+                        <h3 class="text-lg font-bold text-slate-900">Tipos de legislação para consulta</h3>
+                        <p class="text-xs text-slate-500">Vide TEMA + MUNICÍPIO.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                            <div class="flex items-center gap-3 text-sky-700">
+                                <i class="fa-solid fa-city text-lg"></i>
+                                <h4 class="font-bold text-slate-900">Plano Diretor</h4>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">Diretrizes de desenvolvimento urbano e ordenamento territorial do município.</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                            <div class="flex items-center gap-3 text-sky-700">
+                                <i class="fa-solid fa-map text-lg"></i>
+                                <h4 class="font-bold text-slate-900">Parcelamento, Uso e Ocupação do solo</h4>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">Zoneamento, usos permitidos e parâmetros urbanísticos aplicáveis ao lote.</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                            <div class="flex items-center gap-3 text-sky-700">
+                                <i class="fa-solid fa-ruler-combined text-lg"></i>
+                                <h4 class="font-bold text-slate-900">Código de Obras e Edificações</h4>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">Regras locais para licenciamento, execução e conservação de edificações.</p>
+                            <details class="mt-4 rounded-xl border border-sky-200 bg-sky-50/70 p-4">
+                                <summary class="cursor-pointer text-sm font-bold text-sky-800">Lei Nº 16.292/97 - Dimensionamento de reservatórios - Recife/PE</summary>
+                                <section id="guia-reservatorios" class="mt-4 bg-slate-50 text-slate-800 p-4 sm:p-6 space-y-8 rounded-xl">
+
             
             <!-- HEADER DE RESERVATÓRIOS -->
             <div class="bg-gradient-to-br from-white via-sky-50 to-cyan-50 text-slate-900 rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border border-sky-200/80">
@@ -1200,7 +1247,7 @@
                         </span>
                     </div>
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                        Guia de Boas Práticas: Reservatórios de Água Potável e Lixo
+                        Dimensionamento de Reservatórios de Água Potável e Lixo - Recife/PE
                     </h2>
                     <p class="text-xs sm:text-sm text-slate-600 max-w-3xl font-normal leading-relaxed">
                         Parâmetros oficiais de dimensionamento de água potável (reservatórios superior e inferior) e reservatórios de resíduos sólidos para os usos Habitacional, Não Habitacional e Misto.
@@ -1382,6 +1429,104 @@
                     </div>
 
                 </div>
+            </div>
+        
+                                </section>
+                            </details>
+                        </div>
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                            <div class="flex items-center gap-3 text-sky-700">
+                                <i class="fa-solid fa-border-all text-lg"></i>
+                                <h4 class="font-bold text-slate-900">Legislações Ambientais</h4>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">Requisitos e regras ambientais</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                            <div class="flex items-center gap-3 text-sky-700">
+                                <i class="fa-solid fa-tree-city text-lg"></i>
+                                <h4 class="font-bold text-slate-900">Normas complementares</h4>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">Regras locais de acessibilidade, meio ambiente, patrimônio e posturas, quando aplicáveis.</p>
+                        </div>
+                        <div class="bg-sky-50 p-5 rounded-2xl border border-sky-200 shadow-sm space-y-2">
+                            <div class="flex items-center gap-3 text-sky-700">
+                                <i class="fa-solid fa-circle-check text-lg"></i>
+                                <h4 class="font-bold text-slate-900">Conferência da vigência</h4>
+                            </div>
+                            <p class="text-xs text-slate-700 leading-relaxed">Verifique alterações, revogações e regulamentações nos canais oficiais antes de usar uma referência.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="bg-white rounded-2xl border border-dashed border-sky-300 p-6 sm:p-8 text-center shadow-sm">
+                    <div class="mx-auto w-12 h-12 rounded-2xl bg-sky-50 text-sky-700 flex items-center justify-center">
+                        <i class="fa-solid fa-folder-open text-xl"></i>
+                    </div>
+                    <h3 class="mt-4 text-lg font-bold text-slate-900">Catálogo municipal em preparação</h3>
+                    <p class="mt-2 mx-auto max-w-2xl text-sm text-slate-600 leading-relaxed">
+                        Ainda não há normas cadastradas nesta guia. Para incluir uma referência, reúna o município, o tema, o número e a data da norma, além do link para a fonte oficial.
+                    </p>
+                </section>
+            </div>
+        </article>
+
+        <article id="guia-canteiro-obras" class="tab-content hidden flex-1 p-4 sm:p-8 overflow-y-auto">
+            <div class="max-w-7xl mx-auto space-y-8">
+                <header class="bg-gradient-to-br from-white via-sky-50 to-cyan-50 rounded-3xl p-6 sm:p-8 shadow-xl border border-sky-200/80 space-y-3">
+                    <span class="inline-flex items-center gap-2 bg-sky-600/10 border border-sky-400/40 text-sky-800 text-xs px-3 py-1 rounded-full font-semibold"><i class="fa-solid fa-helmet-safety"></i> Engenharias</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Canteiro de Obras</h2>
+                    <p class="text-sm text-slate-600">Guia em preparação.</p>
+                </header>
+            </div>
+        </article>
+
+        <article id="guia-estrutural" class="tab-content hidden flex-1 p-4 sm:p-8 overflow-y-auto">
+            <div class="max-w-7xl mx-auto space-y-8">
+                <header class="bg-gradient-to-br from-white via-sky-50 to-cyan-50 rounded-3xl p-6 sm:p-8 shadow-xl border border-sky-200/80 space-y-3">
+                    <span class="inline-flex items-center gap-2 bg-sky-600/10 border border-sky-400/40 text-sky-800 text-xs px-3 py-1 rounded-full font-semibold"><i class="fa-solid fa-gears"></i> Engenharias</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Estrutural</h2>
+                    <p class="text-sm text-slate-600">Guia em preparação.</p>
+                </header>
+            </div>
+        </article>
+
+        <article id="guia-hidrossanitario" class="tab-content hidden flex-1 p-4 sm:p-8 overflow-y-auto">
+            <div class="max-w-7xl mx-auto space-y-8">
+                <header class="bg-gradient-to-br from-white via-sky-50 to-cyan-50 rounded-3xl p-6 sm:p-8 shadow-xl border border-sky-200/80 space-y-3">
+                    <span class="inline-flex items-center gap-2 bg-sky-600/10 border border-sky-400/40 text-sky-800 text-xs px-3 py-1 rounded-full font-semibold"><i class="fa-solid fa-gears"></i> Engenharias</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Hidrossanitário</h2>
+                    <p class="text-sm text-slate-600">Guia em preparação.</p>
+                </header>
+            </div>
+        </article>
+
+        <article id="guia-eletrica" class="tab-content hidden flex-1 p-4 sm:p-8 overflow-y-auto">
+            <div class="max-w-7xl mx-auto space-y-8">
+                <header class="bg-gradient-to-br from-white via-sky-50 to-cyan-50 rounded-3xl p-6 sm:p-8 shadow-xl border border-sky-200/80 space-y-3">
+                    <span class="inline-flex items-center gap-2 bg-sky-600/10 border border-sky-400/40 text-sky-800 text-xs px-3 py-1 rounded-full font-semibold"><i class="fa-solid fa-gears"></i> Engenharias</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Elétrica</h2>
+                    <p class="text-sm text-slate-600">Guia em preparação.</p>
+                </header>
+            </div>
+        </article>
+
+        <article id="guia-pci" class="tab-content hidden flex-1 p-4 sm:p-8 overflow-y-auto">
+            <div class="max-w-7xl mx-auto space-y-8">
+                <header class="bg-gradient-to-br from-white via-sky-50 to-cyan-50 rounded-3xl p-6 sm:p-8 shadow-xl border border-sky-200/80 space-y-3">
+                    <span class="inline-flex items-center gap-2 bg-sky-600/10 border border-sky-400/40 text-sky-800 text-xs px-3 py-1 rounded-full font-semibold"><i class="fa-solid fa-gears"></i> Engenharias</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">PCI</h2>
+                    <p class="text-sm text-slate-600">Guia em preparação.</p>
+                </header>
+            </div>
+        </article>
+
+        <article id="guia-gases-medicinais" class="tab-content hidden flex-1 p-4 sm:p-8 overflow-y-auto">
+            <div class="max-w-7xl mx-auto space-y-8">
+                <header class="bg-gradient-to-br from-white via-sky-50 to-cyan-50 rounded-3xl p-6 sm:p-8 shadow-xl border border-sky-200/80 space-y-3">
+                    <span class="inline-flex items-center gap-2 bg-sky-600/10 border border-sky-400/40 text-sky-800 text-xs px-3 py-1 rounded-full font-semibold"><i class="fa-solid fa-gears"></i> Engenharias</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Gases Medicinais</h2>
+                    <p class="text-sm text-slate-600">Guia em preparação.</p>
+                </header>
             </div>
         </article>
 
