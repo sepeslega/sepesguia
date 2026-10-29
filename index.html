@@ -166,6 +166,130 @@
             border-color: rgba(186,230,253,.9);
             transform: translateX(2px);
         }
+
+        html[data-theme="black"],
+        html[data-theme="black"] body {
+            background: #000;
+            color: #f5f5f5;
+        }
+        html[data-theme="black"] body.app-bg {
+            background: #000 !important;
+        }
+        html[data-theme="black"] .tab-content:not(#tab-inicio) {
+            background-color: #000;
+            color: #f5f5f5;
+        }
+        html[data-theme="black"] [class~="bg-white"],
+        html[data-theme="black"] [class~="bg-white/85"],
+        html[data-theme="black"] [class~="bg-white/95"],
+        html[data-theme="black"] [class*="bg-slate-50"],
+        html[data-theme="black"] [class~="bg-slate-100"],
+        html[data-theme="black"] [class*="bg-sky-50"],
+        html[data-theme="black"] [class*="bg-cyan-50"],
+        html[data-theme="black"] [class*="bg-blue-50"],
+        html[data-theme="black"] [class*="bg-emerald-50"],
+        html[data-theme="black"] [class*="bg-green-50"],
+        html[data-theme="black"] [class*="bg-amber-50"],
+        html[data-theme="black"] [class*="bg-yellow-50"],
+        html[data-theme="black"] [class*="bg-red-50"],
+        html[data-theme="black"] [class*="bg-indigo-50"],
+        html[data-theme="black"] [class*="bg-violet-50"] {
+            background-color: #080808 !important;
+        }
+        html[data-theme="black"] [class~="bg-slate-200"] {
+            background-color: #111 !important;
+        }
+        html[data-theme="black"] .bg-gradient-to-br {
+            background-image: none !important;
+            background-color: #080808 !important;
+        }
+        html[data-theme="black"] .text-slate-900,
+        html[data-theme="black"] .text-slate-800,
+        html[data-theme="black"] .text-slate-700,
+        html[data-theme="black"] .text-slate-600,
+        html[data-theme="black"] .text-slate-500,
+        html[data-theme="black"] .text-slate-400 {
+            color: #f5f5f5 !important;
+        }
+        html[data-theme="black"] [class~="border-slate-100"],
+        html[data-theme="black"] [class~="border-slate-200"],
+        html[data-theme="black"] [class~="border-slate-300"] {
+            border-color: #404040 !important;
+        }
+        html[data-theme="black"] table tbody,
+        html[data-theme="black"] table tbody tr,
+        html[data-theme="black"] table tbody td,
+        html[data-theme="black"] blockquote,
+        html[data-theme="black"] input,
+        html[data-theme="black"] select {
+            color: #f5f5f5;
+        }
+        html[data-theme="black"] #calc1-result,
+        html[data-theme="black"] #calc2-result {
+            background: #111 !important;
+            border-color: #404040 !important;
+        }
+        html[data-theme="black"] .notes-panel-modern {
+            background: #080808;
+            border-color: #404040;
+        }
+        html[data-theme="black"] .page-a4-portrait,
+        html[data-theme="black"] .color-priorizar-card,
+        html[data-theme="black"] .color-evitar-card,
+        html[data-theme="black"] .color-nao-intervir-card,
+        html[data-theme="black"] .color-checklist-card {
+            background: #080808 !important;
+            color: #f5f5f5 !important;
+        }
+        html[data-theme="black"] .color-priorizar-text { color: #86efac !important; }
+        html[data-theme="black"] .color-evitar-text { color: #fcd34d !important; }
+        html[data-theme="black"] .color-nao-intervir-text { color: #fca5a5 !important; }
+        html[data-theme="black"] .color-priorizar-border,
+        html[data-theme="black"] .color-evitar-border,
+        html[data-theme="black"] .color-nao-intervir-border,
+        html[data-theme="black"] .color-checklist-border {
+            border-color: #404040 !important;
+        }
+        html[data-theme="black"] .notes-panel-modern p,
+        html[data-theme="black"] .notes-panel-modern p strong,
+        html[data-theme="black"] #calc1-i-val,
+        html[data-theme="black"] #calc2-c-val,
+        html[data-theme="black"] #res-vol-l {
+            color: #7dd3fc !important;
+        }
+        html[data-theme="black"] #tab-inicio {
+            background-color: #000;
+        }
+        html[data-theme="black"] .government-logo-frame {
+            background-color: #fff !important;
+        }
+        html[data-theme="black"] #guia-consulta-inicial-rdc-50-2002 > div > header,
+        html[data-theme="black"] #guia-consulta-inicial-rdc-50-2002 > div > section,
+        html[data-theme="black"] #guia-especialista-rdc-50 > div > header,
+        html[data-theme="black"] #guia-especialista-rdc-50 > div > section {
+            background: #080808 !important;
+            border-color: #404040 !important;
+        }
+        html[data-theme="black"] #guia-consulta-inicial-rdc-50-2002 > div > header span,
+        html[data-theme="black"] #guia-especialista-rdc-50 > div > header span {
+            background: #111 !important;
+            border-color: #404040 !important;
+            color: #7dd3fc !important;
+        }
+        html[data-theme="black"] #guia-consulta-inicial-rdc-50-2002 iframe,
+        html[data-theme="black"] #guia-especialista-rdc-50 iframe {
+            background: #000 !important;
+            border-color: #404040 !important;
+        }
+        html[data-theme="black"] ::placeholder {
+            color: #a3a3a3;
+        }
+        #municipal-topic-grid.has-open-guide > [data-municipal-card]:not([data-guide-open="true"]) {
+            display: none;
+        }
+        #municipal-topic-grid.has-open-guide > [data-guide-open="true"] {
+            grid-column: 1 / -1;
+        }
     </style>
 </head>
 <body class="app-bg text-slate-800 font-sans min-h-full flex flex-col md:flex-row antialiased selection:bg-sky-500 selection:text-white transition-colors duration-200">
@@ -178,9 +302,14 @@
             </div>
             <span class="font-bold text-slate-900 text-lg">Guias de Projeto</span>
         </div>
-        <button id="mobile-menu-btn" class="p-2 text-slate-600 hover:text-slate-900 bg-slate-100 rounded-lg">
-            <i class="fa-solid fa-bars text-xl"></i>
-        </button>
+        <div class="flex items-center gap-2">
+            <button type="button" data-theme-toggle class="theme-toggle p-2 text-slate-600 hover:text-slate-900 bg-slate-100 rounded-lg" aria-label="Ativar tema preto puro">
+                <i class="fa-solid fa-moon" aria-hidden="true"></i>
+            </button>
+            <button id="mobile-menu-btn" class="p-2 text-slate-600 hover:text-slate-900 bg-slate-100 rounded-lg" aria-label="Abrir menu">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
     </div>
 
     <!-- NAVEGAÇÃO LATERAL (SIDEBAR) -->
@@ -198,6 +327,9 @@
                         <p class="text-xs text-sky-600 font-medium">Arquitetura & Engenharias</p>
                     </div>
                 </div>
+                <button type="button" data-theme-toggle class="theme-toggle shrink-0 p-2 text-slate-600 hover:text-slate-900 bg-slate-100 rounded-lg transition-colors" aria-label="Ativar tema preto puro" title="Ativar tema preto puro">
+                    <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                </button>
             </div>
 
             <!-- Navegação por Categorias -->
@@ -257,6 +389,23 @@
 
                 <div>
                     <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3 flex items-center gap-2">
+                        <i class="fa-solid fa-hospital text-sky-600"></i>
+                        <span>RDC 50</span>
+                    </span>
+                    <div class="mt-2 space-y-1">
+                        <button onclick="switchTab('guia-consulta-inicial-rdc-50-2002')" id="nav-guia-consulta-inicial-rdc-50-2002" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-left transition">
+                            <i class="fa-solid fa-hospital-user w-4 text-center text-sky-600"></i>
+                            <span>CONSULTA INICIAL RDC 50/2002</span>
+                        </button>
+                        <button onclick="switchTab('guia-especialista-rdc-50')" id="nav-guia-especialista-rdc-50" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-left transition">
+                            <i class="fa-solid fa-user-doctor w-4 text-center text-sky-600"></i>
+                            <span>ESPECIALISTA RDC</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3 flex items-center gap-2">
                         <i class="fa-solid fa-gears text-sky-600"></i>
                         <span>ENGENHARIAS</span>
                     </span>
@@ -290,7 +439,7 @@
             </nav>
         </div>
 
-        <div class="p-4 border-t border-slate-100 bg-slate-50">
+        <div class="p-4 border-t border-slate-100 bg-slate-50 space-y-3">
             <div class="flex items-center gap-3">
                 <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
                 <span class="text-xs text-slate-500 font-medium">Padrões NBR/ISO Ativos</span>
@@ -304,13 +453,13 @@
         <!-- ARTICLE: INÍCIO -->
         <article id="tab-inicio" class="tab-content active bg-slate-900 min-h-full flex flex-col">
             <!-- Banner Jovem & Dinâmico -->
-            <section class="blueprint-bg text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800 relative overflow-hidden flex-1">
+            <section class="blueprint-bg text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800 relative overflow-hidden shrink-0">
                 <div class="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                     <div class="max-w-3xl space-y-6">
                         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-sky-500/20 text-sky-400 border border-sky-500/30">
                            
-<!-- EDITE AQUI: logomarca do Governo do Estado -->
-<div class="inline-block bg-white/95 rounded-2xl p-4 sm:p-5 shadow-lg shadow-sky-900/40 border border-sky-500/30">
+                        <!-- EDITE AQUI: logomarca do Governo do Estado -->
+<div class="government-logo-frame shrink-0 bg-white/95 rounded-2xl p-4 sm:p-5 shadow-lg shadow-sky-900/40 border border-sky-500/30">
     <img src="logo-governo.png" alt="Governo do Estado" class="h-16 sm:h-24 w-auto object-contain">
 </div>
                         </div>
@@ -801,9 +950,71 @@
                         <p class="text-slate-600 text-sm leading-relaxed">
                             A NBR 9050 fixa as dimensões, limites de inclinação, patamares de descanso e elementos de segurança necessários para garantir o acesso autônomo e seguro para todas as pessoas em edificações, mobiliários e vias públicas.
                         </p>
+            </div>
+
+            <!-- CALCULADORAS INTERATIVAS -->
+            <section class="space-y-6">
+                <div class="border-l-4 border-sky-500 pl-4">
+                    <h2 class="text-xl sm:text-xl font-extrabold text-slate-900 tracking-tight">FERRAMENTAS DE CÁLCULO</h2>
+                    <p class="text-slate-500 text-sm mt-1">Dimensionamento automático baseado na fórmula oficial da ABNT NBR 9050: <span class="font-mono text-sky-700 bg-sky-50 px-1.5 py-0.5 rounded border border-sky-200">i = (h * 100) / c</span></p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold text-sky-700 uppercase tracking-wider bg-sky-50 px-2.5 py-1 rounded border border-sky-200">Calculadora 01</span>
+                            <h3 class="text-xl font-bold text-slate-900">Calcular Inclinação da Rampa</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Altura do Desnível - h (m):</label>
+                                <input type="number" step="0.01" id="calc1-h" value="0.80" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Comprimento Horizontal - c (m):</label>
+                                <input type="number" step="0.01" id="calc1-c" value="10.00" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                            </div>
+                        </div>
+                        <div id="calc1-result" class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3">
+                            <div class="flex items-baseline justify-between">
+                                <span class="text-xs font-medium text-slate-500">Inclinação (i):</span>
+                                <span id="calc1-i-val" class="text-2xl font-extrabold text-sky-600">8.00%</span>
+                            </div>
+                            <div id="calc1-status" class="text-xs px-3 py-2 rounded-lg bg-sky-50 border border-sky-200 text-sky-900 font-medium"></div>
+                        </div>
                     </div>
 
-                </section>
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold text-sky-700 uppercase tracking-wider bg-sky-50 px-2.5 py-1 rounded border border-sky-200">Calculadora 02</span>
+                            <h3 class="text-xl font-bold text-slate-900">Calcular Comprimento da Rampa</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Altura do Desnível - h (m):</label>
+                                <input type="number" step="0.01" id="calc2-h" value="1.00" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Inclinação Desejada (i):</label>
+                                <select id="calc2-i" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                                    <option value="5.00">5,00% (1:20) - Rota ideal</option>
+                                    <option value="6.25">6,25% (1:16) - Desnível max 1,00m</option>
+                                    <option value="8.33" selected>8,33% (1:12) - Máximo padrão</option>
+                                    <option value="10.00">10,00% (1:10) - Reforma (h max 0,20m)</option>
+                                    <option value="12.50">12,50% (1:8) - Reforma (h max 0,075m)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="calc2-result" class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3">
+                            <div class="flex items-baseline justify-between">
+                                <span class="text-xs font-medium text-slate-500">Comprimento Mínimo (c):</span>
+                                <span id="calc2-c-val" class="text-2xl font-extrabold text-sky-600">12.00 m</span>
+                            </div>
+                            <div id="calc2-status" class="text-xs px-3 py-2 rounded-lg bg-sky-50 border border-sky-200 text-sky-900 font-medium"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
                 <!-- TABELA 4: Dimensionamento Padrão de Rampas -->
                 <section class="space-y-6">
@@ -922,69 +1133,6 @@
                     </div>
                 </section>
 
-                <!-- CALCULADORAS INTERATIVAS -->
-                <section class="space-y-6">
-                    <div class="border-l-4 border-sky-500 pl-4">
-                        <h2 class="text-xl sm:text-xl font-extrabold text-slate-900 tracking-tight">FERRAMENTAS DE CÁLCULO</h2>
-                        <p class="text-slate-500 text-sm mt-1">Dimensionamento automático baseado na fórmula oficial da ABNT NBR 9050: <span class="font-mono text-sky-700 bg-sky-50 px-1.5 py-0.5 rounded border border-sky-200">i = (h * 100) / c</span></p>
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
-                            <div class="space-y-2">
-                                <span class="text-xs font-bold text-sky-700 uppercase tracking-wider bg-sky-50 px-2.5 py-1 rounded border border-sky-200">Calculadora 01</span>
-                                <h3 class="text-xl font-bold text-slate-900">Calcular Inclinação da Rampa</h3>
-                            </div>
-                            <div class="space-y-4">
-                                <div>
-                                    <label class="block text-xs font-semibold text-slate-700 mb-1">Altura do Desnível - h (m):</label>
-                                    <input type="number" step="0.01" id="calc1-h" value="0.80" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-semibold text-slate-700 mb-1">Comprimento Horizontal - c (m):</label>
-                                    <input type="number" step="0.01" id="calc1-c" value="10.00" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
-                                </div>
-                            </div>
-                            <div id="calc1-result" class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3">
-                                <div class="flex items-baseline justify-between">
-                                    <span class="text-xs font-medium text-slate-500">Inclinação (i):</span>
-                                    <span id="calc1-i-val" class="text-2xl font-extrabold text-sky-600">8.00%</span>
-                                </div>
-                                <div id="calc1-status" class="text-xs px-3 py-2 rounded-lg bg-sky-50 border border-sky-200 text-sky-900 font-medium"></div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
-                            <div class="space-y-2">
-                                <span class="text-xs font-bold text-sky-700 uppercase tracking-wider bg-sky-50 px-2.5 py-1 rounded border border-sky-200">Calculadora 02</span>
-                                <h3 class="text-xl font-bold text-slate-900">Calcular Comprimento da Rampa</h3>
-                            </div>
-                            <div class="space-y-4">
-                                <div>
-                                    <label class="block text-xs font-semibold text-slate-700 mb-1">Altura do Desnível - h (m):</label>
-                                    <input type="number" step="0.01" id="calc2-h" value="1.00" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-semibold text-slate-700 mb-1">Inclinação Desejada (i):</label>
-                                    <select id="calc2-i" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
-                                        <option value="5.00">5,00% (1:20) - Rota ideal</option>
-                                        <option value="6.25">6,25% (1:16) - Desnível max 1,00m</option>
-                                        <option value="8.33" selected>8,33% (1:12) - Máximo padrão</option>
-                                        <option value="10.00">10,00% (1:10) - Reforma (h max 0,20m)</option>
-                                        <option value="12.50">12,50% (1:8) - Reforma (h max 0,075m)</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div id="calc2-result" class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3">
-                                <div class="flex items-baseline justify-between">
-                                    <span class="text-xs font-medium text-slate-500">Comprimento Mínimo (c):</span>
-                                    <span id="calc2-c-val" class="text-2xl font-extrabold text-sky-600">12.00 m</span>
-                                </div>
-                                <div id="calc2-status" class="text-xs px-3 py-2 rounded-lg bg-sky-50 border border-sky-200 text-sky-900 font-medium"></div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
             </div>
         </article>
 
@@ -1017,7 +1165,7 @@
                             <tr>
                             <th class="py-3 px-3">FORMATO</th>
                             <th class="py-3 px-3">DIMENSÕES RECORTADAS (mm)</th>
-                            <th class="py-3 px-3 text-center">ÁREA ÚTIL (m²)</th>
+                            <th class="py-3 px-3 text-center">ÁREA DA PRANCHA (m²)</th>
                             <th class="py-3 px-3 text-center">MARGEM ESQ. (mm)</th>
                             <th class="py-3 px-3 text-center">DEMAIS MARGENS (mm)</th>
                             <th class="py-3 px-3 text-center">ESPESSURA BORDA (mm)</th>
@@ -1027,7 +1175,7 @@
                             <tr>
                             <td class="py-2.5 px-3 font-semibold"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold">4A0</span></td>
                             <td class="py-2.5 px-3 font-mono font-semibold">1682 × 2378</td>
-                            <td class="py-2.5 px-3 text-center">3,99</td>
+                            <td class="py-2.5 px-3 text-center">4,000</td>
                             <td class="py-2.5 px-3 text-center text-amber-600 font-bold">25</td>
                             <td class="py-2.5 px-3 text-center">10</td>
                             <td class="py-2.5 px-3 text-center">1,0</td>
@@ -1035,7 +1183,7 @@
                             <tr>
                             <td class="py-2.5 px-3 font-semibold"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold">2A0</span></td>
                             <td class="py-2.5 px-3 font-mono font-semibold">1189 × 1682</td>
-                            <td class="py-2.5 px-3 text-center">1,99</td>
+                            <td class="py-2.5 px-3 text-center">2,000</td>
                             <td class="py-2.5 px-3 text-center text-amber-600 font-bold">25</td>
                             <td class="py-2.5 px-3 text-center">10</td>
                             <td class="py-2.5 px-3 text-center">1,0</td>
@@ -1048,7 +1196,6 @@
                             <td class="py-2.5 px-3 text-center">10</td>
                             <td class="py-2.5 px-3 text-center">1,0</td>
                             </tr>
-                            <tr>
                             <tr class="bg-slate-50/50">
                             <td class="py-2.5 px-3 font-semibold"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold">A1</span></td>
                             <td class="py-2.5 px-3 font-mono font-semibold">594 × 841</td>
@@ -1131,14 +1278,14 @@
                             <span id="formatBadge" class="btn-grad text-white text-[10px] font-bold px-2 py-0.5 rounded">Formato A0</span>
                         </div>
 
-                        <div class="relative w-full aspect-[1.414/1] bg-slate-50 rounded-lg p-2 border border-slate-300 shadow-inner overflow-hidden" id="visualizerCanvas">
-                            <div id="visualSheetContainer" class="w-full h-full relative border-2 border-dashed border-sky-500/80 transition-all duration-300 flex items-center justify-center bg-sky-50/60 rounded">
-                                <div class="text-center p-2">
-                                    <div id="visualName" class="text-2xl font-black text-sky-700">A0</div>
-                                    <div id="visualDims" class="text-xs font-mono text-slate-700 font-semibold mt-1">841 x 1189 mm</div>
-                                    <div id="visualArea" class="text-[10px] text-sky-600 font-medium mt-0.5">Área: 1,000 m²</div>
-                                </div>
-                            </div>
+                        <div class="w-full aspect-[2/1] bg-slate-50 rounded-lg border border-slate-300 shadow-inner overflow-hidden" id="visualizerCanvas">
+                            <div id="visualSheetContainer" class="w-full h-full relative" aria-label="Comparação proporcional dos formatos"></div>
+                        </div>
+                        <div id="visualFormatLegend" class="grid grid-cols-2 gap-x-3 gap-y-1 text-[10px] text-slate-600" aria-live="polite"></div>
+                        <div class="text-center">
+                            <div id="visualDims" class="text-xs font-mono text-slate-700 font-semibold">841 x 1189 mm</div>
+                            <div id="visualArea" class="text-[10px] text-sky-600 font-medium mt-0.5">Área: 1,000 m²</div>
+                            <div id="visualMarginLabel" class="text-[9px] text-slate-500 font-medium mt-0.5">Margens: 25 / 10 mm (esq. / demais)</div>
                         </div>
 
                         <div class="grid grid-cols-7 gap-1">
@@ -1211,29 +1358,52 @@
                         <p class="text-xs text-slate-500">Vide TEMA + MUNICÍPIO.</p>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                    <div id="municipal-topic-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                        <div data-municipal-card="plano-diretor" class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
                             <div class="flex items-center gap-3 text-sky-700">
                                 <i class="fa-solid fa-city text-lg"></i>
                                 <h4 class="font-bold text-slate-900">Plano Diretor</h4>
                             </div>
                             <p class="text-xs text-slate-600 leading-relaxed">Diretrizes de desenvolvimento urbano e ordenamento territorial do município.</p>
                         </div>
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                        <div data-municipal-card="uso-solo" class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
                             <div class="flex items-center gap-3 text-sky-700">
                                 <i class="fa-solid fa-map text-lg"></i>
                                 <h4 class="font-bold text-slate-900">Parcelamento, Uso e Ocupação do solo</h4>
                             </div>
                             <p class="text-xs text-slate-600 leading-relaxed">Zoneamento, usos permitidos e parâmetros urbanísticos aplicáveis ao lote.</p>
+                            <details class="municipal-guide-details mt-4 rounded-xl border border-sky-200 bg-sky-50/70 p-4">
+                                <summary class="cursor-pointer text-sm font-bold text-sky-800">Memória de Cálculo de Projetos Arquitetônicos - Recife/PE</summary>
+                                <div class="flex justify-end mt-3">
+                                    <button type="button" class="municipal-guide-back inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-amber-500 bg-amber-400 text-amber-950 text-xs font-bold shadow-sm hover:bg-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 transition-colors">
+                                        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                                        Voltar aos temas
+                                    </button>
+                                </div>
+                                <iframe
+                                    data-reset-on-back
+                                    class="mt-4 w-full rounded-xl border border-slate-200 bg-white"
+                                    src="./Memória de Cálculo — Recife PE.html"
+                                    title="Memória de Cálculo de Projetos Arquitetônicos - Recife/PE"
+                                    loading="lazy"
+                                    style="height: 80vh; min-height: 700px"
+                                ></iframe>
+                            </details>
                         </div>
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                        <div data-municipal-card="code" class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
                             <div class="flex items-center gap-3 text-sky-700">
                                 <i class="fa-solid fa-ruler-combined text-lg"></i>
                                 <h4 class="font-bold text-slate-900">Código de Obras e Edificações</h4>
                             </div>
                             <p class="text-xs text-slate-600 leading-relaxed">Regras locais para licenciamento, execução e conservação de edificações.</p>
-                            <details class="mt-4 rounded-xl border border-sky-200 bg-sky-50/70 p-4">
+                            <details class="municipal-guide-details mt-4 rounded-xl border border-sky-200 bg-sky-50/70 p-4">
                                 <summary class="cursor-pointer text-sm font-bold text-sky-800">Lei Nº 16.292/97 - Dimensionamento de reservatórios - Recife/PE</summary>
+                                <div class="flex justify-end mt-3">
+                                    <button type="button" class="municipal-guide-back inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-amber-500 bg-amber-400 text-amber-950 text-xs font-bold shadow-sm hover:bg-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 transition-colors">
+                                        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                                        Voltar aos temas
+                                    </button>
+                                </div>
                                 <section id="guia-reservatorios" class="mt-4 bg-slate-50 text-slate-800 p-4 sm:p-6 space-y-8 rounded-xl">
 
             
@@ -1436,21 +1606,21 @@
                                 </section>
                             </details>
                         </div>
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                        <div data-municipal-card="ambientais" class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
                             <div class="flex items-center gap-3 text-sky-700">
                                 <i class="fa-solid fa-border-all text-lg"></i>
                                 <h4 class="font-bold text-slate-900">Legislações Ambientais</h4>
                             </div>
                             <p class="text-xs text-slate-600 leading-relaxed">Requisitos e regras ambientais</p>
                         </div>
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                        <div data-municipal-card="complementares" class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
                             <div class="flex items-center gap-3 text-sky-700">
                                 <i class="fa-solid fa-tree-city text-lg"></i>
                                 <h4 class="font-bold text-slate-900">Normas complementares</h4>
                             </div>
                             <p class="text-xs text-slate-600 leading-relaxed">Regras locais de acessibilidade, meio ambiente, patrimônio e posturas, quando aplicáveis.</p>
                         </div>
-                        <div class="bg-sky-50 p-5 rounded-2xl border border-sky-200 shadow-sm space-y-2">
+                        <div data-municipal-card="vigencia" class="bg-sky-50 p-5 rounded-2xl border border-sky-200 shadow-sm space-y-2">
                             <div class="flex items-center gap-3 text-sky-700">
                                 <i class="fa-solid fa-circle-check text-lg"></i>
                                 <h4 class="font-bold text-slate-900">Conferência da vigência</h4>
@@ -1468,6 +1638,52 @@
                     <p class="mt-2 mx-auto max-w-2xl text-sm text-slate-600 leading-relaxed">
                         Ainda não há normas cadastradas nesta guia. Para incluir uma referência, reúna o município, o tema, o número e a data da norma, além do link para a fonte oficial.
                     </p>
+                </section>
+            </div>
+        </article>
+
+        <article id="guia-consulta-inicial-rdc-50-2002" class="tab-content hidden flex-1 p-4 sm:p-8 overflow-y-auto">
+            <div class="max-w-7xl mx-auto space-y-8">
+                <header class="bg-gradient-to-br from-white via-sky-50 to-cyan-50 rounded-3xl p-6 sm:p-8 shadow-xl border border-sky-200/80 space-y-3">
+                    <span class="inline-flex items-center gap-2 bg-sky-600/10 border border-sky-400/40 text-sky-800 text-xs px-3 py-1 rounded-full font-semibold">
+                        <i class="fa-solid fa-hospital"></i>
+                        RDC 50
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">CONSULTA INICIAL RDC 50/2002</h2>
+                    <p class="text-sm text-slate-600 max-w-3xl leading-relaxed">Consulte os ambientes e unidades assistenciais, com pesquisa e navegação pelas informações da RDC 50/2002.</p>
+                </header>
+                <section class="bg-white p-3 sm:p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <iframe
+                        data-portal-theme-frame
+                        class="w-full rounded-xl border border-slate-200 bg-white"
+                        src="./consulta-inicial-rdc-50-2002.html"
+                        title="Consulta Inicial RDC 50/2002"
+                        loading="lazy"
+                        style="height: 82vh; min-height: 720px"
+                    ></iframe>
+                </section>
+            </div>
+        </article>
+
+        <article id="guia-especialista-rdc-50" class="tab-content hidden flex-1 p-4 sm:p-8 overflow-y-auto">
+            <div class="max-w-7xl mx-auto space-y-8">
+                <header class="bg-gradient-to-br from-white via-sky-50 to-cyan-50 rounded-3xl p-6 sm:p-8 shadow-xl border border-sky-200/80 space-y-3">
+                    <span class="inline-flex items-center gap-2 bg-sky-600/10 border border-sky-400/40 text-sky-800 text-xs px-3 py-1 rounded-full font-semibold">
+                        <i class="fa-solid fa-hospital"></i>
+                        RDC 50
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Especialista RDC</h2>
+                    <p class="text-sm text-slate-600 max-w-3xl leading-relaxed">Consulta interativa de apoio ao planejamento físico-funcional de estabelecimentos assistenciais de saúde, com navegação por normas, disciplinas, especificações, materiais e dimensionamento.</p>
+                </header>
+                <section class="bg-white p-3 sm:p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <iframe
+                        data-portal-theme-frame
+                        class="w-full rounded-xl border border-slate-200 bg-white"
+                        src="./o-especialista-rdc.html"
+                        title="Especialista RDC 50"
+                        loading="lazy"
+                        style="height: 82vh; min-height: 720px"
+                    ></iframe>
                 </section>
             </div>
         </article>
@@ -1535,6 +1751,48 @@
     </div>
 
     <script>
+        function setSiteTheme(theme) {
+            if (theme !== 'black' && theme !== 'white') {
+                throw new Error(`Tema inválido: ${theme}`);
+            }
+
+            document.documentElement.dataset.theme = theme;
+            localStorage.setItem('portal-theme', theme);
+            document.querySelectorAll('[data-portal-theme-frame]').forEach(frame => {
+                frame.contentWindow.postMessage({ type: 'portal-theme', theme }, '*');
+            });
+
+            document.querySelectorAll('[data-theme-toggle]').forEach(button => {
+                const nextTheme = theme === 'black' ? 'white' : 'black';
+                const label = nextTheme === 'black' ? 'Ativar tema preto puro' : 'Ativar tema branco';
+                button.setAttribute('aria-label', label);
+                button.setAttribute('aria-pressed', String(theme === 'black'));
+                button.title = label;
+                const icon = button.querySelector('i');
+                if (icon) {
+                    icon.className = `fa-solid ${nextTheme === 'black' ? 'fa-moon' : 'fa-sun'}`;
+                }
+                const text = button.querySelector('span');
+                if (text) text.innerText = label;
+            });
+        }
+
+        document.querySelectorAll('[data-theme-toggle]').forEach(button => {
+            button.addEventListener('click', () => {
+                const nextTheme = document.documentElement.dataset.theme === 'black' ? 'white' : 'black';
+                setSiteTheme(nextTheme);
+            });
+        });
+        document.querySelectorAll('[data-portal-theme-frame]').forEach(frame => {
+            frame.addEventListener('load', () => {
+                frame.contentWindow.postMessage({
+                    type: 'portal-theme',
+                    theme: document.documentElement.dataset.theme
+                }, '*');
+            });
+        });
+        setSiteTheme(localStorage.getItem('portal-theme') === 'black' ? 'black' : 'white');
+
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.nav-item').forEach(el => {
@@ -1616,30 +1874,114 @@
         }
 
         const paperData = {
-            'A0': { dims: '841 x 1189 mm', area: '1,000 m²' },
-            'A1': { dims: '594 x 841 mm', area: '0,500 m²' },
-            'A2': { dims: '420 x 594 mm', area: '0,250 m²' },
-            'A3': { dims: '297 x 420 mm', area: '0,125 m²' },
-            'A4': { dims: '210 x 297 mm', area: '0,062 m²' },
-            'A5': { dims: '148 x 210 mm', area: '0,031 m²' },
-            'A6': { dims: '105 x 148 mm', area: '0,015 m²' }
+            '4A0': { width: 1682, height: 2378, dims: '1682 x 2378 mm', area: '4,000 m²', leftMargin: 25, otherMargin: 10 },
+            '2A0': { width: 1189, height: 1682, dims: '1189 x 1682 mm', area: '2,000 m²', leftMargin: 25, otherMargin: 10 },
+            'A0': { width: 841, height: 1189, dims: '841 x 1189 mm', area: '1,000 m²', leftMargin: 25, otherMargin: 10 },
+            'A1': { width: 594, height: 841, dims: '594 x 841 mm', area: '0,500 m²', leftMargin: 25, otherMargin: 10 },
+            'A2': { width: 420, height: 594, dims: '420 x 594 mm', area: '0,250 m²', leftMargin: 25, otherMargin: 10 },
+            'A3': { width: 297, height: 420, dims: '297 x 420 mm', area: '0,125 m²', leftMargin: 25, otherMargin: 10 },
+            'A4': { width: 210, height: 297, dims: '210 x 297 mm', area: '0,062 m²', leftMargin: 25, otherMargin: 7 },
+            'A5': { width: 148, height: 210, dims: '148 x 210 mm', area: '0,031 m²', leftMargin: 15, otherMargin: 5 },
+            'A6': { width: 105, height: 148, dims: '105 x 148 mm', area: '0,015 m²', leftMargin: 10, otherMargin: 5 }
         };
 
+        const paperFormatCodes = Object.keys(paperData);
+        const visualTileColors = [
+            'bg-emerald-100',
+            'bg-slate-200',
+            'bg-amber-100',
+            'bg-sky-100',
+            'bg-violet-100'
+        ];
+
         function selectVisualSheet(code) {
+            const sheet = paperData[code];
+            if (!sheet) throw new Error(`Formato de prancha inválido: ${code}`);
+
             document.querySelectorAll('.sheet-btn').forEach(btn => {
                 if (btn.innerText === code) {
                     btn.classList.add('bg-sky-600', 'text-white');
+                    btn.classList.add('active');
                     btn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-300');
                 } else {
                     btn.classList.remove('bg-sky-600', 'text-white');
+                    btn.classList.remove('active');
                     btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-300');
                 }
             });
 
+            const startIndex = paperFormatCodes.indexOf(code);
+            const comparedFormats = paperFormatCodes.slice(startIndex, startIndex + 5);
+            const totalArea = comparedFormats.reduce((sum, format) => {
+                const current = paperData[format];
+                return sum + current.width * current.height;
+            }, 0);
+            const visualSheet = document.getElementById('visualSheetContainer');
+            const visualLegend = document.getElementById('visualFormatLegend');
+            visualSheet.replaceChildren();
+            visualLegend.replaceChildren();
+
+            let remainingRect = { left: 0, top: 0, width: 100, height: 100 };
+            let remainingArea = totalArea;
+            comparedFormats.forEach((format, index) => {
+                const current = paperData[format];
+                const area = current.width * current.height;
+                let tileRect = remainingRect;
+
+                if (index < comparedFormats.length - 1) {
+                    const fraction = area / remainingArea;
+                    if (remainingRect.width >= remainingRect.height) {
+                        const tileWidth = remainingRect.width * fraction;
+                        tileRect = { ...remainingRect, width: tileWidth };
+                        remainingRect = {
+                            ...remainingRect,
+                            left: remainingRect.left + tileWidth,
+                            width: remainingRect.width - tileWidth
+                        };
+                    } else {
+                        const tileHeight = remainingRect.height * fraction;
+                        tileRect = { ...remainingRect, height: tileHeight };
+                        remainingRect = {
+                            ...remainingRect,
+                            top: remainingRect.top + tileHeight,
+                            height: remainingRect.height - tileHeight
+                        };
+                    }
+                    remainingArea -= area;
+                }
+
+                const tile = document.createElement('button');
+                tile.type = 'button';
+                tile.className = `absolute flex items-start justify-start border border-slate-400 p-1.5 sm:p-2 text-left text-xs sm:text-sm font-extrabold leading-tight text-slate-900 transition-colors focus:z-10 focus:outline-none focus:ring-2 focus:ring-sky-600 ${visualTileColors[index]} ${format === code ? 'z-10 ring-2 ring-inset ring-sky-700' : 'hover:brightness-95'}`;
+                tile.style.left = `${tileRect.left}%`;
+                tile.style.top = `${tileRect.top}%`;
+                tile.style.width = `${tileRect.width}%`;
+                tile.style.height = `${tileRect.height}%`;
+                tile.setAttribute('aria-label', `${format}, ${current.dims}`);
+                tile.title = `${format} — ${current.dims}`;
+                tile.textContent = format;
+                tile.addEventListener('click', () => selectVisualSheet(format));
+                visualSheet.appendChild(tile);
+
+                const legendItem = document.createElement('div');
+                legendItem.className = `flex items-center gap-1.5 min-w-0 ${format === code ? 'font-bold text-slate-900' : ''}`;
+                const swatch = document.createElement('span');
+                swatch.className = `h-2.5 w-2.5 shrink-0 rounded-sm border border-slate-400 ${visualTileColors[index]}`;
+                const formatLabel = document.createElement('span');
+                formatLabel.className = 'shrink-0 font-semibold';
+                formatLabel.textContent = format;
+                const dimensions = document.createElement('span');
+                dimensions.className = 'truncate';
+                dimensions.textContent = current.dims;
+                legendItem.append(swatch, formatLabel, dimensions);
+                visualLegend.appendChild(legendItem);
+            });
+
             document.getElementById('formatBadge').innerText = 'Formato ' + code;
-            document.getElementById('visualName').innerText = code;
-            document.getElementById('visualDims').innerText = paperData[code].dims;
-            document.getElementById('visualArea').innerText = 'Área: ' + paperData[code].area;
+            document.getElementById('visualDims').innerText = sheet.dims;
+            document.getElementById('visualArea').innerText = 'Área: ' + sheet.area;
+            document.getElementById('visualMarginLabel').innerText =
+                `Margens: ${sheet.leftMargin} / ${sheet.otherMargin} mm (esq. / demais)`;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -1656,6 +1998,44 @@
                 const el = document.getElementById(id);
                 if (el) el.addEventListener('input', calcularReservatorio);
             });
+            const municipalTopicGrid = document.getElementById('municipal-topic-grid');
+            if (municipalTopicGrid) {
+                const updateMunicipalGuideView = () => {
+                    const openGuide = municipalTopicGrid.querySelector('details[open]');
+                    municipalTopicGrid.querySelectorAll('[data-municipal-card]').forEach(card => {
+                        card.dataset.guideOpen = String(card.contains(openGuide));
+                    });
+                    municipalTopicGrid.classList.toggle('has-open-guide', Boolean(openGuide));
+                };
+
+                municipalTopicGrid.querySelectorAll('details').forEach(details => {
+                    details.addEventListener('toggle', () => {
+                        if (details.open) {
+                            municipalTopicGrid.querySelectorAll('details[open]').forEach(otherDetails => {
+                                if (otherDetails !== details) otherDetails.open = false;
+                            });
+                            requestAnimationFrame(() => {
+                                details.closest('[data-municipal-card]').scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                });
+                            });
+                        }
+                        updateMunicipalGuideView();
+                    });
+                });
+
+                municipalTopicGrid.querySelectorAll('.municipal-guide-back').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const details = button.closest('details');
+                        const resetFrame = details.querySelector('iframe[data-reset-on-back]');
+                        if (resetFrame) resetFrame.src = resetFrame.getAttribute('src');
+                        details.open = false;
+                        details.querySelector('summary').focus();
+                    });
+                });
+            }
+            selectVisualSheet('A0');
             calcularInclinacao();
             calcularComprimento();
             calcularReservatorio();
